@@ -15,19 +15,19 @@
 		58E389161D51D032007DB1D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58E389141D51D032007DB1D0 /* LaunchScreen.storyboard */; };
 		58E389211D51D032007DB1D0 /* LCHelperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E389201D51D032007DB1D0 /* LCHelperTests.m */; };
 		58E3892C1D51D033007DB1D0 /* LCHelperUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E3892B1D51D033007DB1D0 /* LCHelperUITests.m */; };
-		58E389AF1D51E3A1007DB1D0 /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E389921D51E3A1007DB1D0 /* Foundation+Log.m */; };
-		58E389B01D51E3A1007DB1D0 /* NSDate+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E389951D51E3A1007DB1D0 /* NSDate+LCHelp.m */; };
-		58E389B11D51E3A1007DB1D0 /* NSNumber+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E389971D51E3A1007DB1D0 /* NSNumber+LCHelp.m */; };
-		58E389B21D51E3A1007DB1D0 /* NSObject+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E389991D51E3A1007DB1D0 /* NSObject+LCHelp.m */; };
-		58E389B31D51E3A1007DB1D0 /* NSTimer+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E3899B1D51E3A1007DB1D0 /* NSTimer+LCHelp.m */; };
-		58E389B41D51E3A1007DB1D0 /* UIBarButtonItem+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E3899D1D51E3A1007DB1D0 /* UIBarButtonItem+LCHelp.m */; };
-		58E389B51D51E3A1007DB1D0 /* UIColor+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E3899F1D51E3A1007DB1D0 /* UIColor+LCHelp.m */; };
-		58E389B61D51E3A1007DB1D0 /* UIControl+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E389A11D51E3A1007DB1D0 /* UIControl+LCHelp.m */; };
-		58E389B71D51E3A1007DB1D0 /* UIImage+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E389A31D51E3A1007DB1D0 /* UIImage+LCHelp.m */; };
-		58E389B81D51E3A1007DB1D0 /* UIImageView+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E389A51D51E3A1007DB1D0 /* UIImageView+LCHelp.m */; };
-		58E389B91D51E3A1007DB1D0 /* UIView+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E389A71D51E3A1007DB1D0 /* UIView+LCHelp.m */; };
-		58E389BA1D51E3A1007DB1D0 /* LCKeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E389AB1D51E3A1007DB1D0 /* LCKeyboardManager.m */; };
-		58E389BB1D51E3A1007DB1D0 /* LCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E389AD1D51E3A1007DB1D0 /* LCModel.m */; };
+		58E389DB1D51F4A2007DB1D0 /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E389BE1D51F4A2007DB1D0 /* Foundation+Log.m */; };
+		58E389DC1D51F4A2007DB1D0 /* NSDate+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E389C11D51F4A2007DB1D0 /* NSDate+LCHelp.m */; };
+		58E389DD1D51F4A2007DB1D0 /* NSNumber+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E389C31D51F4A2007DB1D0 /* NSNumber+LCHelp.m */; };
+		58E389DE1D51F4A2007DB1D0 /* NSObject+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E389C51D51F4A2007DB1D0 /* NSObject+LCHelp.m */; };
+		58E389DF1D51F4A2007DB1D0 /* NSTimer+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E389C71D51F4A2007DB1D0 /* NSTimer+LCHelp.m */; };
+		58E389E01D51F4A2007DB1D0 /* UIBarButtonItem+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E389C91D51F4A2007DB1D0 /* UIBarButtonItem+LCHelp.m */; };
+		58E389E11D51F4A2007DB1D0 /* UIColor+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E389CB1D51F4A2007DB1D0 /* UIColor+LCHelp.m */; };
+		58E389E21D51F4A2007DB1D0 /* UIControl+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E389CD1D51F4A2007DB1D0 /* UIControl+LCHelp.m */; };
+		58E389E31D51F4A2007DB1D0 /* UIImage+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E389CF1D51F4A2007DB1D0 /* UIImage+LCHelp.m */; };
+		58E389E41D51F4A2007DB1D0 /* UIImageView+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E389D11D51F4A2007DB1D0 /* UIImageView+LCHelp.m */; };
+		58E389E51D51F4A2007DB1D0 /* UIView+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E389D31D51F4A2007DB1D0 /* UIView+LCHelp.m */; };
+		58E389E61D51F4A2007DB1D0 /* LCKeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E389D71D51F4A2007DB1D0 /* LCKeyboardManager.m */; };
+		58E389E71D51F4A2007DB1D0 /* LCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E389D91D51F4A2007DB1D0 /* LCModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,34 +64,34 @@
 		58E389271D51D033007DB1D0 /* LCHelperUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LCHelperUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58E3892B1D51D033007DB1D0 /* LCHelperUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCHelperUITests.m; sourceTree = "<group>"; };
 		58E3892D1D51D033007DB1D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		58E389921D51E3A1007DB1D0 /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
-		58E389931D51E3A1007DB1D0 /* LCExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCExtension.h; sourceTree = "<group>"; };
-		58E389941D51E3A1007DB1D0 /* NSDate+LCHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+LCHelp.h"; sourceTree = "<group>"; };
-		58E389951D51E3A1007DB1D0 /* NSDate+LCHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+LCHelp.m"; sourceTree = "<group>"; };
-		58E389961D51E3A1007DB1D0 /* NSNumber+LCHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+LCHelp.h"; sourceTree = "<group>"; };
-		58E389971D51E3A1007DB1D0 /* NSNumber+LCHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+LCHelp.m"; sourceTree = "<group>"; };
-		58E389981D51E3A1007DB1D0 /* NSObject+LCHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+LCHelp.h"; sourceTree = "<group>"; };
-		58E389991D51E3A1007DB1D0 /* NSObject+LCHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LCHelp.m"; sourceTree = "<group>"; };
-		58E3899A1D51E3A1007DB1D0 /* NSTimer+LCHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+LCHelp.h"; sourceTree = "<group>"; };
-		58E3899B1D51E3A1007DB1D0 /* NSTimer+LCHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+LCHelp.m"; sourceTree = "<group>"; };
-		58E3899C1D51E3A1007DB1D0 /* UIBarButtonItem+LCHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+LCHelp.h"; sourceTree = "<group>"; };
-		58E3899D1D51E3A1007DB1D0 /* UIBarButtonItem+LCHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+LCHelp.m"; sourceTree = "<group>"; };
-		58E3899E1D51E3A1007DB1D0 /* UIColor+LCHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+LCHelp.h"; sourceTree = "<group>"; };
-		58E3899F1D51E3A1007DB1D0 /* UIColor+LCHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+LCHelp.m"; sourceTree = "<group>"; };
-		58E389A01D51E3A1007DB1D0 /* UIControl+LCHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+LCHelp.h"; sourceTree = "<group>"; };
-		58E389A11D51E3A1007DB1D0 /* UIControl+LCHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+LCHelp.m"; sourceTree = "<group>"; };
-		58E389A21D51E3A1007DB1D0 /* UIImage+LCHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+LCHelp.h"; sourceTree = "<group>"; };
-		58E389A31D51E3A1007DB1D0 /* UIImage+LCHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+LCHelp.m"; sourceTree = "<group>"; };
-		58E389A41D51E3A1007DB1D0 /* UIImageView+LCHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+LCHelp.h"; sourceTree = "<group>"; };
-		58E389A51D51E3A1007DB1D0 /* UIImageView+LCHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+LCHelp.m"; sourceTree = "<group>"; };
-		58E389A61D51E3A1007DB1D0 /* UIView+LCHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LCHelp.h"; sourceTree = "<group>"; };
-		58E389A71D51E3A1007DB1D0 /* UIView+LCHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LCHelp.m"; sourceTree = "<group>"; };
-		58E389A81D51E3A1007DB1D0 /* LCHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHelp.h; sourceTree = "<group>"; };
-		58E389AA1D51E3A1007DB1D0 /* LCKeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCKeyboardManager.h; sourceTree = "<group>"; };
-		58E389AB1D51E3A1007DB1D0 /* LCKeyboardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCKeyboardManager.m; sourceTree = "<group>"; };
-		58E389AC1D51E3A1007DB1D0 /* LCModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCModel.h; sourceTree = "<group>"; };
-		58E389AD1D51E3A1007DB1D0 /* LCModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCModel.m; sourceTree = "<group>"; };
-		58E389AE1D51E3A1007DB1D0 /* LCUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCUtil.h; sourceTree = "<group>"; };
+		58E389BE1D51F4A2007DB1D0 /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
+		58E389BF1D51F4A2007DB1D0 /* LCExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCExtension.h; sourceTree = "<group>"; };
+		58E389C01D51F4A2007DB1D0 /* NSDate+LCHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+LCHelp.h"; sourceTree = "<group>"; };
+		58E389C11D51F4A2007DB1D0 /* NSDate+LCHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+LCHelp.m"; sourceTree = "<group>"; };
+		58E389C21D51F4A2007DB1D0 /* NSNumber+LCHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+LCHelp.h"; sourceTree = "<group>"; };
+		58E389C31D51F4A2007DB1D0 /* NSNumber+LCHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+LCHelp.m"; sourceTree = "<group>"; };
+		58E389C41D51F4A2007DB1D0 /* NSObject+LCHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+LCHelp.h"; sourceTree = "<group>"; };
+		58E389C51D51F4A2007DB1D0 /* NSObject+LCHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LCHelp.m"; sourceTree = "<group>"; };
+		58E389C61D51F4A2007DB1D0 /* NSTimer+LCHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+LCHelp.h"; sourceTree = "<group>"; };
+		58E389C71D51F4A2007DB1D0 /* NSTimer+LCHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+LCHelp.m"; sourceTree = "<group>"; };
+		58E389C81D51F4A2007DB1D0 /* UIBarButtonItem+LCHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+LCHelp.h"; sourceTree = "<group>"; };
+		58E389C91D51F4A2007DB1D0 /* UIBarButtonItem+LCHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+LCHelp.m"; sourceTree = "<group>"; };
+		58E389CA1D51F4A2007DB1D0 /* UIColor+LCHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+LCHelp.h"; sourceTree = "<group>"; };
+		58E389CB1D51F4A2007DB1D0 /* UIColor+LCHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+LCHelp.m"; sourceTree = "<group>"; };
+		58E389CC1D51F4A2007DB1D0 /* UIControl+LCHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+LCHelp.h"; sourceTree = "<group>"; };
+		58E389CD1D51F4A2007DB1D0 /* UIControl+LCHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+LCHelp.m"; sourceTree = "<group>"; };
+		58E389CE1D51F4A2007DB1D0 /* UIImage+LCHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+LCHelp.h"; sourceTree = "<group>"; };
+		58E389CF1D51F4A2007DB1D0 /* UIImage+LCHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+LCHelp.m"; sourceTree = "<group>"; };
+		58E389D01D51F4A2007DB1D0 /* UIImageView+LCHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+LCHelp.h"; sourceTree = "<group>"; };
+		58E389D11D51F4A2007DB1D0 /* UIImageView+LCHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+LCHelp.m"; sourceTree = "<group>"; };
+		58E389D21D51F4A2007DB1D0 /* UIView+LCHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LCHelp.h"; sourceTree = "<group>"; };
+		58E389D31D51F4A2007DB1D0 /* UIView+LCHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LCHelp.m"; sourceTree = "<group>"; };
+		58E389D41D51F4A2007DB1D0 /* LCHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHelp.h; sourceTree = "<group>"; };
+		58E389D61D51F4A2007DB1D0 /* LCKeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCKeyboardManager.h; sourceTree = "<group>"; };
+		58E389D71D51F4A2007DB1D0 /* LCKeyboardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCKeyboardManager.m; sourceTree = "<group>"; };
+		58E389D81D51F4A2007DB1D0 /* LCModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCModel.h; sourceTree = "<group>"; };
+		58E389D91D51F4A2007DB1D0 /* LCModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCModel.m; sourceTree = "<group>"; };
+		58E389DA1D51F4A2007DB1D0 /* LCUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCUtil.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +122,7 @@
 		58E388FA1D51D031007DB1D0 = {
 			isa = PBXGroup;
 			children = (
+				58E389BC1D51F4A2007DB1D0 /* Helper */,
 				58E389051D51D032007DB1D0 /* LCHelper */,
 				58E3891F1D51D032007DB1D0 /* LCHelperTests */,
 				58E3892A1D51D033007DB1D0 /* LCHelperUITests */,
@@ -142,7 +143,6 @@
 		58E389051D51D032007DB1D0 /* LCHelper */ = {
 			isa = PBXGroup;
 			children = (
-				58E389901D51E3A1007DB1D0 /* Helper */,
 				58E389091D51D032007DB1D0 /* AppDelegate.h */,
 				58E3890A1D51D032007DB1D0 /* AppDelegate.m */,
 				58E3890C1D51D032007DB1D0 /* ViewController.h */,
@@ -182,53 +182,53 @@
 			path = LCHelperUITests;
 			sourceTree = "<group>";
 		};
-		58E389901D51E3A1007DB1D0 /* Helper */ = {
+		58E389BC1D51F4A2007DB1D0 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				58E389911D51E3A1007DB1D0 /* Extensions */,
-				58E389A81D51E3A1007DB1D0 /* LCHelp.h */,
-				58E389A91D51E3A1007DB1D0 /* Utils */,
+				58E389BD1D51F4A2007DB1D0 /* Extensions */,
+				58E389D41D51F4A2007DB1D0 /* LCHelp.h */,
+				58E389D51D51F4A2007DB1D0 /* Utils */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
 		};
-		58E389911D51E3A1007DB1D0 /* Extensions */ = {
+		58E389BD1D51F4A2007DB1D0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				58E389921D51E3A1007DB1D0 /* Foundation+Log.m */,
-				58E389931D51E3A1007DB1D0 /* LCExtension.h */,
-				58E389941D51E3A1007DB1D0 /* NSDate+LCHelp.h */,
-				58E389951D51E3A1007DB1D0 /* NSDate+LCHelp.m */,
-				58E389961D51E3A1007DB1D0 /* NSNumber+LCHelp.h */,
-				58E389971D51E3A1007DB1D0 /* NSNumber+LCHelp.m */,
-				58E389981D51E3A1007DB1D0 /* NSObject+LCHelp.h */,
-				58E389991D51E3A1007DB1D0 /* NSObject+LCHelp.m */,
-				58E3899A1D51E3A1007DB1D0 /* NSTimer+LCHelp.h */,
-				58E3899B1D51E3A1007DB1D0 /* NSTimer+LCHelp.m */,
-				58E3899C1D51E3A1007DB1D0 /* UIBarButtonItem+LCHelp.h */,
-				58E3899D1D51E3A1007DB1D0 /* UIBarButtonItem+LCHelp.m */,
-				58E3899E1D51E3A1007DB1D0 /* UIColor+LCHelp.h */,
-				58E3899F1D51E3A1007DB1D0 /* UIColor+LCHelp.m */,
-				58E389A01D51E3A1007DB1D0 /* UIControl+LCHelp.h */,
-				58E389A11D51E3A1007DB1D0 /* UIControl+LCHelp.m */,
-				58E389A21D51E3A1007DB1D0 /* UIImage+LCHelp.h */,
-				58E389A31D51E3A1007DB1D0 /* UIImage+LCHelp.m */,
-				58E389A41D51E3A1007DB1D0 /* UIImageView+LCHelp.h */,
-				58E389A51D51E3A1007DB1D0 /* UIImageView+LCHelp.m */,
-				58E389A61D51E3A1007DB1D0 /* UIView+LCHelp.h */,
-				58E389A71D51E3A1007DB1D0 /* UIView+LCHelp.m */,
+				58E389BE1D51F4A2007DB1D0 /* Foundation+Log.m */,
+				58E389BF1D51F4A2007DB1D0 /* LCExtension.h */,
+				58E389C01D51F4A2007DB1D0 /* NSDate+LCHelp.h */,
+				58E389C11D51F4A2007DB1D0 /* NSDate+LCHelp.m */,
+				58E389C21D51F4A2007DB1D0 /* NSNumber+LCHelp.h */,
+				58E389C31D51F4A2007DB1D0 /* NSNumber+LCHelp.m */,
+				58E389C41D51F4A2007DB1D0 /* NSObject+LCHelp.h */,
+				58E389C51D51F4A2007DB1D0 /* NSObject+LCHelp.m */,
+				58E389C61D51F4A2007DB1D0 /* NSTimer+LCHelp.h */,
+				58E389C71D51F4A2007DB1D0 /* NSTimer+LCHelp.m */,
+				58E389C81D51F4A2007DB1D0 /* UIBarButtonItem+LCHelp.h */,
+				58E389C91D51F4A2007DB1D0 /* UIBarButtonItem+LCHelp.m */,
+				58E389CA1D51F4A2007DB1D0 /* UIColor+LCHelp.h */,
+				58E389CB1D51F4A2007DB1D0 /* UIColor+LCHelp.m */,
+				58E389CC1D51F4A2007DB1D0 /* UIControl+LCHelp.h */,
+				58E389CD1D51F4A2007DB1D0 /* UIControl+LCHelp.m */,
+				58E389CE1D51F4A2007DB1D0 /* UIImage+LCHelp.h */,
+				58E389CF1D51F4A2007DB1D0 /* UIImage+LCHelp.m */,
+				58E389D01D51F4A2007DB1D0 /* UIImageView+LCHelp.h */,
+				58E389D11D51F4A2007DB1D0 /* UIImageView+LCHelp.m */,
+				58E389D21D51F4A2007DB1D0 /* UIView+LCHelp.h */,
+				58E389D31D51F4A2007DB1D0 /* UIView+LCHelp.m */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		58E389A91D51E3A1007DB1D0 /* Utils */ = {
+		58E389D51D51F4A2007DB1D0 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				58E389AA1D51E3A1007DB1D0 /* LCKeyboardManager.h */,
-				58E389AB1D51E3A1007DB1D0 /* LCKeyboardManager.m */,
-				58E389AC1D51E3A1007DB1D0 /* LCModel.h */,
-				58E389AD1D51E3A1007DB1D0 /* LCModel.m */,
-				58E389AE1D51E3A1007DB1D0 /* LCUtil.h */,
+				58E389D61D51F4A2007DB1D0 /* LCKeyboardManager.h */,
+				58E389D71D51F4A2007DB1D0 /* LCKeyboardManager.m */,
+				58E389D81D51F4A2007DB1D0 /* LCModel.h */,
+				58E389D91D51F4A2007DB1D0 /* LCModel.m */,
+				58E389DA1D51F4A2007DB1D0 /* LCUtil.h */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -363,22 +363,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58E389B31D51E3A1007DB1D0 /* NSTimer+LCHelp.m in Sources */,
-				58E389B51D51E3A1007DB1D0 /* UIColor+LCHelp.m in Sources */,
+				58E389DF1D51F4A2007DB1D0 /* NSTimer+LCHelp.m in Sources */,
+				58E389E11D51F4A2007DB1D0 /* UIColor+LCHelp.m in Sources */,
 				58E3890E1D51D032007DB1D0 /* ViewController.m in Sources */,
-				58E389B01D51E3A1007DB1D0 /* NSDate+LCHelp.m in Sources */,
-				58E389BB1D51E3A1007DB1D0 /* LCModel.m in Sources */,
-				58E389B91D51E3A1007DB1D0 /* UIView+LCHelp.m in Sources */,
-				58E389BA1D51E3A1007DB1D0 /* LCKeyboardManager.m in Sources */,
+				58E389DC1D51F4A2007DB1D0 /* NSDate+LCHelp.m in Sources */,
+				58E389E71D51F4A2007DB1D0 /* LCModel.m in Sources */,
+				58E389E51D51F4A2007DB1D0 /* UIView+LCHelp.m in Sources */,
+				58E389E61D51F4A2007DB1D0 /* LCKeyboardManager.m in Sources */,
 				58E3890B1D51D032007DB1D0 /* AppDelegate.m in Sources */,
 				58E389081D51D032007DB1D0 /* main.m in Sources */,
-				58E389B81D51E3A1007DB1D0 /* UIImageView+LCHelp.m in Sources */,
-				58E389B21D51E3A1007DB1D0 /* NSObject+LCHelp.m in Sources */,
-				58E389B61D51E3A1007DB1D0 /* UIControl+LCHelp.m in Sources */,
-				58E389AF1D51E3A1007DB1D0 /* Foundation+Log.m in Sources */,
-				58E389B11D51E3A1007DB1D0 /* NSNumber+LCHelp.m in Sources */,
-				58E389B41D51E3A1007DB1D0 /* UIBarButtonItem+LCHelp.m in Sources */,
-				58E389B71D51E3A1007DB1D0 /* UIImage+LCHelp.m in Sources */,
+				58E389E41D51F4A2007DB1D0 /* UIImageView+LCHelp.m in Sources */,
+				58E389DE1D51F4A2007DB1D0 /* NSObject+LCHelp.m in Sources */,
+				58E389E21D51F4A2007DB1D0 /* UIControl+LCHelp.m in Sources */,
+				58E389DB1D51F4A2007DB1D0 /* Foundation+Log.m in Sources */,
+				58E389DD1D51F4A2007DB1D0 /* NSNumber+LCHelp.m in Sources */,
+				58E389E01D51F4A2007DB1D0 /* UIBarButtonItem+LCHelp.m in Sources */,
+				58E389E31D51F4A2007DB1D0 /* UIImage+LCHelp.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
