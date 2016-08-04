@@ -8,7 +8,6 @@
 
 #import "LCKeyboardManager.h"
 
-
 @interface LCKeyboardManager()
 
 @property(nonatomic, assign) CGRect frame;
@@ -17,16 +16,7 @@
 @end
 @implementation LCKeyboardManager
 
-static LCKeyboardManager *_keyboardManager = nil;
-+ (instancetype)shareManager {
-    static dispatch_once_t once;
-    if (_keyboardManager) {
-        dispatch_once(&once, ^{
-            _keyboardManager = [[LCKeyboardManager alloc] init];
-        });
-    }
-    return _keyboardManager;
-}
+SingletonM(Manager);
 
 -(void)addKeyboardObserver:(CGRect)rect toView: (UIView *)view {
     [self removeKeyboardObserver];

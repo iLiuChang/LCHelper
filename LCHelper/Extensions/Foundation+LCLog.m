@@ -1,7 +1,7 @@
 
 #import <Foundation/Foundation.h>
 
-@implementation NSDictionary (Log)
+@implementation NSDictionary (LCLog)
 - (NSString *)descriptionWithLocale:(id)locale
 {
     NSMutableString *str = [NSMutableString string];
@@ -26,7 +26,7 @@
 }
 @end
 
-@implementation NSArray (Log)
+@implementation NSArray (LCLog)
 - (NSString *)descriptionWithLocale:(id)locale
 {
     NSMutableString *str = [NSMutableString string];

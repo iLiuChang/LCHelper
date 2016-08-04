@@ -15,7 +15,7 @@
 		58E38A041D51FB35007DB1D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58E38A021D51FB35007DB1D0 /* LaunchScreen.storyboard */; };
 		58E38A0F1D51FB38007DB1D0 /* LCHelperDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E38A0E1D51FB38007DB1D0 /* LCHelperDemoTests.m */; };
 		58E38A1A1D51FB38007DB1D0 /* LCHelperDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E38A191D51FB38007DB1D0 /* LCHelperDemoUITests.m */; };
-		58E38A461D51FB91007DB1D0 /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E38A291D51FB91007DB1D0 /* Foundation+Log.m */; };
+		58E38A461D51FB91007DB1D0 /* Foundation+LCLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E38A291D51FB91007DB1D0 /* Foundation+LCLog.m */; };
 		58E38A471D51FB91007DB1D0 /* NSDate+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E38A2C1D51FB91007DB1D0 /* NSDate+LCHelp.m */; };
 		58E38A481D51FB91007DB1D0 /* NSNumber+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E38A2E1D51FB91007DB1D0 /* NSNumber+LCHelp.m */; };
 		58E38A491D51FB91007DB1D0 /* NSObject+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E38A301D51FB91007DB1D0 /* NSObject+LCHelp.m */; };
@@ -48,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		58CD7C571D533D2300747079 /* LCSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCSingleton.h; sourceTree = "<group>"; };
 		58E389F11D51FB33007DB1D0 /* LCHelperDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LCHelperDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58E389F51D51FB34007DB1D0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		58E389F71D51FB34007DB1D0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -64,7 +65,7 @@
 		58E38A151D51FB38007DB1D0 /* LCHelperDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LCHelperDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58E38A191D51FB38007DB1D0 /* LCHelperDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCHelperDemoUITests.m; sourceTree = "<group>"; };
 		58E38A1B1D51FB38007DB1D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		58E38A291D51FB91007DB1D0 /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
+		58E38A291D51FB91007DB1D0 /* Foundation+LCLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+LCLog.m"; sourceTree = "<group>"; };
 		58E38A2A1D51FB91007DB1D0 /* LCExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCExtension.h; sourceTree = "<group>"; };
 		58E38A2B1D51FB91007DB1D0 /* NSDate+LCHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+LCHelp.h"; sourceTree = "<group>"; };
 		58E38A2C1D51FB91007DB1D0 /* NSDate+LCHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+LCHelp.m"; sourceTree = "<group>"; };
@@ -195,7 +196,7 @@
 		58E38A281D51FB91007DB1D0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				58E38A291D51FB91007DB1D0 /* Foundation+Log.m */,
+				58E38A291D51FB91007DB1D0 /* Foundation+LCLog.m */,
 				58E38A2A1D51FB91007DB1D0 /* LCExtension.h */,
 				58E38A2B1D51FB91007DB1D0 /* NSDate+LCHelp.h */,
 				58E38A2C1D51FB91007DB1D0 /* NSDate+LCHelp.m */,
@@ -224,6 +225,7 @@
 		58E38A401D51FB91007DB1D0 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				58CD7C571D533D2300747079 /* LCSingleton.h */,
 				58E38A411D51FB91007DB1D0 /* LCKeyboardManager.h */,
 				58E38A421D51FB91007DB1D0 /* LCKeyboardManager.m */,
 				58E38A431D51FB91007DB1D0 /* LCModel.h */,
@@ -375,7 +377,7 @@
 				58E38A4F1D51FB91007DB1D0 /* UIImageView+LCHelp.m in Sources */,
 				58E38A491D51FB91007DB1D0 /* NSObject+LCHelp.m in Sources */,
 				58E38A4D1D51FB91007DB1D0 /* UIControl+LCHelp.m in Sources */,
-				58E38A461D51FB91007DB1D0 /* Foundation+Log.m in Sources */,
+				58E38A461D51FB91007DB1D0 /* Foundation+LCLog.m in Sources */,
 				58E38A481D51FB91007DB1D0 /* NSNumber+LCHelp.m in Sources */,
 				58E38A4B1D51FB91007DB1D0 /* UIBarButtonItem+LCHelp.m in Sources */,
 				58E38A4E1D51FB91007DB1D0 /* UIImage+LCHelp.m in Sources */,

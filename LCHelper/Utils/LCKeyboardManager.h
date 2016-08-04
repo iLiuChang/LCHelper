@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "LCSingleton.h"
 @interface LCKeyboardManager : NSObject
 
 /**
@@ -15,12 +16,7 @@
  */
 @property(nonatomic, assign) CGFloat insterval;
 
-/**
- *  初始化
- *
- *  @return LCKeyboardManager
- */
-+ (instancetype)shareManager;
+SingletonH(Manager);
 
 /**
  *  添加键盘监听
