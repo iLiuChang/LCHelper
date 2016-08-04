@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "LCHelper"
-  s.version      = "0.0.2"
+  s.version      = "0.0.3"
   s.summary      = "项目中用的一些工具类和Extension"
   s.homepage     = "https://github.com/LiuChang712/LCHelper"
 
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
  
    s.platform     = :ios, "7.0"
 
-  s.source       = { :git => "https://github.com/LiuChang712/LCHelper.git", :tag => "0.0.2" }
+  s.source       = { :git => "https://github.com/LiuChang712/LCHelper.git", :tag => "0.0.3" }
 
   s.source_files  = "LCHelper/**/*.{h,m}"
  
