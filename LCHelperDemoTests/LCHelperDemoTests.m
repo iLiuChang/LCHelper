@@ -1,6 +1,6 @@
 //
-//  LCHelperTests.m
-//  LCHelperTests
+//  LCHelperDemoTests.m
+//  LCHelperDemoTests
 //
 //  Created by 刘畅 on 16/8/3.
 //  Copyright © 2016年 LiuChang. All rights reserved.
@@ -8,11 +8,11 @@
 
 #import <XCTest/XCTest.h>
 
-@interface LCHelperTests : XCTestCase
+@interface LCHelperDemoTests : XCTestCase
 
 @end
 
-@implementation LCHelperTests
+@implementation LCHelperDemoTests
 
 - (void)setUp {
     [super setUp];

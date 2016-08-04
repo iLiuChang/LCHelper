@@ -1,13 +1,13 @@
 //
 //  ViewController.m
-//  LCHelper
+//  LCHelperDemo
 //
 //  Created by 刘畅 on 16/8/3.
 //  Copyright © 2016年 LiuChang. All rights reserved.
 //
 
 #import "ViewController.h"
-#import "LCHelp.h"
+
 @interface ViewController ()
 
 @end
@@ -16,8 +16,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  LCModel *model = [[LCModel alloc] init];
-    
     // Do any additional setup after loading the view, typically from a nib.
 }
 
