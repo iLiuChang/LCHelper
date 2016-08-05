@@ -15,7 +15,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    NSDictionary *dic = @{
+                          @"我是中文字符": @"223333",
+                          @"aaa": @{
+                                  @"aaa": @"啦啦啦"
+                                  }
+                          };
+    NSLog(@"%@", dic);
 }
 
 - (void)didReceiveMemoryWarning {

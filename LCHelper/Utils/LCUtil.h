@@ -11,5 +11,6 @@
 
 #import "LCModel.h"
 #import "LCKeyboardManager.h"
+#import "LCSingleton.h"
 
 #endif /* LCUtil_h */
