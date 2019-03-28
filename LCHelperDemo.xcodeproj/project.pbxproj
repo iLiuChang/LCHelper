@@ -120,6 +120,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		58034549224CC51400E341C6 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				58E38A291D51FB91007DB1D0 /* Foundation+LCLog.m */,
+				58E38A2B1D51FB91007DB1D0 /* NSDate+LCHelp.h */,
+				58E38A2C1D51FB91007DB1D0 /* NSDate+LCHelp.m */,
+				58E38A2D1D51FB91007DB1D0 /* NSNumber+LCHelp.h */,
+				58E38A2E1D51FB91007DB1D0 /* NSNumber+LCHelp.m */,
+				58E38A2F1D51FB91007DB1D0 /* NSObject+LCHelp.h */,
+				58E38A301D51FB91007DB1D0 /* NSObject+LCHelp.m */,
+				58E38A311D51FB91007DB1D0 /* NSTimer+LCHelp.h */,
+				58E38A321D51FB91007DB1D0 /* NSTimer+LCHelp.m */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		5803454A224CC54600E341C6 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				58E38A331D51FB91007DB1D0 /* UIBarButtonItem+LCHelp.h */,
+				58E38A341D51FB91007DB1D0 /* UIBarButtonItem+LCHelp.m */,
+				58E38A351D51FB91007DB1D0 /* UIColor+LCHelp.h */,
+				58E38A361D51FB91007DB1D0 /* UIColor+LCHelp.m */,
+				58E38A371D51FB91007DB1D0 /* UIControl+LCHelp.h */,
+				58E38A381D51FB91007DB1D0 /* UIControl+LCHelp.m */,
+				58E38A391D51FB91007DB1D0 /* UIImage+LCHelp.h */,
+				58E38A3A1D51FB91007DB1D0 /* UIImage+LCHelp.m */,
+				58E38A3B1D51FB91007DB1D0 /* UIImageView+LCHelp.h */,
+				58E38A3C1D51FB91007DB1D0 /* UIImageView+LCHelp.m */,
+				58E38A3D1D51FB91007DB1D0 /* UIView+LCHelp.h */,
+				58E38A3E1D51FB91007DB1D0 /* UIView+LCHelp.m */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
 		58E389E81D51FB33007DB1D0 = {
 			isa = PBXGroup;
 			children = (
@@ -196,28 +231,9 @@
 		58E38A281D51FB91007DB1D0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				58E38A291D51FB91007DB1D0 /* Foundation+LCLog.m */,
+				5803454A224CC54600E341C6 /* UIKit */,
+				58034549224CC51400E341C6 /* Foundation */,
 				58E38A2A1D51FB91007DB1D0 /* LCExtension.h */,
-				58E38A2B1D51FB91007DB1D0 /* NSDate+LCHelp.h */,
-				58E38A2C1D51FB91007DB1D0 /* NSDate+LCHelp.m */,
-				58E38A2D1D51FB91007DB1D0 /* NSNumber+LCHelp.h */,
-				58E38A2E1D51FB91007DB1D0 /* NSNumber+LCHelp.m */,
-				58E38A2F1D51FB91007DB1D0 /* NSObject+LCHelp.h */,
-				58E38A301D51FB91007DB1D0 /* NSObject+LCHelp.m */,
-				58E38A311D51FB91007DB1D0 /* NSTimer+LCHelp.h */,
-				58E38A321D51FB91007DB1D0 /* NSTimer+LCHelp.m */,
-				58E38A331D51FB91007DB1D0 /* UIBarButtonItem+LCHelp.h */,
-				58E38A341D51FB91007DB1D0 /* UIBarButtonItem+LCHelp.m */,
-				58E38A351D51FB91007DB1D0 /* UIColor+LCHelp.h */,
-				58E38A361D51FB91007DB1D0 /* UIColor+LCHelp.m */,
-				58E38A371D51FB91007DB1D0 /* UIControl+LCHelp.h */,
-				58E38A381D51FB91007DB1D0 /* UIControl+LCHelp.m */,
-				58E38A391D51FB91007DB1D0 /* UIImage+LCHelp.h */,
-				58E38A3A1D51FB91007DB1D0 /* UIImage+LCHelp.m */,
-				58E38A3B1D51FB91007DB1D0 /* UIImageView+LCHelp.h */,
-				58E38A3C1D51FB91007DB1D0 /* UIImageView+LCHelp.m */,
-				58E38A3D1D51FB91007DB1D0 /* UIView+LCHelp.h */,
-				58E38A3E1D51FB91007DB1D0 /* UIView+LCHelp.m */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
