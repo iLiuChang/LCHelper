@@ -34,4 +34,5 @@ LCExtension.h: 一些常用的分类
 
 有什么问题欢迎大家指出，谢谢！
 
-微博： @Fly刘畅
+- 微博： [@刘畅流畅](http://weibo.com/liuchang712)
+- Twitter: [@_LiuChang](https://twitter.com/_LiuChang)
