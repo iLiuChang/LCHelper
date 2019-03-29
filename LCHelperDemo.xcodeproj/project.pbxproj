@@ -231,8 +231,10 @@
 		58E38A271D51FB91007DB1D0 /* LCHelper */ = {
 			isa = PBXGroup;
 			children = (
-				58E38A281D51FB91007DB1D0 /* Extensions */,
 				58E38A3F1D51FB91007DB1D0 /* LCHelp.h */,
+				58E38A2A1D51FB91007DB1D0 /* LCExtension.h */,
+				58E38A451D51FB91007DB1D0 /* LCUtil.h */,
+				58E38A281D51FB91007DB1D0 /* Extensions */,
 				58E38A401D51FB91007DB1D0 /* Utils */,
 			);
 			path = LCHelper;
@@ -243,7 +245,6 @@
 			children = (
 				5803454A224CC54600E341C6 /* UIKit */,
 				58034549224CC51400E341C6 /* Foundation */,
-				58E38A2A1D51FB91007DB1D0 /* LCExtension.h */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -256,7 +257,6 @@
 				58E38A421D51FB91007DB1D0 /* LCKeyboardManager.m */,
 				58E38A431D51FB91007DB1D0 /* LCModel.h */,
 				58E38A441D51FB91007DB1D0 /* LCModel.m */,
-				58E38A451D51FB91007DB1D0 /* LCUtil.h */,
 			);
 			path = Utils;
 			sourceTree = "<group>";

@@ -19,5 +19,6 @@
 #import "UIImage+LCHelp.h"
 #import "UIImageView+LCHelp.h"
 #import "UIView+LCHelp.h"
+#import "NSString+LCHelp.h"
 
 #endif /* LCExtension_h */
