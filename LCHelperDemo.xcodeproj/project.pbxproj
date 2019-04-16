@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5803454D224CC84500E341C6 /* NSString+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5803454C224CC84500E341C6 /* NSString+LCHelp.m */; };
 		58034550224CC85F00E341C6 /* NSData+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5803454F224CC85F00E341C6 /* NSData+LCHelp.m */; };
+		58BDFDC6226583A3002FFC9D /* UIScrollView+LCRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BDFDC5226583A3002FFC9D /* UIScrollView+LCRefresh.m */; };
 		58E389F61D51FB34007DB1D0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E389F51D51FB34007DB1D0 /* main.m */; };
 		58E389F91D51FB34007DB1D0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E389F81D51FB34007DB1D0 /* AppDelegate.m */; };
 		58E389FC1D51FB35007DB1D0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E389FB1D51FB35007DB1D0 /* ViewController.m */; };
@@ -54,6 +55,8 @@
 		5803454C224CC84500E341C6 /* NSString+LCHelp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+LCHelp.m"; sourceTree = "<group>"; };
 		5803454E224CC85F00E341C6 /* NSData+LCHelp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+LCHelp.h"; sourceTree = "<group>"; };
 		5803454F224CC85F00E341C6 /* NSData+LCHelp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+LCHelp.m"; sourceTree = "<group>"; };
+		58BDFDC4226583A3002FFC9D /* UIScrollView+LCRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+LCRefresh.h"; sourceTree = "<group>"; };
+		58BDFDC5226583A3002FFC9D /* UIScrollView+LCRefresh.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+LCRefresh.m"; sourceTree = "<group>"; };
 		58CD7C571D533D2300747079 /* LCSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCSingleton.h; sourceTree = "<group>"; };
 		58E389F11D51FB33007DB1D0 /* LCHelperDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LCHelperDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58E389F51D51FB34007DB1D0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -161,6 +164,8 @@
 				58E38A3C1D51FB91007DB1D0 /* UIImageView+LCHelp.m */,
 				58E38A3D1D51FB91007DB1D0 /* UIView+LCHelp.h */,
 				58E38A3E1D51FB91007DB1D0 /* UIView+LCHelp.m */,
+				58BDFDC4226583A3002FFC9D /* UIScrollView+LCRefresh.h */,
+				58BDFDC5226583A3002FFC9D /* UIScrollView+LCRefresh.m */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -406,6 +411,7 @@
 				58E38A4D1D51FB91007DB1D0 /* UIControl+LCHelp.m in Sources */,
 				58E38A461D51FB91007DB1D0 /* Foundation+LCLog.m in Sources */,
 				58E38A481D51FB91007DB1D0 /* NSNumber+LCHelp.m in Sources */,
+				58BDFDC6226583A3002FFC9D /* UIScrollView+LCRefresh.m in Sources */,
 				58E38A4B1D51FB91007DB1D0 /* UIBarButtonItem+LCHelp.m in Sources */,
 				58034550224CC85F00E341C6 /* NSData+LCHelp.m in Sources */,
 				58E38A4E1D51FB91007DB1D0 /* UIImage+LCHelp.m in Sources */,

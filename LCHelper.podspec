@@ -8,11 +8,11 @@ Pod::Spec.new do |s|
 
   s.license      = "MIT"
 
-  s.author             = { "LiuChang" => "iliuchang@foxmail.com" }
+  s.author            = "LiuChang"
  
    s.platform     = :ios, "8.0"
 
-  s.source       = { :git => "https://github.com/iLiuChang/LCHelper.git", :tag => "0.1.1" }
+  s.source       = { :git => "https://github.com/iLiuChang/LCHelper.git", :tag => s.version }
 
   s.source_files  = "LCHelper/*.{h,m}", "LCHelper/Extensions/**/*.{h,m}", "LCHelper/Utils/*.{h,m}"
  
