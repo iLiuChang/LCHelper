@@ -63,7 +63,7 @@ typedef void (^LCSrartRefreshingBlock)();
 
 - (UIActivityIndicatorView *)indView {
     if (!_indView) {
-        UIActivityIndicatorView *indView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:(UIActivityIndicatorViewStyleGray)];
+        UIActivityIndicatorView *indView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:(UIActivityIndicatorViewStyleWhite)];
         
         indView.frame = CGRectMake(0, -IndViewHeight, self.scrollView.width, IndViewHeight);
         [self.scrollView addSubview:indView];
@@ -230,6 +230,14 @@ static const char LCRefreshScrollViewManagerKey = '\0';
 
 - (LCRefreshStyle)refreshStyle {
     return [self refreshManager].refreshStyle;
+}
+
+- (void)setActivityIndicatorViewStyle:(UIActivityIndicatorViewStyle)activityIndicatorViewStyle {
+    [self refreshManager].indView.activityIndicatorViewStyle = activityIndicatorViewStyle;
+}
+
+- (UIActivityIndicatorViewStyle)activityIndicatorViewStyle {
+    return [self refreshManager].indView.activityIndicatorViewStyle;
 }
 
 - (void)setHeaderRefreshHidden:(BOOL)headerRefreshHidden {

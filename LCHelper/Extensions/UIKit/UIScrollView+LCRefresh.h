@@ -21,6 +21,12 @@ typedef enum : NSUInteger {
  */
 @property(nonatomic, assign) LCRefreshStyle refreshStyle;
 
+
+/**
+ *  刷新控件类型 default is UIActivityIndicatorViewStyleWhite
+ */
+@property(nonatomic, assign) UIActivityIndicatorViewStyle activityIndicatorViewStyle;
+
 /**
  *  是否需要头部刷新
  */
