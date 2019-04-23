@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5803454D224CC84500E341C6 /* NSString+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5803454C224CC84500E341C6 /* NSString+LCHelp.m */; };
 		58034550224CC85F00E341C6 /* NSData+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5803454F224CC85F00E341C6 /* NSData+LCHelp.m */; };
+		5863F358226F1C7C008D1C53 /* NSDictionary+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5863F357226F1C7C008D1C53 /* NSDictionary+LCHelp.m */; };
 		58BDFDC6226583A3002FFC9D /* UIScrollView+LCRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BDFDC5226583A3002FFC9D /* UIScrollView+LCRefresh.m */; };
 		58E389F61D51FB34007DB1D0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E389F51D51FB34007DB1D0 /* main.m */; };
 		58E389F91D51FB34007DB1D0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E389F81D51FB34007DB1D0 /* AppDelegate.m */; };
@@ -55,6 +56,8 @@
 		5803454C224CC84500E341C6 /* NSString+LCHelp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+LCHelp.m"; sourceTree = "<group>"; };
 		5803454E224CC85F00E341C6 /* NSData+LCHelp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+LCHelp.h"; sourceTree = "<group>"; };
 		5803454F224CC85F00E341C6 /* NSData+LCHelp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+LCHelp.m"; sourceTree = "<group>"; };
+		5863F356226F1C7C008D1C53 /* NSDictionary+LCHelp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+LCHelp.h"; sourceTree = "<group>"; };
+		5863F357226F1C7C008D1C53 /* NSDictionary+LCHelp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+LCHelp.m"; sourceTree = "<group>"; };
 		58BDFDC4226583A3002FFC9D /* UIScrollView+LCRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+LCRefresh.h"; sourceTree = "<group>"; };
 		58BDFDC5226583A3002FFC9D /* UIScrollView+LCRefresh.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+LCRefresh.m"; sourceTree = "<group>"; };
 		58CD7C571D533D2300747079 /* LCSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCSingleton.h; sourceTree = "<group>"; };
@@ -145,6 +148,8 @@
 				5803454C224CC84500E341C6 /* NSString+LCHelp.m */,
 				5803454E224CC85F00E341C6 /* NSData+LCHelp.h */,
 				5803454F224CC85F00E341C6 /* NSData+LCHelp.m */,
+				5863F356226F1C7C008D1C53 /* NSDictionary+LCHelp.h */,
+				5863F357226F1C7C008D1C53 /* NSDictionary+LCHelp.m */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -406,6 +411,7 @@
 				58E389F91D51FB34007DB1D0 /* AppDelegate.m in Sources */,
 				58E389F61D51FB34007DB1D0 /* main.m in Sources */,
 				58E38A4F1D51FB91007DB1D0 /* UIImageView+LCHelp.m in Sources */,
+				5863F358226F1C7C008D1C53 /* NSDictionary+LCHelp.m in Sources */,
 				58E38A491D51FB91007DB1D0 /* NSObject+LCHelp.m in Sources */,
 				5803454D224CC84500E341C6 /* NSString+LCHelp.m in Sources */,
 				58E38A4D1D51FB91007DB1D0 /* UIControl+LCHelp.m in Sources */,
