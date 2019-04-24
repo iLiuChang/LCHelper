@@ -14,4 +14,6 @@
 
 - (NSString *)hmacMD5StringWithKey:(NSString *)key;
 
+- (NSString *)base64EncodedString;
+
 @end

@@ -12,9 +12,15 @@
 
 - (BOOL)isEmpty;
 
+- (BOOL)containsString:(NSString *)string;
+
 - (NSString *)md5String;
 
 - (NSString *)hmacMD5StringWithKey:(NSString *)key;
+
+- (NSString *)base64EncodedString;
+
+- (NSString *)base64DecodingString;
 
 - (CGSize)sizeForFont:(UIFont *)font size:(CGSize)size mode:(NSLineBreakMode)lineBreakMode;
 
@@ -23,4 +29,5 @@
 - (CGFloat)heightForFont:(UIFont *)font width:(CGFloat)width;
 
 + (NSString *)stringWithUUID;
+
 @end

@@ -15,6 +15,11 @@
     return (self == nil || [self isEqual:[NSNull null]] || self.length <= 0 || [self isEqualToString:@"(null)"] || [self isEqualToString:@"<null>"]);
 }
 
+- (BOOL)containsString:(NSString *)string {
+    if (string == nil) return NO;
+    return [self rangeOfString:string].location != NSNotFound;
+}
+
 - (NSString *)md5String {
     return [[self dataUsingEncoding:NSUTF8StringEncoding] md5String];
 }
@@ -22,6 +27,16 @@
 - (NSString *)hmacMD5StringWithKey:(NSString *)key {
     return [[self dataUsingEncoding:NSUTF8StringEncoding]
             hmacMD5StringWithKey:key];
+}
+
+- (NSString *)base64EncodedString {
+    return [[self dataUsingEncoding:NSUTF8StringEncoding] base64EncodedString];
+}
+
+- (NSString *)base64DecodingString {
+    NSData *data = [[NSData alloc] initWithBase64EncodedString:self options:0];
+    NSString *domainBase64 =[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    return domainBase64;
 }
 
 - (CGSize)sizeForFont:(UIFont *)font size:(CGSize)size mode:(NSLineBreakMode)lineBreakMode {
