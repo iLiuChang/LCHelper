@@ -206,6 +206,7 @@ typedef void (^LCSrartRefreshingBlock)();
     }
     [self.scrollView removeObserver:self forKeyPath:LCRefreshKeyPathContentOffset context:nil];
     [self.scrollView.panGestureRecognizer removeObserver:self forKeyPath:LcRefreshKeyPathPanState context:nil];
+    self.isAddObserver = NO;
 }
 
 - (void)dealloc {
