@@ -15,7 +15,7 @@
  *
  *  @param hexStr 比如：@"0xF0F", @"66ccff", @"#66CCFF88"
  */
-+ (instancetype)colorWithHexString:(NSString *)hexStr;
++ (UIColor *)colorWithHexString:(NSString *)hexStr;
 
 + (UIColor *)colorWithRGB:(uint32_t)rgbValue;
 

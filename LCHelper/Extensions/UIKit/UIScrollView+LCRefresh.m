@@ -26,7 +26,7 @@ typedef void (^LCSrartRefreshingBlock)();
 
 @property(nonatomic, copy) LCSrartRefreshingBlock footerBlock;
 
-@property(nonatomic, assign) BOOL isAddRefreshing;
+@property(nonatomic, assign) BOOL isAddObserver;
 
 @property(nonatomic, assign) UIGestureRecognizerState cuttentState;
 
@@ -161,24 +161,14 @@ typedef void (^LCSrartRefreshingBlock)();
     return self.indView.isAnimating;
 }
 
--(void)addRefreshing {
-    if (self.isAddRefreshing) {
-        return;
-    }
-    NSKeyValueObservingOptions options = NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld;
-    [self.scrollView addObserver:self forKeyPath:LCRefreshKeyPathContentOffset options:options context:nil];
-    [self.scrollView.panGestureRecognizer addObserver:self forKeyPath:LcRefreshKeyPathPanState options:options context:nil];
-    self.isAddRefreshing = YES;
-}
-
 -(void)addHeaderRefreshing: (LCSrartRefreshingBlock)completionHander {
     self.headerBlock = completionHander;
-    [self addRefreshing];
+    [self addObservers];
 }
 
 -(void)addFooterRefreshing: (LCSrartRefreshingBlock)completionHander {
     self.footerBlock = completionHander;
-    [self addRefreshing];
+    [self addObservers];
 }
 
 -(void)startHeaderRefreshing {
@@ -200,11 +190,26 @@ typedef void (^LCSrartRefreshingBlock)();
     });
 }
 
--(void)dealloc {
-    if (self.isAddRefreshing) {
-        [self removeObserver:self forKeyPath:LCRefreshKeyPathContentOffset context:nil];
-        [self.scrollView.panGestureRecognizer removeObserver:self forKeyPath:LcRefreshKeyPathPanState context:nil];
+- (void)addObservers {
+    if (self.isAddObserver) {
+        return;
     }
+    NSKeyValueObservingOptions options = NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld;
+    [self.scrollView addObserver:self forKeyPath:LCRefreshKeyPathContentOffset options:options context:nil];
+    [self.scrollView.panGestureRecognizer addObserver:self forKeyPath:LcRefreshKeyPathPanState options:options context:nil];
+    self.isAddObserver = YES;
+}
+
+- (void)removeObservers {
+    if (!self.isAddObserver) {
+        return;
+    }
+    [self.scrollView removeObserver:self forKeyPath:LCRefreshKeyPathContentOffset context:nil];
+    [self.scrollView.panGestureRecognizer removeObserver:self forKeyPath:LcRefreshKeyPathPanState context:nil];
+}
+
+- (void)dealloc {
+    [self removeObservers];
 }
 
 @end
@@ -219,7 +224,7 @@ static const char LCRefreshScrollViewManagerKey = '\0';
     if (!manager) {
         manager = [[LCRefreshScrollViewManager alloc] initWithScrollView:self];
         objc_setAssociatedObject(self, &LCRefreshScrollViewManagerKey,
-                                 manager, OBJC_ASSOCIATION_RETAIN);
+                                 manager, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
     return manager;
 }
@@ -278,6 +283,15 @@ static const char LCRefreshScrollViewManagerKey = '\0';
 
 - (void)addFooterRefreshing:(void (^)())completionHander {
     [[self refreshManager] addFooterRefreshing:completionHander];
+}
+
+- (void)willMoveToSuperview:(UIView *)newSuperview {
+    [super willMoveToSuperview:newSuperview];
+    if (!newSuperview) {
+        // 一旦被父视图移除将清空所有数据
+        objc_setAssociatedObject(self, &LCRefreshScrollViewManagerKey,
+                                 nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
 }
 @end
 

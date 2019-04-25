@@ -68,6 +68,7 @@ typedef enum : NSUInteger {
  *  completionHander: 完成回调
  */
 -(void)addFooterRefreshing: (void (^)())completionHander;
+
 @end
 
 

@@ -21,8 +21,8 @@
  */
 + (UIBarButtonItem *)itemWithTarget:(id)target
                              action:(SEL)action
-                              image:(NSString *)image
-                          highImage:(NSString *)highImage;
+                              image:(UIImage *)image
+                          highImage:(UIImage *)highImage;
 
 /**
  *  创建一个item
@@ -38,6 +38,6 @@
 + (UIBarButtonItem *)itemWithTarget:(id)target
                              action:(SEL)action
                                size:(CGSize)size
-                              image:(NSString *)image
-                          highImage:(NSString *)highImage;
+                              image:(UIImage *)image
+                          highImage:(UIImage *)highImage;
 @end
