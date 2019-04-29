@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "FirstViewController.h"
-
+#import "KeyboardViewController.h"
 @interface ViewController ()
 @end
 
@@ -26,10 +26,11 @@
 
 
 
+    
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    FirstViewController *vc = [[FirstViewController alloc] init];
+    KeyboardViewController *vc = [[KeyboardViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import "UIView+LCHelp.h"
+#import <objc/runtime.h>
 
 @implementation UIView (LCHelp)
 - (CGFloat)left {
@@ -145,4 +146,6 @@
         [v removeFromSuperview];
     }
 }
+
 @end
+

@@ -14,8 +14,6 @@ LCUtil.h :一些常用的工具
 
 - LCModel.h
 继承它就可以实现字典转模型、模型转字典等
-- LCKeyboardManager.h
-一行代码实现键盘监听
 
 LCExtension.h: 一些常用的分类
 
@@ -29,6 +27,9 @@ LCExtension.h: 一些常用的分类
 - UIImage+LCHelp.h
 - UIImageView+LCHelp.h
 - UIView+LCHelp.h
+- UITextField+LCKeyboardObserver.h
+- UITextView+LCKeyboardObserver.h
+- UIScrollView+LCRefresh.h
 
 ## 【联系我】
 
