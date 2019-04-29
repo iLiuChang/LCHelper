@@ -10,8 +10,8 @@
 
 @interface LCKeyboardObserver : NSObject
 
-- (instancetype)initWithObserveView:(UIView<UITextInput> *)observeView transformView:(UIView *)transformView;
+- (instancetype)initWithObserveView:(UIView *)observeView transformView:(UIView *)transformView;
 
--(void)removeKeyboardObserver;
+- (void)removeObserver;
 
 @end

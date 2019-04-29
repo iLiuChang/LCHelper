@@ -23,5 +23,11 @@
  */
 - (void)addKeyboardObserverWithTransformView:(UIView *)view;
 
+
+/**
+ 移除键盘观察者, 默认自动移除
+ */
+- (void)removeKeyboardObserver;
+
 @end
 

@@ -18,7 +18,7 @@
 
 @implementation LCKeyboardObserver
 
-- (instancetype)initWithObserveView:(UIView<UITextInput> *)observeView transformView:(UIView *)transformView
+- (instancetype)initWithObserveView:(UIView *)observeView transformView:(UIView *)transformView
 {
     self = [super init];
     if (self) {
@@ -67,18 +67,13 @@
     if (!self.observeView.isFirstResponder) {
         return;
     }
-
     double duration  = [note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     [UIView animateWithDuration:duration animations:^{
         self.transformView.transform = CGAffineTransformIdentity;
     }];
 }
 
-- (void)dealloc {
-    [self removeKeyboardObserver];
-}
-
--(void)removeKeyboardObserver {
+-(void)removeObserver {
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [center removeObserver:self name:UIKeyboardWillHideNotification object:nil];

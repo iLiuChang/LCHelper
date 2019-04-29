@@ -20,6 +20,10 @@
     [self lc_setKeyboardObserver:observer];
 }
 
+- (void)removeKeyboardObserver {
+    [[self lc_keyboardObserver] removeObserver];
+}
+
 static const char LCKeyboardObserverKey = '\0';
 - (void)lc_setKeyboardObserver:(LCKeyboardObserver *)observer {
     objc_setAssociatedObject(self, &LCKeyboardObserverKey,
@@ -34,7 +38,7 @@ static const char LCKeyboardObserverKey = '\0';
 - (void)willMoveToSuperview:(UIView *)newSuperview {
     [super willMoveToSuperview:newSuperview];
     if (!newSuperview) {
-        // 一旦被父视图移除将清空所有数据
+        [self removeKeyboardObserver];
         [self lc_setKeyboardObserver:nil];
     }
 }
