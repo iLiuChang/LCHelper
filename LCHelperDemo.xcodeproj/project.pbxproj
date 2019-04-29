@@ -12,10 +12,8 @@
 		58499C072271919500061334 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58499C062271919500061334 /* FirstViewController.m */; };
 		5863F358226F1C7C008D1C53 /* NSDictionary+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5863F357226F1C7C008D1C53 /* NSDictionary+LCHelp.m */; };
 		58BDFDC6226583A3002FFC9D /* UIScrollView+LCRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BDFDC5226583A3002FFC9D /* UIScrollView+LCRefresh.m */; };
-		58D5EA572276DE84007F5116 /* UITextField+LCKeyboardObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D5EA562276DE84007F5116 /* UITextField+LCKeyboardObserver.m */; };
+		58D5EA572276DE84007F5116 /* UIView+LCKeyboardObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D5EA562276DE84007F5116 /* UIView+LCKeyboardObserver.m */; };
 		58D5EA5A2276E149007F5116 /* KeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D5EA592276E149007F5116 /* KeyboardViewController.m */; };
-		58D5EA5D2276EEBF007F5116 /* LCKeyboardObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D5EA5C2276EEBF007F5116 /* LCKeyboardObserver.m */; };
-		58D5EA602276F6E4007F5116 /* UITextView+LCKeyboardObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D5EA5F2276F6E4007F5116 /* UITextView+LCKeyboardObserver.m */; };
 		58E389F61D51FB34007DB1D0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E389F51D51FB34007DB1D0 /* main.m */; };
 		58E389F91D51FB34007DB1D0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E389F81D51FB34007DB1D0 /* AppDelegate.m */; };
 		58E389FC1D51FB35007DB1D0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E389FB1D51FB35007DB1D0 /* ViewController.m */; };
@@ -67,14 +65,10 @@
 		58BDFDC4226583A3002FFC9D /* UIScrollView+LCRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+LCRefresh.h"; sourceTree = "<group>"; };
 		58BDFDC5226583A3002FFC9D /* UIScrollView+LCRefresh.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+LCRefresh.m"; sourceTree = "<group>"; };
 		58CD7C571D533D2300747079 /* LCSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCSingleton.h; sourceTree = "<group>"; };
-		58D5EA552276DE84007F5116 /* UITextField+LCKeyboardObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITextField+LCKeyboardObserver.h"; sourceTree = "<group>"; };
-		58D5EA562276DE84007F5116 /* UITextField+LCKeyboardObserver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITextField+LCKeyboardObserver.m"; sourceTree = "<group>"; };
+		58D5EA552276DE84007F5116 /* UIView+LCKeyboardObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+LCKeyboardObserver.h"; sourceTree = "<group>"; };
+		58D5EA562276DE84007F5116 /* UIView+LCKeyboardObserver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+LCKeyboardObserver.m"; sourceTree = "<group>"; };
 		58D5EA582276E149007F5116 /* KeyboardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyboardViewController.h; sourceTree = "<group>"; };
 		58D5EA592276E149007F5116 /* KeyboardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyboardViewController.m; sourceTree = "<group>"; };
-		58D5EA5B2276EEBF007F5116 /* LCKeyboardObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCKeyboardObserver.h; sourceTree = "<group>"; };
-		58D5EA5C2276EEBF007F5116 /* LCKeyboardObserver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCKeyboardObserver.m; sourceTree = "<group>"; };
-		58D5EA5E2276F6E4007F5116 /* UITextView+LCKeyboardObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITextView+LCKeyboardObserver.h"; sourceTree = "<group>"; };
-		58D5EA5F2276F6E4007F5116 /* UITextView+LCKeyboardObserver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITextView+LCKeyboardObserver.m"; sourceTree = "<group>"; };
 		58E389F11D51FB33007DB1D0 /* LCHelperDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LCHelperDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58E389F51D51FB34007DB1D0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		58E389F71D51FB34007DB1D0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -181,12 +175,8 @@
 				58E38A3C1D51FB91007DB1D0 /* UIImageView+LCHelp.m */,
 				58E38A3D1D51FB91007DB1D0 /* UIView+LCHelp.h */,
 				58E38A3E1D51FB91007DB1D0 /* UIView+LCHelp.m */,
-				58D5EA552276DE84007F5116 /* UITextField+LCKeyboardObserver.h */,
-				58D5EA562276DE84007F5116 /* UITextField+LCKeyboardObserver.m */,
-				58D5EA5E2276F6E4007F5116 /* UITextView+LCKeyboardObserver.h */,
-				58D5EA5F2276F6E4007F5116 /* UITextView+LCKeyboardObserver.m */,
-				58D5EA5B2276EEBF007F5116 /* LCKeyboardObserver.h */,
-				58D5EA5C2276EEBF007F5116 /* LCKeyboardObserver.m */,
+				58D5EA552276DE84007F5116 /* UIView+LCKeyboardObserver.h */,
+				58D5EA562276DE84007F5116 /* UIView+LCKeyboardObserver.m */,
 				58BDFDC4226583A3002FFC9D /* UIScrollView+LCRefresh.h */,
 				58BDFDC5226583A3002FFC9D /* UIScrollView+LCRefresh.m */,
 			);
@@ -431,19 +421,17 @@
 				58E389F61D51FB34007DB1D0 /* main.m in Sources */,
 				58E38A4F1D51FB91007DB1D0 /* UIImageView+LCHelp.m in Sources */,
 				5863F358226F1C7C008D1C53 /* NSDictionary+LCHelp.m in Sources */,
-				58D5EA602276F6E4007F5116 /* UITextView+LCKeyboardObserver.m in Sources */,
 				58E38A491D51FB91007DB1D0 /* NSObject+LCHelp.m in Sources */,
 				5803454D224CC84500E341C6 /* NSString+LCHelp.m in Sources */,
 				58E38A4D1D51FB91007DB1D0 /* UIControl+LCHelp.m in Sources */,
 				58E38A461D51FB91007DB1D0 /* Foundation+LCLog.m in Sources */,
-				58D5EA5D2276EEBF007F5116 /* LCKeyboardObserver.m in Sources */,
 				58E38A481D51FB91007DB1D0 /* NSNumber+LCHelp.m in Sources */,
 				58499C072271919500061334 /* FirstViewController.m in Sources */,
 				58BDFDC6226583A3002FFC9D /* UIScrollView+LCRefresh.m in Sources */,
 				58D5EA5A2276E149007F5116 /* KeyboardViewController.m in Sources */,
 				58E38A4B1D51FB91007DB1D0 /* UIBarButtonItem+LCHelp.m in Sources */,
 				58034550224CC85F00E341C6 /* NSData+LCHelp.m in Sources */,
-				58D5EA572276DE84007F5116 /* UITextField+LCKeyboardObserver.m in Sources */,
+				58D5EA572276DE84007F5116 /* UIView+LCKeyboardObserver.m in Sources */,
 				58E38A4E1D51FB91007DB1D0 /* UIImage+LCHelp.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,18 +1,31 @@
 //
-//  LCKeyboardObserver.m
+//  UIView+LCKeyboardObserver.m
 //  LCHelperDemo
 //
 //  Created by 刘畅 on 2019/4/29.
 //  Copyright © 2019 LiuChang. All rights reserved.
 //
 
-#import "LCKeyboardObserver.h"
+#import "UIView+LCKeyboardObserver.h"
+#import <objc/runtime.h>
+
+@interface LCKeyboardObserver : NSObject
+
+@property (nonatomic, assign) CGFloat keyboardSpacing;
+
+- (instancetype)initWithObserveView:(UIView *)observeView transformView:(UIView *)transformView;
+
+- (void)removeObserver;
+
+@end
 
 @interface LCKeyboardObserver()
 
 @property(nonatomic, weak) UIView *observeView;
 
 @property(nonatomic, weak) UIView *transformView;
+
+@property(nonatomic, assign) BOOL isRemoveObserver;
 
 @end
 
@@ -26,6 +39,7 @@
             NSLog(@"observeView can not be nil");
             return self;
         }
+        self.keyboardSpacing = 20;
         self.observeView = observeView;
         self.transformView = transformView;
         if (!self.transformView) {
@@ -55,7 +69,7 @@
     };
     [UIView animateWithDuration:duration animations:^{
         if (telMaxY > keyboardY) {
-            self.transformView.transform = CGAffineTransformMakeTranslation(0,  keyboardY - telMaxY - 20);
+            self.transformView.transform = CGAffineTransformMakeTranslation(0,  keyboardY - telMaxY - self.keyboardSpacing);
         }else {
             self.transformView.transform = CGAffineTransformIdentity;
         }
@@ -73,9 +87,71 @@
     }];
 }
 
+- (void)dealloc {
+    [self removeObserver];
+}
+
 -(void)removeObserver {
+    if (self.isRemoveObserver) {
+        return;
+    }
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [center removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+    self.isRemoveObserver = YES;
 }
 @end
+
+@implementation UIView (LCKeyboardObserver)
+
+- (void)addKeyboardObserver {
+    [self addKeyboardObserverWithTransformView:nil];
+}
+
+- (void)addKeyboardObserverWithTransformView:(UIView *)view {
+    [self addKeyboardObserverWithTransformView:view keyboardSpacing:20];
+}
+
+- (void)addKeyboardObserverWithTransformView:(UIView *)view keyboardSpacing:(CGFloat)keyboardSpacing {
+    LCKeyboardObserver *observer = [[LCKeyboardObserver alloc] initWithObserveView:self transformView:view];
+    observer.keyboardSpacing = keyboardSpacing;
+    [self lc_setKeyboardObserver:observer];
+}
+
+- (void)removeKeyboardObserver {
+    [[self lc_keyboardObserver] removeObserver];
+}
+
+static const char LCKeyboardObserverKey = '\0';
+- (void)lc_setKeyboardObserver:(LCKeyboardObserver *)observer {
+    objc_setAssociatedObject(self, &LCKeyboardObserverKey,
+                             observer, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    
+}
+
+- (LCKeyboardObserver *)lc_keyboardObserver {
+    return objc_getAssociatedObject(self, &LCKeyboardObserverKey);
+}
+
+@end
+
+@implementation UITextField (LCKeyboardObserver)
+- (void)willMoveToSuperview:(UIView *)newSuperview {
+    [super willMoveToSuperview:newSuperview];
+    if (!newSuperview) {
+        [self removeKeyboardObserver];
+        [self lc_setKeyboardObserver:nil];
+    }
+}
+@end
+
+@implementation UITextView (LCKeyboardObserver)
+- (void)willMoveToSuperview:(UIView *)newSuperview {
+    [super willMoveToSuperview:newSuperview];
+    if (!newSuperview) {
+        [self removeKeyboardObserver];
+        [self lc_setKeyboardObserver:nil];
+    }
+}
+@end
+

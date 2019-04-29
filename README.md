@@ -27,8 +27,7 @@ LCExtension.h: 一些常用的分类
 - UIImage+LCHelp.h
 - UIImageView+LCHelp.h
 - UIView+LCHelp.h
-- UITextField+LCKeyboardObserver.h
-- UITextView+LCKeyboardObserver.h
+- UIView+LCKeyboardObserver.h
 - UIScrollView+LCRefresh.h
 
 ## 【联系我】
