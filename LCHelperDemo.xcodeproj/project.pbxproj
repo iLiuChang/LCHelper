@@ -11,6 +11,9 @@
 		58034550224CC85F00E341C6 /* NSData+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5803454F224CC85F00E341C6 /* NSData+LCHelp.m */; };
 		58499C072271919500061334 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58499C062271919500061334 /* FirstViewController.m */; };
 		5863F358226F1C7C008D1C53 /* NSDictionary+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5863F357226F1C7C008D1C53 /* NSDictionary+LCHelp.m */; };
+		589EC52122801DA50036E3D6 /* UIAlertController+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 589EC52022801DA50036E3D6 /* UIAlertController+LCHelp.m */; };
+		589EC52422802EC20036E3D6 /* UIAlertView+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 589EC52322802EC20036E3D6 /* UIAlertView+LCHelp.m */; };
+		589EC5272280424A0036E3D6 /* UIActionSheet+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 589EC5262280424A0036E3D6 /* UIActionSheet+LCHelp.m */; };
 		58BDFDC6226583A3002FFC9D /* UIScrollView+LCRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BDFDC5226583A3002FFC9D /* UIScrollView+LCRefresh.m */; };
 		58D5EA572276DE84007F5116 /* UIView+LCKeyboardObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D5EA562276DE84007F5116 /* UIView+LCKeyboardObserver.m */; };
 		58D5EA5A2276E149007F5116 /* KeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D5EA592276E149007F5116 /* KeyboardViewController.m */; };
@@ -62,6 +65,12 @@
 		58499C062271919500061334 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		5863F356226F1C7C008D1C53 /* NSDictionary+LCHelp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+LCHelp.h"; sourceTree = "<group>"; };
 		5863F357226F1C7C008D1C53 /* NSDictionary+LCHelp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+LCHelp.m"; sourceTree = "<group>"; };
+		589EC51F22801DA50036E3D6 /* UIAlertController+LCHelp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+LCHelp.h"; sourceTree = "<group>"; };
+		589EC52022801DA50036E3D6 /* UIAlertController+LCHelp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+LCHelp.m"; sourceTree = "<group>"; };
+		589EC52222802EC20036E3D6 /* UIAlertView+LCHelp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+LCHelp.h"; sourceTree = "<group>"; };
+		589EC52322802EC20036E3D6 /* UIAlertView+LCHelp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+LCHelp.m"; sourceTree = "<group>"; };
+		589EC5252280424A0036E3D6 /* UIActionSheet+LCHelp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIActionSheet+LCHelp.h"; sourceTree = "<group>"; };
+		589EC5262280424A0036E3D6 /* UIActionSheet+LCHelp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIActionSheet+LCHelp.m"; sourceTree = "<group>"; };
 		58BDFDC4226583A3002FFC9D /* UIScrollView+LCRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+LCRefresh.h"; sourceTree = "<group>"; };
 		58BDFDC5226583A3002FFC9D /* UIScrollView+LCRefresh.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+LCRefresh.m"; sourceTree = "<group>"; };
 		58CD7C571D533D2300747079 /* LCSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCSingleton.h; sourceTree = "<group>"; };
@@ -179,6 +188,12 @@
 				58D5EA562276DE84007F5116 /* UIView+LCKeyboardObserver.m */,
 				58BDFDC4226583A3002FFC9D /* UIScrollView+LCRefresh.h */,
 				58BDFDC5226583A3002FFC9D /* UIScrollView+LCRefresh.m */,
+				589EC5252280424A0036E3D6 /* UIActionSheet+LCHelp.h */,
+				589EC5262280424A0036E3D6 /* UIActionSheet+LCHelp.m */,
+				589EC52222802EC20036E3D6 /* UIAlertView+LCHelp.h */,
+				589EC52322802EC20036E3D6 /* UIAlertView+LCHelp.m */,
+				589EC51F22801DA50036E3D6 /* UIAlertController+LCHelp.h */,
+				589EC52022801DA50036E3D6 /* UIAlertController+LCHelp.m */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -364,6 +379,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -422,6 +438,7 @@
 				58E38A4F1D51FB91007DB1D0 /* UIImageView+LCHelp.m in Sources */,
 				5863F358226F1C7C008D1C53 /* NSDictionary+LCHelp.m in Sources */,
 				58E38A491D51FB91007DB1D0 /* NSObject+LCHelp.m in Sources */,
+				589EC52422802EC20036E3D6 /* UIAlertView+LCHelp.m in Sources */,
 				5803454D224CC84500E341C6 /* NSString+LCHelp.m in Sources */,
 				58E38A4D1D51FB91007DB1D0 /* UIControl+LCHelp.m in Sources */,
 				58E38A461D51FB91007DB1D0 /* Foundation+LCLog.m in Sources */,
@@ -429,10 +446,12 @@
 				58499C072271919500061334 /* FirstViewController.m in Sources */,
 				58BDFDC6226583A3002FFC9D /* UIScrollView+LCRefresh.m in Sources */,
 				58D5EA5A2276E149007F5116 /* KeyboardViewController.m in Sources */,
+				589EC52122801DA50036E3D6 /* UIAlertController+LCHelp.m in Sources */,
 				58E38A4B1D51FB91007DB1D0 /* UIBarButtonItem+LCHelp.m in Sources */,
 				58034550224CC85F00E341C6 /* NSData+LCHelp.m in Sources */,
 				58D5EA572276DE84007F5116 /* UIView+LCKeyboardObserver.m in Sources */,
 				58E38A4E1D51FB91007DB1D0 /* UIImage+LCHelp.m in Sources */,
+				589EC5272280424A0036E3D6 /* UIActionSheet+LCHelp.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,6 +593,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LCHelperDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "LiuChang-Project.LCHelperDemo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -585,6 +605,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LCHelperDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "LiuChang-Project.LCHelperDemo";
 				PRODUCT_NAME = "$(TARGET_NAME)";

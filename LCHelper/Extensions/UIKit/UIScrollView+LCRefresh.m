@@ -238,11 +238,11 @@ static const char LCRefreshScrollViewManagerKey = '\0';
     return [self refreshManager].refreshStyle;
 }
 
-- (void)setActivityIndicatorViewStyle:(UIActivityIndicatorViewStyle)activityIndicatorViewStyle {
-    [self refreshManager].indView.activityIndicatorViewStyle = activityIndicatorViewStyle;
+- (void)setRefreshActivityIndicatorViewStyle:(UIActivityIndicatorViewStyle)refreshActivityIndicatorViewStyle {
+    [self refreshManager].indView.activityIndicatorViewStyle = refreshActivityIndicatorViewStyle;
 }
 
-- (UIActivityIndicatorViewStyle)activityIndicatorViewStyle {
+- (UIActivityIndicatorViewStyle)refreshActivityIndicatorViewStyle {
     return [self refreshManager].indView.activityIndicatorViewStyle;
 }
 

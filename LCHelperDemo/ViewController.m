@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "FirstViewController.h"
 #import "KeyboardViewController.h"
+#import "UIActionSheet+LCHelp.h"
 @interface ViewController ()
 @end
 
@@ -24,14 +25,21 @@
 //                          };
 //    NSLog(@"%@", dic);
 
-
-
     
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    KeyboardViewController *vc = [[KeyboardViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+//    KeyboardViewController *vc = [[KeyboardViewController alloc] init];
+//    [self.navigationController pushViewController:vc animated:YES];
+    [[UIActionSheet actionSheetWithTitle:@"232" buttonIndex:^(NSInteger index) {
+                NSLog(@"%ld", index);
+
+    } cancelButtonTitle:@"取消" otherButtonTitles:@"1",@"2", nil] showInView:self.view] ;
+ 
+//    [[UIAlertView alertWithTitle:@"提示" message:@"好的" buttonIndex:^(NSInteger index) {
+//        NSLog(@"%ld", index);
+//    } cancelButtonTitle:@"取消" otherButtonTitles:@"其他", @"开始", nil] show] ;
+    
 }
 
 
