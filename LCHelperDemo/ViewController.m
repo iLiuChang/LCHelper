@@ -10,24 +10,49 @@
 #import "FirstViewController.h"
 #import "KeyboardViewController.h"
 #import "UIActionSheet+LCHelp.h"
-@interface ViewController ()
+#import "LCInfiniteScrollView.h"
+#import "UIImage+LCHelp.h"
+
+@interface ViewController ()<LCInfiniteScrollViewDelegate>
+@property (nonatomic, strong) NSArray *images;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    NSDictionary *dic = @{
-//                          @"我是中文字符": @"223333",
-//                          @"aaa": @{
-//                                  @"aaa": @"啦啦啦"
-//                                  }
-//                          };
-//    NSLog(@"%@", dic);
 
+    self.images = @[[UIImage imageWithColor:[UIColor redColor] size:CGSizeMake(20, 20)],
+                    [UIImage imageWithColor:[UIColor yellowColor] size:CGSizeMake(20, 20)],
+                    [UIImage imageWithColor:[UIColor orangeColor] size:CGSizeMake(20, 20)],
+                    [UIImage imageWithColor:[UIColor magentaColor] size:CGSizeMake(20, 20)]];
+    LCInfiniteScrollView *sv = [[LCInfiniteScrollView alloc] init];
+    sv.frame = CGRectMake(0, 100, self.view.frame.size.width, 300);
+    sv.delegate = self;
+
+    [self.view addSubview:sv];
     
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [sv reloadData];
+//    });
 }
 
+- (NSInteger)infiniteScrollNumberOfIndex {
+    return self.images.count;
+}
+
+- (void)infiniteScrollWithReusableView:(UIImageView *)imageView atIndex:(NSInteger)index {
+    imageView.image =self.images[index];
+}
+
+- (void)infiniteScrollDidScrollIndex:(NSInteger)index {
+    NSLog(@"infiniteScrollDidScrollIndex %ld", index);
+}
+
+- (void)infiniteScrollDidSelectIndex:(NSInteger)index {
+    NSLog(@"infiniteScrollDidSelectIndex %ld", index);
+
+}
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
 //    KeyboardViewController *vc = [[KeyboardViewController alloc] init];
 //    [self.navigationController pushViewController:vc animated:YES];

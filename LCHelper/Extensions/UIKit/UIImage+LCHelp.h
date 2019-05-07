@@ -47,7 +47,12 @@
 /**
  *  根据颜色生成图片
  */
-- (UIImage *)imageWithColor:(UIColor *)color
++ (UIImage *)imageWithColor:(UIColor *)color;
+
+/**
+ *  根据颜色生成图片
+ */
++ (UIImage *)imageWithColor:(UIColor *)color
                        size:(CGSize)size;
 /**
  *  调整图片大小

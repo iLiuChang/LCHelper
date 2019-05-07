@@ -19,7 +19,11 @@
         NSLog(@"title can not be emety!");
         return;
     }
-    UIAlertAction *action = [UIAlertAction actionWithTitle:title style:style handler:handler];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:title style:style handler:^(UIAlertAction * _Nonnull action) {
+        if (handler) {
+            handler();
+        }
+    }];
     [self addAction:action];
 }
 

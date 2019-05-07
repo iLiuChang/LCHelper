@@ -10,7 +10,7 @@
 #define LCUtil_h
 
 #import "LCModel.h"
-#import "LCKeyboardManager.h"
 #import "LCSingleton.h"
+#import "LCInfiniteScrollView.h"
 
 #endif /* LCUtil_h */

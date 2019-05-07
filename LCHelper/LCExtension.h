@@ -9,16 +9,26 @@
 #ifndef LCExtension_h
 #define LCExtension_h
 
+// Foundation
 #import "NSDate+LCHelp.h"
 #import "NSNumber+LCHelp.h"
 #import "NSObject+LCHelp.h"
 #import "NSTimer+LCHelp.h"
+#import "NSString+LCHelp.h"
+#import "NSData+LCHelp.h"
+#import "NSDictionary+LCHelp.h"
+
+// UIKit
 #import "UIBarButtonItem+LCHelp.h"
 #import "UIColor+LCHelp.h"
 #import "UIControl+LCHelp.h"
 #import "UIImage+LCHelp.h"
 #import "UIImageView+LCHelp.h"
 #import "UIView+LCHelp.h"
-#import "NSString+LCHelp.h"
+#import "UIView+LCKeyboardObserver.h"
+#import "UIScrollView+LCRefresh.h"
+#import "UIActionSheet+LCHelp.h"
+#import "UIAlertView+LCHelp.h"
+#import "UIAlertController+LCHelp.h"
 
 #endif /* LCExtension_h */

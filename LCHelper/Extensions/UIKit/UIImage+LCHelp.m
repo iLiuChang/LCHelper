@@ -186,7 +186,11 @@
     
 }
 
-- (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size {
++ (UIImage *)imageWithColor:(UIColor *)color {
+    return [UIImage imageWithColor:color size:CGSizeMake(10, 10)];
+}
+
++ (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size {
     CGRect rect = CGRectMake(0, 0, size.width, size.height);
     UIGraphicsBeginImageContext(rect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();
