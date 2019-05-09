@@ -9,9 +9,9 @@
 #import "LCInfiniteScrollView.h"
 @interface LCInfiniteScrollView()<UIScrollViewDelegate>
 
-@property (nonatomic, strong) UIImageView *reusableView;
+@property (nonatomic, strong) UIView *reusableView;
 
-@property (nonatomic, strong) UIImageView *centerView;
+@property (nonatomic, strong) UIView *centerView;
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 
@@ -20,34 +20,6 @@
 @end
 
 @implementation LCInfiniteScrollView
-
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        _scrollView = [[UIScrollView alloc]initWithFrame:self.bounds];
-
-        _scrollView.pagingEnabled = YES;
-        _scrollView.showsHorizontalScrollIndicator = NO;
-        _scrollView.delegate = self;
-        
-        _centerView = [[UIImageView alloc] init];
-        _centerView.tag = 0;
-        _centerView.userInteractionEnabled = YES;
-        UITapGestureRecognizer *centerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageViewTap:)];
-        [_centerView addGestureRecognizer:centerTap];
-        
-        [_scrollView addSubview:_centerView];
-        
-        _reusableView = [[UIImageView alloc] init];
-        _reusableView.userInteractionEnabled = YES;
-        UITapGestureRecognizer *reusableTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageViewTap:)];
-        [_reusableView addGestureRecognizer:reusableTap];
-
-        [self addSubview:_scrollView];
-    }
-    return self;
-}
 
 - (void)layoutSubviews {
     [super layoutSubviews];
@@ -67,6 +39,57 @@
     [super willMoveToSuperview:newSuperview];
     if (newSuperview) {
         [self reloadData];
+    }
+}
+
+- (void)setDelegate:(id<LCInfiniteScrollViewDelegate>)delegate {
+    if (_delegate != delegate) {
+        _delegate = delegate;
+        
+        if (_scrollView) {
+            [_scrollView removeFromSuperview];
+        }
+        
+        if ([delegate respondsToSelector:@selector(infiniteScrollReusableView)]) {
+            _centerView = [delegate infiniteScrollReusableView];
+            if (!_centerView) {
+                NSLog(@"infiniteScrollReusableView is nil");
+                return;
+            }
+            
+            _reusableView = [delegate infiniteScrollReusableView];
+            if (!_reusableView) {
+                NSLog(@"infiniteScrollReusableView is nil");
+                return;
+            }
+            
+            if ([_centerView isEqual:_reusableView]) {
+                return;
+            }
+        } else {
+            _centerView = [[UIImageView alloc] init];
+            _reusableView = [[UIImageView alloc] init];
+        }
+
+        if ([delegate respondsToSelector:@selector(infiniteScrollDidSelectIndex:)]) {
+            _centerView.userInteractionEnabled = YES;
+            UITapGestureRecognizer *centerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageViewTap:)];
+            [_centerView addGestureRecognizer:centerTap];
+            
+            _reusableView.userInteractionEnabled = YES;
+            UITapGestureRecognizer *reusableTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageViewTap:)];
+            [_reusableView addGestureRecognizer:reusableTap];
+        }
+
+        _scrollView = [[UIScrollView alloc]initWithFrame:self.bounds];
+        _scrollView.pagingEnabled = YES;
+        _scrollView.showsHorizontalScrollIndicator = NO;
+        _scrollView.delegate = self;
+        [self addSubview:_scrollView];
+
+        _centerView.tag = 0;
+        [_scrollView addSubview:_centerView];
+        
     }
 }
 
@@ -101,9 +124,19 @@
 }
 
 - (void)reloadData {
+    NSInteger totalCount = [self.delegate infiniteScrollNumberOfIndex];
+    if (_centerView.tag >= totalCount) {
+        self.reusableView.tag = 0;
+        self.centerView.tag = 0;
+        if ([self.delegate respondsToSelector:@selector(infiniteScrollDidScrollIndex:)]) {
+            [self.delegate infiniteScrollDidScrollIndex:_centerView.tag];
+        }
+    }
+    
     if ([self.delegate respondsToSelector:@selector(infiniteScrollWithReusableView:atIndex:)]) {
         [self.delegate infiniteScrollWithReusableView:_centerView atIndex:_centerView.tag];
     }
+
 }
 
 - (void)imageViewTap:(UITapGestureRecognizer *)tap {
@@ -144,7 +177,7 @@
     [self.delegate infiniteScrollWithReusableView:_reusableView atIndex:index];
     
     if (offsetX <= 0 || offsetX >= w * 2) {
-        UIImageView *temp = _centerView;
+        UIView *temp = _centerView;
         _centerView = _reusableView;
         _reusableView = temp;
         

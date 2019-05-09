@@ -15,6 +15,7 @@
 
 @interface ViewController ()<LCInfiniteScrollViewDelegate>
 @property (nonatomic, strong) NSArray *images;
+@property (nonatomic, weak) LCInfiniteScrollView *scrollView;
 @end
 
 @implementation ViewController
@@ -31,18 +32,19 @@
     sv.delegate = self;
 
     [self.view addSubview:sv];
-    
+    self.scrollView = sv;
 //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //        [sv reloadData];
 //    });
+    
 }
 
 - (NSInteger)infiniteScrollNumberOfIndex {
     return self.images.count;
 }
 
-- (void)infiniteScrollWithReusableView:(UIImageView *)imageView atIndex:(NSInteger)index {
-    imageView.image =self.images[index];
+- (void)infiniteScrollWithReusableView:(UIView *)reusableView atIndex:(NSInteger)index {
+    ((UIImageView *)reusableView).image = self.images[index];
 }
 
 - (void)infiniteScrollDidScrollIndex:(NSInteger)index {
@@ -51,22 +53,26 @@
 
 - (void)infiniteScrollDidSelectIndex:(NSInteger)index {
     NSLog(@"infiniteScrollDidSelectIndex %ld", index);
-
 }
+
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
 //    KeyboardViewController *vc = [[KeyboardViewController alloc] init];
 //    [self.navigationController pushViewController:vc animated:YES];
-    [[UIActionSheet actionSheetWithTitle:@"232" buttonIndex:^(NSInteger index) {
-                NSLog(@"%ld", index);
-
-    } cancelButtonTitle:@"取消" otherButtonTitles:@"1",@"2", nil] showInView:self.view] ;
+//    [[UIActionSheet actionSheetWithTitle:@"232" buttonIndex:^(NSInteger index) {
+//                NSLog(@"%ld", index);
+//
+//    } cancelButtonTitle:@"取消" otherButtonTitles:@"1",@"2", nil] showInView:self.view] ;
  
 //    [[UIAlertView alertWithTitle:@"提示" message:@"好的" buttonIndex:^(NSInteger index) {
 //        NSLog(@"%ld", index);
 //    } cancelButtonTitle:@"取消" otherButtonTitles:@"其他", @"开始", nil] show] ;
     
-}
+    self.images = @[[UIImage imageWithColor:[UIColor redColor] size:CGSizeMake(20, 20)],
+                    [UIImage imageWithColor:[UIColor yellowColor] size:CGSizeMake(20, 20)],
+                    [UIImage imageWithColor:[UIColor magentaColor] size:CGSizeMake(20, 20)]];
 
+    [self.scrollView reloadData];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

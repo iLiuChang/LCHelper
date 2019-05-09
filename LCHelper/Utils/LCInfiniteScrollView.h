@@ -19,12 +19,20 @@
 /**
  设置图片
  
- @param imageView 需要设置图片的重用视图
+ @param imageView 设置图片(禁止修改frame和tag)
  @param index 所在下标
  */
-- (void)infiniteScrollWithReusableView:(UIImageView *)imageView atIndex:(NSInteger)index;
+- (void)infiniteScrollWithReusableView:(UIView *)reusableView atIndex:(NSInteger)index;
 
 @optional
+
+
+/**
+ 重用视图(如果没有遵守此方法则为UIImageView)
+
+ @return 1.不能为空 2.只能使用局部变量返回
+ */
+- (UIView *)infiniteScrollReusableView;
 
 /**
  滑动事件
@@ -47,17 +55,17 @@
 /**
  代理
  */
-@property(nonatomic, weak) id<LCInfiniteScrollViewDelegate> delegate;
+@property (nonatomic, weak) id<LCInfiniteScrollViewDelegate> delegate;
 
 /**
  是否自动滑动, 默认NO
  */
-@property(nonatomic, assign) BOOL allowsAutoScroll;
+@property (nonatomic, assign) BOOL allowsAutoScroll;
 
 /**
  自动滑动时间间隔, 单位: 秒
  */
-@property(nonatomic, assign) NSTimeInterval autoScrollTimeInterval;
+@property (nonatomic, assign) NSTimeInterval autoScrollTimeInterval;
 
 /**
  刷新界面
