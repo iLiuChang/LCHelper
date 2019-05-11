@@ -120,7 +120,7 @@
 		58E38A3C1D51FB91007DB1D0 /* UIImageView+LCHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+LCHelp.m"; sourceTree = "<group>"; };
 		58E38A3D1D51FB91007DB1D0 /* UIView+LCHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LCHelp.h"; sourceTree = "<group>"; };
 		58E38A3E1D51FB91007DB1D0 /* UIView+LCHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LCHelp.m"; sourceTree = "<group>"; };
-		58E38A3F1D51FB91007DB1D0 /* LCHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHelp.h; sourceTree = "<group>"; };
+		58E38A3F1D51FB91007DB1D0 /* LCHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHelper.h; sourceTree = "<group>"; };
 		58E38A431D51FB91007DB1D0 /* LCModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCModel.h; sourceTree = "<group>"; };
 		58E38A441D51FB91007DB1D0 /* LCModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCModel.m; sourceTree = "<group>"; };
 		58E38A451D51FB91007DB1D0 /* LCUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCUtil.h; sourceTree = "<group>"; };
@@ -273,7 +273,7 @@
 		58E38A271D51FB91007DB1D0 /* LCHelper */ = {
 			isa = PBXGroup;
 			children = (
-				58E38A3F1D51FB91007DB1D0 /* LCHelp.h */,
+				58E38A3F1D51FB91007DB1D0 /* LCHelper.h */,
 				58E38A2A1D51FB91007DB1D0 /* LCExtension.h */,
 				58E38A451D51FB91007DB1D0 /* LCUtil.h */,
 				58E38A281D51FB91007DB1D0 /* Extensions */,

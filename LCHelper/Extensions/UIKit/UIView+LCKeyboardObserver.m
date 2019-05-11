@@ -43,8 +43,14 @@
         self.observeView = observeView;
         self.transformView = transformView;
         if (!self.transformView) {
-            self.transformView = observeView.superview;
+            UIView *superView = observeView.superview;
+            if (!superView) {
+                NSLog(@"observeView superview is nil");
+                return self;
+            }
+            self.transformView = superView;
         }
+
         [self addKeyboardObserver];
     }
     return self;
@@ -78,9 +84,6 @@
 }
 
 -(void)keyboardWillHide:(NSNotification *)note{
-    if (!self.observeView.isFirstResponder) {
-        return;
-    }
     double duration  = [note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     [UIView animateWithDuration:duration animations:^{
         self.transformView.transform = CGAffineTransformIdentity;

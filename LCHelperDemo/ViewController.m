@@ -6,12 +6,11 @@
 //  Copyright © 2016年 LiuChang. All rights reserved.
 //
 
+
 #import "ViewController.h"
 #import "FirstViewController.h"
 #import "KeyboardViewController.h"
-#import "UIActionSheet+LCHelp.h"
-#import "LCInfiniteScrollView.h"
-#import "UIImage+LCHelp.h"
+#import "LCHelper.h"
 
 @interface ViewController ()<LCInfiniteScrollViewDelegate>
 @property (nonatomic, strong) NSArray *images;
