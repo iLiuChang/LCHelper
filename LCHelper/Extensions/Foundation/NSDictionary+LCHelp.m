@@ -7,30 +7,42 @@
 //
 
 #import "NSDictionary+LCHelp.h"
+#import "NSString+LCHelp.h"
 
 #define isValidKey(key) ((key) != nil && ![key isKindOfClass:[NSNull class]])
 #define isValidValue(value) (((value) != nil) && ![value isKindOfClass:[NSNull class]])
 
 @implementation NSDictionary (LCHelp)
 
-- (NSString*)jsonString
-{
-    NSData* infoJsonData = [NSJSONSerialization dataWithJSONObject:self options:NSJSONWritingPrettyPrinted error:nil];
-    NSString* json = [[NSString alloc] initWithData:infoJsonData encoding:NSUTF8StringEncoding];
-    return json;
+- (NSString*)jsonString {
+    return [self jsonStringWithOptions:0];
 }
 
-+ (NSDictionary*)initWithJsonString:(NSString*)json
-{
-    NSData* infoData = [json dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary* info = [NSJSONSerialization JSONObjectWithData:infoData options:0 error:nil];
-    return info;
+- (NSString *)jsonPrettyString {
+    return [self jsonStringWithOptions:NSJSONWritingPrettyPrinted];
+}
+
+- (NSString *)jsonStringWithOptions:(NSJSONWritingOptions)opt {
+    if ([NSJSONSerialization isValidJSONObject:self]) {
+        NSError *error;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self options:opt error:&error];
+        NSString *json = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        if (!error) return json;
+    }
+    return nil;
+}
+
++ (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonStr {
+    id value = [jsonStr jsonValue];
+    if (value && [value isKindOfClass:[NSDictionary class]]) {
+        return value;
+    }
+    return nil;
 }
 
 @end
 
 @implementation NSDictionary (LCSafe)
-
 
 - (id)safeObjectForKey:(id)key{
     if (!isValidKey(key)) {

@@ -8,58 +8,34 @@
 
 #import "NSObject+LCHelp.h"
 #import <objc/runtime.h>
+
 @implementation NSObject (LCHelp)
-+ (void)swizzleClassMethod:(Class)class originSelector:(SEL)originSelector otherSelector:(SEL)otherSelector {
-    Method otherMehtod = class_getClassMethod(class, otherSelector);
-    Method originMehtod = class_getClassMethod(class, originSelector);
-    method_exchangeImplementations(otherMehtod, originMehtod);
+
++ (BOOL)swizzleInstanceMethod:(SEL)originalSel newMethod:(SEL)newSel {
+    Method originalMethod = class_getInstanceMethod(self, originalSel);
+    Method newMethod = class_getInstanceMethod(self, newSel);
+    if (!originalMethod || !newMethod) return NO;
+    
+    class_addMethod(self,
+                    originalSel,
+                    class_getMethodImplementation(self, originalSel),
+                    method_getTypeEncoding(originalMethod));
+    class_addMethod(self,
+                    newSel,
+                    class_getMethodImplementation(self, newSel),
+                    method_getTypeEncoding(newMethod));
+    
+    method_exchangeImplementations(class_getInstanceMethod(self, originalSel),
+                                   class_getInstanceMethod(self, newSel));
+    return YES;
 }
 
-+ (void)swizzleInstanceMethod:(Class)class originSelector:(SEL)originSelector otherSelector:(SEL)otherSelector {
-    Method otherMehtod = class_getInstanceMethod(class, otherSelector);
-    Method originMehtod = class_getInstanceMethod(class, originSelector);
-    method_exchangeImplementations(otherMehtod, originMehtod);
-}
-
-+ (id)removeNullObjectWithAnyObject:(id)item {
-    if([item isKindOfClass:[NSDictionary class]]) {
-        NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:item];
-        for (NSString *key in [dic allKeys]) {
-            id value = [dic objectForKey:key];
-            id obj = [self removeNullObjectWithAnyObject:value];
-            if (obj) {
-                [dic setObject:obj forKey:key];
-            }
-            else {
-                [dic removeObjectForKey:key];
-            }
-        }
-        return dic;
-    }else if([item isKindOfClass:[NSArray class]]) {
-        NSMutableArray *arr= [NSMutableArray arrayWithArray:item];
-        for (NSInteger i = [arr count]-1; i >= 0; i--) {
-            id value = [arr objectAtIndex:i];
-            id obj = [self removeNullObjectWithAnyObject:value];
-            if (obj) {
-                [arr replaceObjectAtIndex:i withObject:obj];
-            }
-            else {
-                [arr removeObjectAtIndex:i];
-            }
-        }
-        return arr;
-    }
-    return [item nullTonil];
-}
-
-- (id)nullTonil {
-    if ([self isKindOfClass:[NSNull class]]) {
-        return nil;
-    }
-    return self;
-}
-
-- (id)removeNullObjects {
-    return [NSObject removeNullObjectWithAnyObject:self];
++ (BOOL)swizzleClassMethod:(SEL)originalSel newMethod:(SEL)newSel {
+    Class class = object_getClass(self);
+    Method originalMethod = class_getInstanceMethod(class, originalSel);
+    Method newMethod = class_getInstanceMethod(class, newSel);
+    if (!originalMethod || !newMethod) return NO;
+    method_exchangeImplementations(originalMethod, newMethod);
+    return YES;
 }
 @end

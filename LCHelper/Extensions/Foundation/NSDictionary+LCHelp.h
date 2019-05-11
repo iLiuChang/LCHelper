@@ -12,7 +12,9 @@
 
 - (NSString*)jsonString;
 
-+ (NSDictionary*)initWithJsonString:(NSString*)json;
+- (NSString *)jsonPrettyString;
+
++ (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonStr;
 
 @end
 

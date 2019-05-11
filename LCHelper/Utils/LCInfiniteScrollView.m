@@ -17,6 +17,10 @@
 
 @property (nonatomic, strong) NSTimer *timer;
 
+@property (nonatomic, assign) NSInteger scrollIndex;
+
+@property (nonatomic, assign) NSInteger reusableIndex;
+
 @end
 
 @implementation LCInfiniteScrollView
@@ -49,7 +53,8 @@
         if (_scrollView) {
             [_scrollView removeFromSuperview];
         }
-        
+        self.scrollIndex = -1;
+        self.reusableIndex = -1;
         if ([delegate respondsToSelector:@selector(infiniteScrollReusableView)]) {
             _centerView = [delegate infiniteScrollReusableView];
             if (!_centerView) {
@@ -160,21 +165,24 @@
     CGFloat offsetX = scrollView.contentOffset.x;
     CGFloat w = scrollView.frame.size.width;
     
-    CGRect rf = _reusableView.frame;
+    CGFloat rx = 0;
     NSInteger index = 0;
     if (offsetX > _centerView.frame.origin.x) { // left
-        rf.origin.x = scrollView.contentSize.width - w;
+        rx = scrollView.contentSize.width - w;
         index = _centerView.tag + 1;
         if (index >= totalCount) index = 0;
     } else { // right
-        rf.origin.x = 0;
+        rx = 0;
         index = _centerView.tag - 1;
         if (index < 0) index = totalCount - 1;
     }
-    _reusableView.frame = rf;
-    _reusableView.tag = index;
-    
-    [self.delegate infiniteScrollWithReusableView:_reusableView atIndex:index];
+
+    if (_reusableIndex != index) {
+        _reusableView.frame = CGRectMake(rx, 0, w, scrollView.frame.size.height);
+        _reusableView.tag = index;
+        [self.delegate infiniteScrollWithReusableView:_reusableView atIndex:index];
+        _reusableIndex = index;
+    }
     
     if (offsetX <= 0 || offsetX >= w * 2) {
         UIView *temp = _centerView;
@@ -188,8 +196,11 @@
         [_scrollView addSubview:_reusableView];
     }
     
-    if ([self.delegate respondsToSelector:@selector(infiniteScrollDidScrollIndex:)]) {
-        [self.delegate infiniteScrollDidScrollIndex:_centerView.tag];
+    if (_scrollIndex != _centerView.tag) {
+        if ([self.delegate respondsToSelector:@selector(infiniteScrollDidScrollIndex:)]) {
+            [self.delegate infiniteScrollDidScrollIndex:_centerView.tag];
+        }
+        _scrollIndex = _centerView.tag;
     }
 }
 

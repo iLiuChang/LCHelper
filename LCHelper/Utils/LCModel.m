@@ -7,7 +7,6 @@
 //
 
 #import "LCModel.h"
-#import "NSObject+LCHelp.h"
 #import <objc/runtime.h>
 
 @implementation LCModel
@@ -97,7 +96,7 @@
 }
 
 - (NSDictionary *)modelToDictionaryRemoveNull {
-    return [NSObject removeNullObjectWithAnyObject:[self modelToDictionary]];
+    return [self modelToDictionary];
 }
 
 @end

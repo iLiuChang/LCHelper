@@ -10,17 +10,29 @@
 
 @interface NSString (LCHelp)
 
+@property (readonly) char charValue;
+@property (readonly) unsigned char unsignedCharValue;
+@property (readonly) short shortValue;
+@property (readonly) unsigned short unsignedShortValue;
+@property (readonly) unsigned int unsignedIntValue;
+@property (readonly) long longValue;
+@property (readonly) unsigned long unsignedLongValue;
+@property (readonly) unsigned long long unsignedLongLongValue;
+@property (readonly) NSUInteger unsignedIntegerValue;
+
 - (BOOL)isEmpty;
 
 - (BOOL)containsString:(NSString *)string;
 
-- (NSString *)md5String;
-
-- (NSString *)hmacMD5StringWithKey:(NSString *)key;
-
 - (NSString *)base64EncodedString;
 
 - (NSString *)base64DecodingString;
+
+- (NSData *)dataValue;
+
+- (id)jsonValue;
+
+- (NSNumber *)numberValue;
 
 - (CGSize)sizeForFont:(UIFont *)font size:(CGSize)size mode:(NSLineBreakMode)lineBreakMode;
 
@@ -30,4 +42,24 @@
 
 + (NSString *)stringWithUUID;
 
+@end
+
+
+@interface NSString (LCMD5)
+- (NSString *)md5String;
+
+- (NSString *)hmacMD5StringWithKey:(NSString *)key;
+@end
+
+
+@interface NSString (LCSHA)
+- (NSString *)hmacSHA1StringWithKey:(NSString *)key;
+
+- (NSString *)hmacSHA224StringWithKey:(NSString *)key;
+
+- (NSString *)hmacSHA256StringWithKey:(NSString *)key;
+
+- (NSString *)hmacSHA384StringWithKey:(NSString *)key;
+
+- (NSString *)hmacSHA512StringWithKey:(NSString *)key;
 @end

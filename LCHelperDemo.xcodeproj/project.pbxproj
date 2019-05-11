@@ -15,6 +15,7 @@
 		589EC52422802EC20036E3D6 /* UIAlertView+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 589EC52322802EC20036E3D6 /* UIAlertView+LCHelp.m */; };
 		589EC5272280424A0036E3D6 /* UIActionSheet+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 589EC5262280424A0036E3D6 /* UIActionSheet+LCHelp.m */; };
 		58BDFDC6226583A3002FFC9D /* UIScrollView+LCRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BDFDC5226583A3002FFC9D /* UIScrollView+LCRefresh.m */; };
+		58C73C3122858E2E008F3CB8 /* NSArray+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C73C3022858E2E008F3CB8 /* NSArray+LCHelp.m */; };
 		58D40C6F228120DF009AB521 /* LCInfiniteScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D40C6E228120DF009AB521 /* LCInfiniteScrollView.m */; };
 		58D5EA572276DE84007F5116 /* UIView+LCKeyboardObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D5EA562276DE84007F5116 /* UIView+LCKeyboardObserver.m */; };
 		58D5EA5A2276E149007F5116 /* KeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D5EA592276E149007F5116 /* KeyboardViewController.m */; };
@@ -73,6 +74,8 @@
 		589EC5262280424A0036E3D6 /* UIActionSheet+LCHelp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIActionSheet+LCHelp.m"; sourceTree = "<group>"; };
 		58BDFDC4226583A3002FFC9D /* UIScrollView+LCRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+LCRefresh.h"; sourceTree = "<group>"; };
 		58BDFDC5226583A3002FFC9D /* UIScrollView+LCRefresh.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+LCRefresh.m"; sourceTree = "<group>"; };
+		58C73C2F22858E2E008F3CB8 /* NSArray+LCHelp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+LCHelp.h"; sourceTree = "<group>"; };
+		58C73C3022858E2E008F3CB8 /* NSArray+LCHelp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+LCHelp.m"; sourceTree = "<group>"; };
 		58CD7C571D533D2300747079 /* LCSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCSingleton.h; sourceTree = "<group>"; };
 		58D40C6D228120DF009AB521 /* LCInfiniteScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCInfiniteScrollView.h; sourceTree = "<group>"; };
 		58D40C6E228120DF009AB521 /* LCInfiniteScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCInfiniteScrollView.m; sourceTree = "<group>"; };
@@ -165,6 +168,8 @@
 				5803454F224CC85F00E341C6 /* NSData+LCHelp.m */,
 				5863F356226F1C7C008D1C53 /* NSDictionary+LCHelp.h */,
 				5863F357226F1C7C008D1C53 /* NSDictionary+LCHelp.m */,
+				58C73C2F22858E2E008F3CB8 /* NSArray+LCHelp.h */,
+				58C73C3022858E2E008F3CB8 /* NSArray+LCHelp.m */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -449,6 +454,7 @@
 				58BDFDC6226583A3002FFC9D /* UIScrollView+LCRefresh.m in Sources */,
 				58D5EA5A2276E149007F5116 /* KeyboardViewController.m in Sources */,
 				589EC52122801DA50036E3D6 /* UIAlertController+LCHelp.m in Sources */,
+				58C73C3122858E2E008F3CB8 /* NSArray+LCHelp.m in Sources */,
 				58E38A4B1D51FB91007DB1D0 /* UIBarButtonItem+LCHelp.m in Sources */,
 				58034550224CC85F00E341C6 /* NSData+LCHelp.m in Sources */,
 				58D5EA572276DE84007F5116 /* UIView+LCKeyboardObserver.m in Sources */,

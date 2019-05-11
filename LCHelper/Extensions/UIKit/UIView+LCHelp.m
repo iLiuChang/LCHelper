@@ -128,7 +128,6 @@
     }
 }
 
-
 - (UIViewController*)viewController {
     for (UIView* next = [self superview]; next; next = next.superview) {
         UIResponder* nextResponder = [next nextResponder];
@@ -139,9 +138,7 @@
     return nil;
 }
 
-
 -(void)removeAllSubviews{
-    
     for( UIView *v in [self subviews]){
         [v removeFromSuperview];
     }

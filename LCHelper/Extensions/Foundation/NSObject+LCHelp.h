@@ -12,31 +12,11 @@
 /**
  *  交换类方法
  */
-+ (void)swizzleClassMethod:(Class)class
-            originSelector:(SEL)originSelector
-             otherSelector:(SEL)otherSelector;
++ (BOOL)swizzleClassMethod:(SEL)originalSel newMethod:(SEL)newSel;
 
 /**
  *  交换对象方法
  */
-+ (void)swizzleInstanceMethod:(Class)class
-               originSelector:(SEL)originSelector
-                otherSelector:(SEL)otherSelector;
++ (BOOL)swizzleInstanceMethod:(SEL)originalSel newMethod:(SEL)newSel;
 
-/**
- *  移除空对象
- *
- *  @item 字典或者数组
- */
-+ (id)removeNullObjectWithAnyObject:(id)item;
-
-/**
- *  移除空对象
- */
-- (id)removeNullObjects;
-
-/**
- *  null转为nil
- */
-- (id)nullTonil;
 @end

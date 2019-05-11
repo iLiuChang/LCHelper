@@ -1,34 +1,56 @@
 # LCHelper
-项目中常用的工具类和Extension
+项目中一些总结, 主要是一些分类
 
 ## 【安装】
 ```
 pod 'LCHelper'
-
 ```
 ## 【说明】
 
-LCHelper.h: 包含所有文件
+### LCHelper.h
 
-LCUtil.h :一些常用的工具
+包含所有文件
 
-- LCModel.h
-继承它就可以实现字典转模型、模型转字典等
+### LCUtil.h 
 
-LCExtension.h: 一些常用的分类
+- LCSingleton 
 
-- NSDate+LCHelp.h
-- NSNumber+LCHelp.h
-- NSObject+LCHelp.h
-- NSTimer+LCHelp.h
-- UIBarButtonItem+LCHelp.h
-- UIColor+LCHelp.h
-- UIControl+LCHelp.h
-- UIImage+LCHelp.h
-- UIImageView+LCHelp.h
-- UIView+LCHelp.h
-- UIView+LCKeyboardObserver.h
-- UIScrollView+LCRefresh.h
+  快速单例
+
+- LCModel
+
+  简单的实现字典转模型、模型转字典
+
+- LCInfiniteScrollView
+
+  无限轮播图
+
+### LCExtension.h
+
+- Foundation
+  - NSDate+LCHelp
+  - NSNumber+LCHelp
+  - NSObject+LCHelp
+  - NSTimer+LCHelp
+  - NSString+LCHelp
+  - NSData+LCHelp
+  - NSDictionary+LCHelp
+  - NSArray+LCHelp
+
+- UIKit
+
+  - UIBarButtonItem+LCHelp
+  - UIColor+LCHelp
+  - UIControl+LCHelp
+  - UIImage+LCHelp
+  - UIImageView+LCHelp
+  - UIView+LCHelp
+  - UIView+LCKeyboardObserver
+  - UIScrollView+LCRefresh
+  - UIActionSheet+LCHelp
+  - UIAlertView+LCHelp
+  - UIAlertController+LCHelp
+
 
 ## 【联系我】
 

@@ -45,6 +45,8 @@
 
 - (void)infiniteScrollWithReusableView:(UIView *)reusableView atIndex:(NSInteger)index {
     ((UIImageView *)reusableView).image = self.images[index];
+    NSLog(@"infiniteScrollWithReusableView %ld", index);
+
 }
 
 - (void)infiniteScrollDidScrollIndex:(NSInteger)index {

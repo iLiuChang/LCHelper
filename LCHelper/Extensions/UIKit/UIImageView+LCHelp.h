@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface UIImageView (LCHelp)
+
+// 目前功能不完善, 自身写着玩的
 - (void)setImageWithUrl:(NSString *)url
               indexPath:(NSIndexPath *)indexPath
        placeholderImage:(UIImage *)pImage
