@@ -19,7 +19,7 @@
 /**
  设置图片
  
- @param imageView 设置图片(禁止修改frame和tag)
+ @param reusableView 设置图片(禁止修改frame和tag)
  @param index 所在下标
  */
 - (void)infiniteScrollWithReusableView:(UIView *)reusableView atIndex:(NSInteger)index;
