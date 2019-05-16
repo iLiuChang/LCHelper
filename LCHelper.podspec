@@ -16,22 +16,22 @@ Pod::Spec.new do |s|
 
   s.requires_arc = true
   s.source_files  = "LCHelper/**/*.{h,m}"
-  s.public_header_files = 'LCHelper/*.h' 
+#  s.public_header_files = 'LCHelper/*.h' 
 
   s.framework  = "UIKit"
 
   s.requires_arc = true
 
   s.subspec 'Extension' do |ss|
-    ss.source_files = 'LCHelper/Extension/**/*.{h,m}'
+    ss.source_files = 'LCHelper/Extension/**/*'
   
-    ss.public_header_files = 'LCHelper/Extension/*.h'
+ #   ss.public_header_files = 'LCHelper/Extension/*.h'
   end
 
   s.subspec 'Util' do |ss|
-    ss.source_files = 'LCHelper/Util/*.{h,m}'
+    ss.source_files = 'LCHelper/Util/*'
     
-    ss.public_header_files = 'LCHelper/Util/*.h'
+#    ss.public_header_files = 'LCHelper/Util/*.h'
   end
 
 end
