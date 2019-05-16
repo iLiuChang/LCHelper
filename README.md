@@ -56,7 +56,7 @@ pod 'LCHelper/Util'
 
 ## 使用
 
-#### UIView+LCKeyboardObserver
+### UIView+LCKeyboardObserver
 
 监听view是否被键盘遮挡
 
@@ -68,7 +68,7 @@ t.frame = CGRectMake(100, self.view.frame.size.height - 300, 100, 50);
 [t addKeyboardObserver];
 ```
 
-#### UIScrollView+LCRefresh
+### UIScrollView+LCRefresh
 
 根据`UIActivityIndicatorView`实现的简易刷新控件
 
@@ -87,9 +87,9 @@ UITableView *tableView = [[UITableView alloc] init];
 [self.tableView endRefreshing];
 ```
 
-#### LCInfiniteScrollView
+### LCInfiniteScrollView
 
-无限滚动控件, 默认重用的试图为`UIImageView`, 如果需要改变重用视图, 需要实现代理`infiniteScrollReusableView`
+无限滚动控件
 
 ```objective-c
 // 创建控件
@@ -109,6 +109,14 @@ sv.delegate = self;
 
 - (void)infiniteScrollWithReusableView:(UIView *)reusableView atIndex:(NSInteger)index {
     ((UIImageView *)reusableView).image = self.images[index];
+}
+```
+
+默认重用的view为`UIImageView`, 如果需要自定义重用view, 需要实现代理`infiniteScrollReusableView`
+
+```objective-c
+- (UIView *)infiniteScrollReusableView {
+    return [[UIImageView alloc] init];
 }
 ```
 
