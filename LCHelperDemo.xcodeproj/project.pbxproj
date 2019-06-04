@@ -37,7 +37,6 @@
 		58E38A4E1D51FB91007DB1D0 /* UIImage+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E38A3A1D51FB91007DB1D0 /* UIImage+LCHelp.m */; };
 		58E38A4F1D51FB91007DB1D0 /* UIImageView+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E38A3C1D51FB91007DB1D0 /* UIImageView+LCHelp.m */; };
 		58E38A501D51FB91007DB1D0 /* UIView+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E38A3E1D51FB91007DB1D0 /* UIView+LCHelp.m */; };
-		58E38A521D51FB91007DB1D0 /* LCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E38A441D51FB91007DB1D0 /* LCModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,8 +121,6 @@
 		58E38A3D1D51FB91007DB1D0 /* UIView+LCHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LCHelp.h"; sourceTree = "<group>"; };
 		58E38A3E1D51FB91007DB1D0 /* UIView+LCHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LCHelp.m"; sourceTree = "<group>"; };
 		58E38A3F1D51FB91007DB1D0 /* LCHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHelper.h; sourceTree = "<group>"; };
-		58E38A431D51FB91007DB1D0 /* LCModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCModel.h; sourceTree = "<group>"; };
-		58E38A441D51FB91007DB1D0 /* LCModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -295,8 +292,6 @@
 			children = (
 				5863E23922894EC900635B6E /* LCUtil.h */,
 				58CD7C571D533D2300747079 /* LCSingleton.h */,
-				58E38A431D51FB91007DB1D0 /* LCModel.h */,
-				58E38A441D51FB91007DB1D0 /* LCModel.m */,
 				58D40C6D228120DF009AB521 /* LCInfiniteScrollView.h */,
 				58D40C6E228120DF009AB521 /* LCInfiniteScrollView.m */,
 			);
@@ -439,7 +434,6 @@
 				58E389FC1D51FB35007DB1D0 /* ViewController.m in Sources */,
 				58E38A471D51FB91007DB1D0 /* NSDate+LCHelp.m in Sources */,
 				58D40C6F228120DF009AB521 /* LCInfiniteScrollView.m in Sources */,
-				58E38A521D51FB91007DB1D0 /* LCModel.m in Sources */,
 				58E38A501D51FB91007DB1D0 /* UIView+LCHelp.m in Sources */,
 				58E389F91D51FB34007DB1D0 /* AppDelegate.m in Sources */,
 				58E389F61D51FB34007DB1D0 /* main.m in Sources */,

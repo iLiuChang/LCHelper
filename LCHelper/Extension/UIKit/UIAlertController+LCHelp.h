@@ -13,10 +13,10 @@
 /**
  添加点击事件
 
- @param title 标题
+ @param title 标题 类型: UIAlertActionStyleDefault
  @param handler 回调事件
  */
-- (void)addActionWithTitle:(NSString *)title handler:(void (^)())handler;
+- (void)addActionWithTitle:(NSString *)title handler:(void (^)(UIAlertAction *action))handler;
 
 
 /**
@@ -26,8 +26,16 @@
  @param style 类型
  @param handler 回调事件
  */
-- (void)addActionWithTitle:(NSString *)title style:(UIAlertActionStyle)style handler:(void (^)())handler;
+- (void)addActionWithTitle:(NSString *)title style:(UIAlertActionStyle)style handler:(void (^)(UIAlertAction *action))handler;
 
+/**
+ 添加点击事件
+ 仅添加UIAlertActionStyleDefault类型, 如果添加其他类型可以和"addActionWithTitle:style:handler:"方法配合使用
+
+ @param titles 标题数组 类型: UIAlertActionStyleDefault
+ @param handler 回调下标
+ */
+- (void)addActionWithTitles:(NSArray *)titles handler:(void (^)(NSInteger index))handler;
 
 /**
  设置文本属性（iOS 8.3 以上有效）

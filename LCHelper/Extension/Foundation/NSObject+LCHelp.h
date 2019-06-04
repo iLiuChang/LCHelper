@@ -18,5 +18,4 @@
  *  交换对象方法
  */
 + (BOOL)swizzleInstanceMethod:(SEL)originalSel newMethod:(SEL)newSel;
-
 @end

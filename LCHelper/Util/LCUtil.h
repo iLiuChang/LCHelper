@@ -9,7 +9,6 @@
 #ifndef LCUtil_h
 #define LCUtil_h
 
-#import "LCModel.h"
 #import "LCSingleton.h"
 #import "LCInfiniteScrollView.h"
 

@@ -1,6 +1,10 @@
 # LCHelper
 项目中一些总结, 主要是一些分类
 
+## 环境
+
+- iOS 8.0+
+
 ## CocoaPods
 
 #### Podfile

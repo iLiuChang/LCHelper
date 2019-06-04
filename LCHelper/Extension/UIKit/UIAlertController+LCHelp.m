@@ -10,21 +10,31 @@
 
 @implementation UIAlertController (LCHelp)
 
-- (void)addActionWithTitle:(NSString *)title handler:(void (^)())handler {
+- (void)addActionWithTitle:(NSString *)title handler:(void (^)(UIAlertAction *action))handler {
     [self addActionWithTitle:title style:(UIAlertActionStyleDefault) handler:handler];
 }
 
-- (void)addActionWithTitle:(NSString *)title style:(UIAlertActionStyle)style handler:(void (^)())handler {
+- (void)addActionWithTitle:(NSString *)title style:(UIAlertActionStyle)style handler:(void (^)(UIAlertAction *action))handler {
     if (!title) {
         NSLog(@"title can not be emety!");
         return;
     }
-    UIAlertAction *action = [UIAlertAction actionWithTitle:title style:style handler:^(UIAlertAction * _Nonnull action) {
-        if (handler) {
-            handler();
-        }
-    }];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:title style:style handler:handler];
     [self addAction:action];
+}
+
+- (void)addActionWithTitles:(NSArray *)titles handler:(void (^)(NSInteger index))handler {
+    if (titles.count == 0) {
+        return;
+    }
+    
+    for (int i = 0; i < titles.count; i++) {
+        [self addActionWithTitle:titles[i] style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
+            if (handler) {
+                handler(i);
+            }
+        }];
+    }
 }
 
 - (void)setTitleColor:(UIColor *)color font:(UIFont *)font {

@@ -35,7 +35,6 @@
 //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //        [sv reloadData];
 //    });
-    
 }
 
 - (NSInteger)infiniteScrollNumberOfIndex {
@@ -68,11 +67,12 @@
 //        NSLog(@"%ld", index);
 //    } cancelButtonTitle:@"取消" otherButtonTitles:@"其他", @"开始", nil] show] ;
     
-    self.images = @[[UIImage imageWithColor:[UIColor redColor] size:CGSizeMake(20, 20)],
-                    [UIImage imageWithColor:[UIColor yellowColor] size:CGSizeMake(20, 20)],
-                    [UIImage imageWithColor:[UIColor magentaColor] size:CGSizeMake(20, 20)]];
-
-    [self.scrollView reloadData];
+//    self.images = @[[UIImage imageWithColor:[UIColor redColor] size:CGSizeMake(20, 20)],
+//                    [UIImage imageWithColor:[UIColor yellowColor] size:CGSizeMake(20, 20)],
+//                    [UIImage imageWithColor:[UIColor magentaColor] size:CGSizeMake(20, 20)]];
+//
+//    [self.scrollView reloadData];
+    
 }
 
 - (void)didReceiveMemoryWarning {
