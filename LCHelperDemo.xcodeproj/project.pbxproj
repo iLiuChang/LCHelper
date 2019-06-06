@@ -14,6 +14,7 @@
 		589EC52122801DA50036E3D6 /* UIAlertController+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 589EC52022801DA50036E3D6 /* UIAlertController+LCHelp.m */; };
 		589EC52422802EC20036E3D6 /* UIAlertView+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 589EC52322802EC20036E3D6 /* UIAlertView+LCHelp.m */; };
 		589EC5272280424A0036E3D6 /* UIActionSheet+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 589EC5262280424A0036E3D6 /* UIActionSheet+LCHelp.m */; };
+		58A0F07622A7B3B300811143 /* UIImagePickerController+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A0F07522A7B3B300811143 /* UIImagePickerController+LCHelp.m */; };
 		58BDFDC6226583A3002FFC9D /* UIScrollView+LCRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BDFDC5226583A3002FFC9D /* UIScrollView+LCRefresh.m */; };
 		58C73C3122858E2E008F3CB8 /* NSArray+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C73C3022858E2E008F3CB8 /* NSArray+LCHelp.m */; };
 		58D40C6F228120DF009AB521 /* LCInfiniteScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D40C6E228120DF009AB521 /* LCInfiniteScrollView.m */; };
@@ -73,6 +74,8 @@
 		589EC52322802EC20036E3D6 /* UIAlertView+LCHelp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+LCHelp.m"; sourceTree = "<group>"; };
 		589EC5252280424A0036E3D6 /* UIActionSheet+LCHelp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIActionSheet+LCHelp.h"; sourceTree = "<group>"; };
 		589EC5262280424A0036E3D6 /* UIActionSheet+LCHelp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIActionSheet+LCHelp.m"; sourceTree = "<group>"; };
+		58A0F07422A7B3B300811143 /* UIImagePickerController+LCHelp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImagePickerController+LCHelp.h"; sourceTree = "<group>"; };
+		58A0F07522A7B3B300811143 /* UIImagePickerController+LCHelp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImagePickerController+LCHelp.m"; sourceTree = "<group>"; };
 		58BDFDC4226583A3002FFC9D /* UIScrollView+LCRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+LCRefresh.h"; sourceTree = "<group>"; };
 		58BDFDC5226583A3002FFC9D /* UIScrollView+LCRefresh.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+LCRefresh.m"; sourceTree = "<group>"; };
 		58C73C2F22858E2E008F3CB8 /* NSArray+LCHelp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+LCHelp.h"; sourceTree = "<group>"; };
@@ -196,6 +199,8 @@
 				589EC52322802EC20036E3D6 /* UIAlertView+LCHelp.m */,
 				589EC51F22801DA50036E3D6 /* UIAlertController+LCHelp.h */,
 				589EC52022801DA50036E3D6 /* UIAlertController+LCHelp.m */,
+				58A0F07422A7B3B300811143 /* UIImagePickerController+LCHelp.h */,
+				58A0F07522A7B3B300811143 /* UIImagePickerController+LCHelp.m */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -445,6 +450,7 @@
 				58E38A4D1D51FB91007DB1D0 /* UIControl+LCHelp.m in Sources */,
 				58E38A481D51FB91007DB1D0 /* NSNumber+LCHelp.m in Sources */,
 				58499C072271919500061334 /* FirstViewController.m in Sources */,
+				58A0F07622A7B3B300811143 /* UIImagePickerController+LCHelp.m in Sources */,
 				58BDFDC6226583A3002FFC9D /* UIScrollView+LCRefresh.m in Sources */,
 				58D5EA5A2276E149007F5116 /* KeyboardViewController.m in Sources */,
 				589EC52122801DA50036E3D6 /* UIAlertController+LCHelp.m in Sources */,

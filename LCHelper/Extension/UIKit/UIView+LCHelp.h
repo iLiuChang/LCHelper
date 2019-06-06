@@ -44,3 +44,20 @@
  */
 - (UIViewController *)viewController;
 @end
+
+
+@interface UIView (LCTapBlock)
+
+/**
+ *  添加单击手势
+ *
+ */
+- (void)addTapGestureRecognizer:(void (^)())handler;
+
+/**
+ *  添加双击击手势
+ *
+ */
+- (void)addDoubleTapGestureRecognizer:(void (^)())handler;
+
+@end

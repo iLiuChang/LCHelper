@@ -28,7 +28,6 @@ pod 'LCHelper/Util'
 ### LCUtil.h 
 
 - LCSingleton 
-- LCModel
 - LCInfiniteScrollView
 
 

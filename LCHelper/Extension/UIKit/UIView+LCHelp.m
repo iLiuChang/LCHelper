@@ -144,5 +144,83 @@
     }
 }
 
+
+
+@end
+
+@implementation UIView (LCTapBlock)
+
+static const char LCSingleTapGestureRecognizerKey = '\0';
+- (void)setSingleTapBlock:(void (^)())tap{
+    objc_setAssociatedObject(self, &LCSingleTapGestureRecognizerKey, tap, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (void (^)())singleTapBlock{
+    return objc_getAssociatedObject(self, &LCSingleTapGestureRecognizerKey);
+}
+
+static const char LCDoubleTapGestureRecognizerKey = '\0';
+- (void)setDoubleTapBlock:(void (^)())tap{
+    objc_setAssociatedObject(self, &LCDoubleTapGestureRecognizerKey, tap, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (void (^)())doubleTapBlock{
+    return objc_getAssociatedObject(self, &LCDoubleTapGestureRecognizerKey);
+}
+
+- (void)addTapGestureRecognizer:(void (^)())handler {
+    UITapGestureRecognizer* gesture = [self addTapGestureRecognizerWithTaps:1 touches:1 selector:@selector(lc_singleTap)];
+    [self addRequiredToDoubleTapsRecognizer:gesture];
+    [self setSingleTapBlock:handler];
+}
+
+- (void)addDoubleTapGestureRecognizer:(void (^)())handler {
+    UITapGestureRecognizer* gesture = [self addTapGestureRecognizerWithTaps:2 touches:1 selector:@selector(lc_doubleTap)];
+    [self addRequirementToSingleTapsRecognizer:gesture];
+    [self setDoubleTapBlock:handler];
+}
+
+- (void)lc_singleTap {
+    if ([self singleTapBlock]) {
+        [self singleTapBlock]();
+    }
+}
+
+- (void)lc_doubleTap {
+    if ([self doubleTapBlock]) {
+        [self doubleTapBlock]();
+    }
+}
+
+- (UITapGestureRecognizer*)addTapGestureRecognizerWithTaps:(NSUInteger)taps touches:(NSUInteger)touches selector:(SEL)selector {
+    UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:selector];
+    tapGesture.numberOfTapsRequired = taps;
+    tapGesture.numberOfTouchesRequired = touches;
+    [self addGestureRecognizer:tapGesture];
+    
+    return tapGesture;
+}
+
+- (void) addRequirementToSingleTapsRecognizer:(UIGestureRecognizer*) recognizer {
+    for (UIGestureRecognizer* gesture in [self gestureRecognizers]) {
+        if ([gesture isKindOfClass:[UITapGestureRecognizer class]]) {
+            UITapGestureRecognizer* tapGesture = (UITapGestureRecognizer*) gesture;
+            if (tapGesture.numberOfTouchesRequired == 1 && tapGesture.numberOfTapsRequired == 1) {
+                [tapGesture requireGestureRecognizerToFail:recognizer];
+            }
+        }
+    }
+}
+
+- (void) addRequiredToDoubleTapsRecognizer:(UIGestureRecognizer*) recognizer {
+    for (UIGestureRecognizer* gesture in [self gestureRecognizers]) {
+        if ([gesture isKindOfClass:[UITapGestureRecognizer class]]) {
+            UITapGestureRecognizer* tapGesture = (UITapGestureRecognizer*) gesture;
+            if (tapGesture.numberOfTouchesRequired == 2 && tapGesture.numberOfTapsRequired == 1) {
+                [recognizer requireGestureRecognizerToFail:tapGesture];
+            }
+        }
+    }
+}
 @end
 

@@ -31,5 +31,6 @@
 #import "UIActionSheet+LCHelp.h"
 #import "UIAlertView+LCHelp.h"
 #import "UIAlertController+LCHelp.h"
+#import "UIImagePickerController+LCHelp.h"
 
 #endif /* LCExtension_h */
