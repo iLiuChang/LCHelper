@@ -28,6 +28,7 @@
                     [UIImage imageWithColor:[UIColor magentaColor] size:CGSizeMake(20, 20)]];
     LCInfiniteScrollView *sv = [[LCInfiniteScrollView alloc] init];
     sv.frame = CGRectMake(0, 100, self.view.frame.size.width, 300);
+    sv.autoScroll = YES;
     sv.delegate = self;
 
     [self.view addSubview:sv];
@@ -45,21 +46,20 @@
     }];
 }
 
-- (NSInteger)infiniteScrollNumberOfIndex {
+- (NSInteger)numberOfIndexInInfiniteScrollView:(LCInfiniteScrollView *)infiniteScrollView {
     return self.images.count;
 }
 
-- (void)infiniteScrollWithReusableView:(UIView *)reusableView atIndex:(NSInteger)index {
+- (void)infiniteScrollView:(LCInfiniteScrollView *)infiniteScrollView reusableView:(UIView *)reusableView atIndex:(NSInteger)index {
     ((UIImageView *)reusableView).image = self.images[index];
     NSLog(@"infiniteScrollWithReusableView %ld", index);
-
 }
 
-- (void)infiniteScrollDidScrollIndex:(NSInteger)index {
+- (void)infiniteScrollView:(LCInfiniteScrollView *)infiniteScrollView didScrollIndex:(NSInteger)index {
     NSLog(@"infiniteScrollDidScrollIndex %ld", index);
 }
 
-- (void)infiniteScrollDidSelectIndex:(NSInteger)index {
+- (void)infiniteScrollView:(LCInfiniteScrollView *)infiniteScrollView didSelectIndex:(NSInteger)index {
     NSLog(@"infiniteScrollDidSelectIndex %ld", index);
 }
 

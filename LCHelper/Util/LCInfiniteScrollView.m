@@ -21,6 +21,7 @@
 
 @property (nonatomic, assign) NSInteger reusableIndex;
 
+@property (nonatomic, assign) NSInteger totalCount;
 @end
 
 @implementation LCInfiniteScrollView
@@ -55,14 +56,14 @@
         }
         self.scrollIndex = -1;
         self.reusableIndex = -1;
-        if ([delegate respondsToSelector:@selector(infiniteScrollReusableView)]) {
-            _centerView = [delegate infiniteScrollReusableView];
+        if ([delegate respondsToSelector:@selector(reusableViewInInfiniteScrollView:)]) {
+            _centerView = [delegate reusableViewInInfiniteScrollView:self];
             if (!_centerView) {
                 NSLog(@"infiniteScrollReusableView is nil");
                 return;
             }
             
-            _reusableView = [delegate infiniteScrollReusableView];
+            _reusableView = [delegate reusableViewInInfiniteScrollView:self];
             if (!_reusableView) {
                 NSLog(@"infiniteScrollReusableView is nil");
                 return;
@@ -76,7 +77,7 @@
             _reusableView = [[UIImageView alloc] init];
         }
 
-        if ([delegate respondsToSelector:@selector(infiniteScrollDidSelectIndex:)]) {
+        if ([delegate respondsToSelector:@selector(infiniteScrollView:didSelectIndex:)]) {
             _centerView.userInteractionEnabled = YES;
             UITapGestureRecognizer *centerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageViewTap:)];
             [_centerView addGestureRecognizer:centerTap];
@@ -98,9 +99,9 @@
     }
 }
 
-- (void)setAllowsAutoScroll:(BOOL)allowsAutoScroll {
-    _allowsAutoScroll = allowsAutoScroll;
-    if (allowsAutoScroll) {
+- (void)setAutoScroll:(BOOL)autoScroll {
+    _autoScroll = autoScroll;
+    if (autoScroll) {
         [self addTimer];
     } else {
         [self removeTimer];
@@ -110,7 +111,7 @@
 - (void)setAutoScrollTimeInterval:(NSTimeInterval)autoScrollTimeInterval {
     if (_autoScrollTimeInterval != autoScrollTimeInterval) {
         _autoScrollTimeInterval = autoScrollTimeInterval;
-        if (_allowsAutoScroll) {
+        if (_autoScroll) {
             [self removeTimer];
             [self addTimer];
         }
@@ -129,24 +130,24 @@
 }
 
 - (void)reloadData {
-    NSInteger totalCount = [self.delegate infiniteScrollNumberOfIndex];
+    NSInteger totalCount = [self.delegate numberOfIndexInInfiniteScrollView:self];
+    _totalCount = totalCount;
     if (_centerView.tag >= totalCount) {
         self.reusableView.tag = 0;
         self.centerView.tag = 0;
-        if ([self.delegate respondsToSelector:@selector(infiniteScrollDidScrollIndex:)]) {
-            [self.delegate infiniteScrollDidScrollIndex:_centerView.tag];
+        if ([self.delegate respondsToSelector:@selector(infiniteScrollView:didScrollIndex:)]) {
+            [self.delegate infiniteScrollView:self didScrollIndex:_centerView.tag];
         }
     }
     
-    if ([self.delegate respondsToSelector:@selector(infiniteScrollWithReusableView:atIndex:)]) {
-        [self.delegate infiniteScrollWithReusableView:_centerView atIndex:_centerView.tag];
+    if ([self.delegate respondsToSelector:@selector(infiniteScrollView:reusableView:atIndex:)]) {
+        [self.delegate infiniteScrollView:self reusableView:_centerView atIndex:_centerView.tag];
     }
-
 }
 
 - (void)imageViewTap:(UITapGestureRecognizer *)tap {
-    if ([self.delegate respondsToSelector:@selector(infiniteScrollDidSelectIndex:)]) {
-        [self.delegate infiniteScrollDidSelectIndex:tap.view.tag];
+    if ([self.delegate respondsToSelector:@selector(infiniteScrollView:didSelectIndex:)]) {
+        [self.delegate infiniteScrollView:self didSelectIndex:tap.view.tag];
     }
 }
 
@@ -158,7 +159,7 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    NSInteger totalCount = [self.delegate infiniteScrollNumberOfIndex];
+    NSInteger totalCount = _totalCount;
     if (totalCount <= 0) {
         return;
     }
@@ -180,7 +181,7 @@
     if (_reusableIndex != index) {
         _reusableView.frame = CGRectMake(rx, 0, w, scrollView.frame.size.height);
         _reusableView.tag = index;
-        [self.delegate infiniteScrollWithReusableView:_reusableView atIndex:index];
+        [self.delegate infiniteScrollView:self reusableView:_reusableView atIndex:index];
         _reusableIndex = index;
     }
     
@@ -197,15 +198,15 @@
     }
     
     if (_scrollIndex != _centerView.tag) {
-        if ([self.delegate respondsToSelector:@selector(infiniteScrollDidScrollIndex:)]) {
-            [self.delegate infiniteScrollDidScrollIndex:_centerView.tag];
+        if ([self.delegate respondsToSelector:@selector(infiniteScrollView:didScrollIndex:)]) {
+            [self.delegate infiniteScrollView:self didScrollIndex:_centerView.tag];
         }
         _scrollIndex = _centerView.tag;
     }
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    if (!self.allowsAutoScroll) {
+    if (!self.autoScroll) {
         return;
     }
     
@@ -215,7 +216,7 @@
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    if (!self.allowsAutoScroll) {
+    if (!self.autoScroll) {
         return;
     }
 
