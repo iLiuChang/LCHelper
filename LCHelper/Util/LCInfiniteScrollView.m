@@ -101,10 +101,13 @@
 
 - (void)setAutoScroll:(BOOL)autoScroll {
     _autoScroll = autoScroll;
-    if (autoScroll) {
+    if (!self.timer) {
         [self addTimer];
+    }
+    if (autoScroll) {
+        self.timer.fireDate = [NSDate date];
     } else {
-        [self removeTimer];
+        self.timer.fireDate = [NSDate distantFuture];
     }
 }
 
@@ -203,24 +206,6 @@
         }
         _scrollIndex = _centerView.tag;
     }
-}
-
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    if (!self.autoScroll) {
-        return;
-    }
-    
-    if (!self.timer) {
-        [self addTimer];
-    }
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    if (!self.autoScroll) {
-        return;
-    }
-
-    [self removeTimer];
 }
 
 @end

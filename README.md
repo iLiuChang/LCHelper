@@ -106,19 +106,20 @@ sv.delegate = self;
 
 ```objective-c
 // 必须实现的代理方法
-- (NSInteger)infiniteScrollNumberOfIndex {
+- (NSInteger)numberOfIndexInInfiniteScrollView:(LCInfiniteScrollView *)infiniteScrollView {
     return self.images.count;
 }
 
-- (void)infiniteScrollWithReusableView:(UIView *)reusableView atIndex:(NSInteger)index {
+- (void)infiniteScrollView:(LCInfiniteScrollView *)infiniteScrollView reusableView:(UIView *)reusableView atIndex:(NSInteger)index {
     ((UIImageView *)reusableView).image = self.images[index];
 }
+
 ```
 
-默认重用的view为`UIImageView`, 如果需要自定义重用view, 需要实现代理`infiniteScrollReusableView`
+默认重用的view为`UIImageView`, 如果需要自定义重用view, 需要实现代理`reusableViewInInfiniteScrollView:`
 
 ```objective-c
-- (UIView *)infiniteScrollReusableView {
+- (UIView *)reusableViewInInfiniteScrollView:(LCInfiniteScrollView *)infiniteScrollView {
     return [[UIImageView alloc] init];
 }
 ```
