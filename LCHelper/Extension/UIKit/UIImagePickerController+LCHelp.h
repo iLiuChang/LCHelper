@@ -12,4 +12,5 @@
 
 + (UIImagePickerController *)imagePickerWithFinishHandler:(void (^)(NSDictionary *info))finishHandler;
 
++ (UIImagePickerController *)imagePickerWithFinishHandler:(void (^)(NSDictionary *))finishHandler cancelHandler:(void (^)())cancelHandler;
 @end

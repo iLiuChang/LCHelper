@@ -20,11 +20,27 @@ static const char LCUIImagePickerControllerFinishKey = '\0';
     return objc_getAssociatedObject(self, &LCUIImagePickerControllerFinishKey);
 }
 
-+ (UIImagePickerController *)imagePickerWithFinishHandler:(void (^)(NSDictionary *info))finishHandler {
+static const char LCUIImagePickerControllerCancelKey = '\0';
+- (void)setCancelBlock:(void (^)())cancel{
+    objc_setAssociatedObject(self, &LCUIImagePickerControllerCancelKey, cancel, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (void (^)())cancelBlock{
+    return objc_getAssociatedObject(self, &LCUIImagePickerControllerCancelKey);
+}
+
++ (UIImagePickerController *)imagePickerWithFinishHandler:(void (^)(NSDictionary *))finishHandler {
+    return [self imagePickerWithFinishHandler:finishHandler cancelHandler:nil];
+}
+
++ (UIImagePickerController *)imagePickerWithFinishHandler:(void (^)(NSDictionary *))finishHandler cancelHandler:(void (^)())cancelHandler {
     UIImagePickerController *vc = [[UIImagePickerController alloc] init];
     vc.delegate = vc;
     if (finishHandler) {
         [vc setFinishBlock:finishHandler];
+    }
+    if (cancelHandler) {
+        [vc setCancelBlock:cancelHandler];
     }
     return vc;
 }
@@ -35,4 +51,12 @@ static const char LCUIImagePickerControllerFinishKey = '\0';
         [self finishBlock](info);
     }
 }
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    if ([self cancelBlock]) {
+        [self cancelBlock]();
+    }
+}
+
 @end
