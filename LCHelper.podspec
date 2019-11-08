@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "LCHelper"
-  s.version      = "1.1.0"
+  s.version      = "1.2.0"
   s.summary      = "项目中用的一些工具类和Extension"
   s.homepage     = "https://github.com/iLiuChang/LCHelper"
 
