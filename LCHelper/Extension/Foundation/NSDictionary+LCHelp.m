@@ -59,6 +59,11 @@
     return [obj intValue];
 }
 
+- (NSInteger)integerValueForKey:(id)key{
+    id obj = [self safeObjectForKey:key];
+    return [obj integerValue];
+}
+
 - (double)doubleValueForKey:(id)key{
     id obj = [self safeObjectForKey:key];
     return [obj doubleValue];
@@ -66,6 +71,9 @@
 
 - (NSString*)stringValueForKey:(id)key{
     id obj = [self safeObjectForKey:key];
+    if ([obj isKindOfClass:NSString.class]) {
+        return obj;
+    }
     if ([obj respondsToSelector:@selector(stringValue)]) {
         return [obj stringValue];
     }

@@ -24,6 +24,8 @@
 
 - (int)intValueForKey:(id)key;
 
+- (NSInteger)integerValueForKey:(id)key;
+
 - (double)doubleValueForKey:(id)key;
 
 - (NSString*)stringValueForKey:(id)key;
