@@ -49,7 +49,6 @@ pod 'LCHelper/Util'
   - UIColor+LCHelp
   - UIControl+LCHelp
   - UIImage+LCHelp
-  - UIImageView+LCHelp
   - UIView+LCHelp
   - UIView+LCKeyboardObserver
   - UIScrollView+LCRefresh

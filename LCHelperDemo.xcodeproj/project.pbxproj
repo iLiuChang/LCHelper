@@ -36,7 +36,6 @@
 		58E38A4C1D51FB91007DB1D0 /* UIColor+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E38A361D51FB91007DB1D0 /* UIColor+LCHelp.m */; };
 		58E38A4D1D51FB91007DB1D0 /* UIControl+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E38A381D51FB91007DB1D0 /* UIControl+LCHelp.m */; };
 		58E38A4E1D51FB91007DB1D0 /* UIImage+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E38A3A1D51FB91007DB1D0 /* UIImage+LCHelp.m */; };
-		58E38A4F1D51FB91007DB1D0 /* UIImageView+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E38A3C1D51FB91007DB1D0 /* UIImageView+LCHelp.m */; };
 		58E38A501D51FB91007DB1D0 /* UIView+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E38A3E1D51FB91007DB1D0 /* UIView+LCHelp.m */; };
 /* End PBXBuildFile section */
 
@@ -119,8 +118,6 @@
 		58E38A381D51FB91007DB1D0 /* UIControl+LCHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+LCHelp.m"; sourceTree = "<group>"; };
 		58E38A391D51FB91007DB1D0 /* UIImage+LCHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+LCHelp.h"; sourceTree = "<group>"; };
 		58E38A3A1D51FB91007DB1D0 /* UIImage+LCHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+LCHelp.m"; sourceTree = "<group>"; };
-		58E38A3B1D51FB91007DB1D0 /* UIImageView+LCHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+LCHelp.h"; sourceTree = "<group>"; };
-		58E38A3C1D51FB91007DB1D0 /* UIImageView+LCHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+LCHelp.m"; sourceTree = "<group>"; };
 		58E38A3D1D51FB91007DB1D0 /* UIView+LCHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LCHelp.h"; sourceTree = "<group>"; };
 		58E38A3E1D51FB91007DB1D0 /* UIView+LCHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LCHelp.m"; sourceTree = "<group>"; };
 		58E38A3F1D51FB91007DB1D0 /* LCHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHelper.h; sourceTree = "<group>"; };
@@ -185,8 +182,6 @@
 				58E38A381D51FB91007DB1D0 /* UIControl+LCHelp.m */,
 				58E38A391D51FB91007DB1D0 /* UIImage+LCHelp.h */,
 				58E38A3A1D51FB91007DB1D0 /* UIImage+LCHelp.m */,
-				58E38A3B1D51FB91007DB1D0 /* UIImageView+LCHelp.h */,
-				58E38A3C1D51FB91007DB1D0 /* UIImageView+LCHelp.m */,
 				58E38A3D1D51FB91007DB1D0 /* UIView+LCHelp.h */,
 				58E38A3E1D51FB91007DB1D0 /* UIView+LCHelp.m */,
 				58D5EA552276DE84007F5116 /* UIView+LCKeyboardObserver.h */,
@@ -442,7 +437,6 @@
 				58E38A501D51FB91007DB1D0 /* UIView+LCHelp.m in Sources */,
 				58E389F91D51FB34007DB1D0 /* AppDelegate.m in Sources */,
 				58E389F61D51FB34007DB1D0 /* main.m in Sources */,
-				58E38A4F1D51FB91007DB1D0 /* UIImageView+LCHelp.m in Sources */,
 				5863F358226F1C7C008D1C53 /* NSDictionary+LCHelp.m in Sources */,
 				58E38A491D51FB91007DB1D0 /* NSObject+LCHelp.m in Sources */,
 				589EC52422802EC20036E3D6 /* UIAlertView+LCHelp.m in Sources */,
