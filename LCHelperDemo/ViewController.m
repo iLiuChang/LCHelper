@@ -12,9 +12,8 @@
 #import "KeyboardViewController.h"
 #import "LCHelper.h"
 
-@interface ViewController ()<LCInfiniteScrollViewDelegate>
+@interface ViewController ()
 @property (nonatomic, strong) NSArray *images;
-@property (nonatomic, weak) LCInfiniteScrollView *scrollView;
 @end
 
 @implementation ViewController
@@ -22,17 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.images = @[[UIImage imageWithColor:[UIColor redColor] size:CGSizeMake(20, 20)],
-                    [UIImage imageWithColor:[UIColor yellowColor] size:CGSizeMake(20, 20)],
-                    [UIImage imageWithColor:[UIColor orangeColor] size:CGSizeMake(20, 20)],
-                    [UIImage imageWithColor:[UIColor magentaColor] size:CGSizeMake(20, 20)]];
-    LCInfiniteScrollView *sv = [[LCInfiniteScrollView alloc] init];
-    sv.frame = CGRectMake(0, 100, self.view.frame.size.width, 300);
-    sv.autoScroll = YES;
-    sv.delegate = self;
-
-    [self.view addSubview:sv];
-    self.scrollView = sv;
+    
 //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //        [sv reloadData];
 //    });
@@ -46,22 +35,6 @@
     }];
 }
 
-- (NSInteger)numberOfIndexInInfiniteScrollView:(LCInfiniteScrollView *)infiniteScrollView {
-    return self.images.count;
-}
-
-- (void)infiniteScrollView:(LCInfiniteScrollView *)infiniteScrollView reusableView:(UIView *)reusableView atIndex:(NSInteger)index {
-    ((UIImageView *)reusableView).image = self.images[index];
-    NSLog(@"infiniteScrollWithReusableView %ld", index);
-}
-
-- (void)infiniteScrollView:(LCInfiniteScrollView *)infiniteScrollView didScrollIndex:(NSInteger)index {
-    NSLog(@"infiniteScrollDidScrollIndex %ld", index);
-}
-
-- (void)infiniteScrollView:(LCInfiniteScrollView *)infiniteScrollView didSelectIndex:(NSInteger)index {
-    NSLog(@"infiniteScrollDidSelectIndex %ld", index);
-}
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
 //    KeyboardViewController *vc = [[KeyboardViewController alloc] init];

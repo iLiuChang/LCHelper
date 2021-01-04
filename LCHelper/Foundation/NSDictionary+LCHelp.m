@@ -100,18 +100,4 @@
     }
 }
 
-- (void)setIntValue:(int)value forKey:(id)aKey{
-    [self safeSetObject:[[NSNumber numberWithInt:value] stringValue] forKey:aKey];
-}
-
-- (void)setDoubleValue:(double)value forKey:(id)aKey{
-    [self safeSetObject:[[NSNumber numberWithDouble:value] stringValue] forKey:aKey];
-    
-}
-
-- (void)setStringValueForKey:(NSString*)string forKey:(id)aKey{
-    [self safeSetObject:string forKey:aKey];
-}
-
-
 @end

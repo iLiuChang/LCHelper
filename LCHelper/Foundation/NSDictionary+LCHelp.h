@@ -36,10 +36,4 @@
 
 - (void)safeSetObject:(id)anObject forKey:(id)aKey;
 
-- (void)setIntValue:(int)value forKey:(id)aKey;
-
-- (void)setDoubleValue:(double)value forKey:(id)aKey;
-
-- (void)setStringValueForKey:(NSString*)string forKey:(id)aKey;
-
 @end

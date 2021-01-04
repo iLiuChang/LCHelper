@@ -17,7 +17,6 @@
 		58A0F07622A7B3B300811143 /* UIImagePickerController+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A0F07522A7B3B300811143 /* UIImagePickerController+LCHelp.m */; };
 		58BDFDC6226583A3002FFC9D /* UIScrollView+LCRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BDFDC5226583A3002FFC9D /* UIScrollView+LCRefresh.m */; };
 		58C73C3122858E2E008F3CB8 /* NSArray+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C73C3022858E2E008F3CB8 /* NSArray+LCHelp.m */; };
-		58D40C6F228120DF009AB521 /* LCInfiniteScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D40C6E228120DF009AB521 /* LCInfiniteScrollView.m */; };
 		58D5EA572276DE84007F5116 /* UIView+LCKeyboardObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D5EA562276DE84007F5116 /* UIView+LCKeyboardObserver.m */; };
 		58D5EA5A2276E149007F5116 /* KeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D5EA592276E149007F5116 /* KeyboardViewController.m */; };
 		58E389F61D51FB34007DB1D0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E389F51D51FB34007DB1D0 /* main.m */; };
@@ -63,8 +62,6 @@
 		5803454F224CC85F00E341C6 /* NSData+LCHelp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+LCHelp.m"; sourceTree = "<group>"; };
 		58499C052271919500061334 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
 		58499C062271919500061334 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		5863E23822894EAF00635B6E /* LCExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCExtension.h; sourceTree = "<group>"; };
-		5863E23922894EC900635B6E /* LCUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCUtil.h; sourceTree = "<group>"; };
 		5863F356226F1C7C008D1C53 /* NSDictionary+LCHelp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+LCHelp.h"; sourceTree = "<group>"; };
 		5863F357226F1C7C008D1C53 /* NSDictionary+LCHelp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+LCHelp.m"; sourceTree = "<group>"; };
 		589EC51F22801DA50036E3D6 /* UIAlertController+LCHelp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+LCHelp.h"; sourceTree = "<group>"; };
@@ -79,9 +76,6 @@
 		58BDFDC5226583A3002FFC9D /* UIScrollView+LCRefresh.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+LCRefresh.m"; sourceTree = "<group>"; };
 		58C73C2F22858E2E008F3CB8 /* NSArray+LCHelp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+LCHelp.h"; sourceTree = "<group>"; };
 		58C73C3022858E2E008F3CB8 /* NSArray+LCHelp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+LCHelp.m"; sourceTree = "<group>"; };
-		58CD7C571D533D2300747079 /* LCSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCSingleton.h; sourceTree = "<group>"; };
-		58D40C6D228120DF009AB521 /* LCInfiniteScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCInfiniteScrollView.h; sourceTree = "<group>"; };
-		58D40C6E228120DF009AB521 /* LCInfiniteScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCInfiniteScrollView.m; sourceTree = "<group>"; };
 		58D5EA552276DE84007F5116 /* UIView+LCKeyboardObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+LCKeyboardObserver.h"; sourceTree = "<group>"; };
 		58D5EA562276DE84007F5116 /* UIView+LCKeyboardObserver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+LCKeyboardObserver.m"; sourceTree = "<group>"; };
 		58D5EA582276E149007F5116 /* KeyboardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyboardViewController.h; sourceTree = "<group>"; };
@@ -271,31 +265,10 @@
 			isa = PBXGroup;
 			children = (
 				58E38A3F1D51FB91007DB1D0 /* LCHelper.h */,
-				58E38A281D51FB91007DB1D0 /* Extension */,
-				58E38A401D51FB91007DB1D0 /* Util */,
-			);
-			path = LCHelper;
-			sourceTree = "<group>";
-		};
-		58E38A281D51FB91007DB1D0 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				5863E23822894EAF00635B6E /* LCExtension.h */,
 				5803454A224CC54600E341C6 /* UIKit */,
 				58034549224CC51400E341C6 /* Foundation */,
 			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
-		58E38A401D51FB91007DB1D0 /* Util */ = {
-			isa = PBXGroup;
-			children = (
-				5863E23922894EC900635B6E /* LCUtil.h */,
-				58CD7C571D533D2300747079 /* LCSingleton.h */,
-				58D40C6D228120DF009AB521 /* LCInfiniteScrollView.h */,
-				58D40C6E228120DF009AB521 /* LCInfiniteScrollView.m */,
-			);
-			path = Util;
+			path = LCHelper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -433,7 +406,6 @@
 				58E38A4C1D51FB91007DB1D0 /* UIColor+LCHelp.m in Sources */,
 				58E389FC1D51FB35007DB1D0 /* ViewController.m in Sources */,
 				58E38A471D51FB91007DB1D0 /* NSDate+LCHelp.m in Sources */,
-				58D40C6F228120DF009AB521 /* LCInfiniteScrollView.m in Sources */,
 				58E38A501D51FB91007DB1D0 /* UIView+LCHelp.m in Sources */,
 				58E389F91D51FB34007DB1D0 /* AppDelegate.m in Sources */,
 				58E389F61D51FB34007DB1D0 /* main.m in Sources */,
