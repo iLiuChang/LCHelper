@@ -9,7 +9,7 @@
 #import "UIImage+LCHelp.h"
 #import <objc/runtime.h>
 @implementation UIImage (LCHelp)
-+ (UIImage *)imageWithCaptureView:(UIView *)view {
++ (UIImage *)lc_imageWithCaptureView:(UIView *)view {
     // 开启上下文
     UIGraphicsBeginImageContextWithOptions(view.bounds.size, NO, 0.0);
     // 获取上下文
@@ -25,7 +25,7 @@
     return newImage;
 }
 
-- (UIImage *)circleImage {
+- (UIImage *)lc_circleImage {
     // 新的图片尺寸
     CGFloat imageW = self.size.width;
     CGFloat imageH = self.size.height;
@@ -40,7 +40,7 @@
     return newImage;
 }
 
-- (UIImage *)circleImageWithBorder:(CGFloat)border borderColor:(UIColor *)color {
+- (UIImage *)lc_circleImageWithBorder:(CGFloat)border borderColor:(UIColor *)color {
     // 圆环的宽度
     CGFloat borderW = border;
     // 新的图片尺寸
@@ -75,7 +75,7 @@
     return newImage;
 }
 
-- (UIImage *)markImageWithText:(NSString *)text point:(CGPoint)point atts:(NSDictionary *)atts{
+- (UIImage *)lc_markImageWithText:(NSString *)text point:(CGPoint)point atts:(NSDictionary *)atts{
     CGSize size = self.size;
     CGFloat H = size.height;
     CGFloat W = size.width;
@@ -91,11 +91,11 @@
     return  newImage;
 }
 
-+ (UIImage *)imageWithColor:(UIColor *)color {
-    return [UIImage imageWithColor:color size:CGSizeMake(10, 10)];
++ (UIImage *)lc_imageWithColor:(UIColor *)color {
+    return [UIImage lc_imageWithColor:color size:CGSizeMake(10, 10)];
 }
 
-+ (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size {
++ (UIImage *)lc_imageWithColor:(UIColor *)color size:(CGSize)size {
     CGRect rect = CGRectMake(0, 0, size.width, size.height);
     UIGraphicsBeginImageContext(rect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -107,7 +107,7 @@
     return img;
 }
 
-- (UIImage *)resizableImageWithSize:(CGSize)size {
+- (UIImage *)lc_resizableImageWithSize:(CGSize)size {
     if (size.width <= 0 || size.height <= 0) return nil;
     UIGraphicsBeginImageContextWithOptions(size, NO, self.scale);
     [self drawInRect:CGRectMake(0, 0, size.width, size.height)];
@@ -116,7 +116,7 @@
     return image;
 }
 
-- (UIImage *)cropToRect:(CGRect)rect {
+- (UIImage *)lc_cropToRect:(CGRect)rect {
     rect.origin.x *= self.scale;
     rect.origin.y *= self.scale;
     rect.size.width *= self.scale;
@@ -128,7 +128,7 @@
     return image;
 }
 
-- (UIImage *)resizableImageWithSize:(CGSize)size contentMode:(UIViewContentMode)contentMode {
+- (UIImage *)lc_resizableImageWithSize:(CGSize)size contentMode:(UIViewContentMode)contentMode {
     if (size.width <= 0 || size.height <= 0) return nil;
     UIGraphicsBeginImageContextWithOptions(size, NO, self.scale);
     [self drawInRect:CGRectMake(0, 0, size.width, size.height) withContentMode:contentMode clipsToBounds:NO];
@@ -234,11 +234,11 @@ CGRect LC_CGRectFitWithContentMode(CGRect rect, CGSize size, UIViewContentMode m
     return rect;
 }
 
-- (UIImage *)imageWithCornerRadius:(CGFloat)radius {
-    return [self imageWithCornerRadius:radius borderWidth:0 borderColor:nil];
+- (UIImage *)lc_imageWithCornerRadius:(CGFloat)radius {
+    return [self lc_imageWithCornerRadius:radius borderWidth:0 borderColor:nil];
 }
 
-- (UIImage *)imageWithCornerRadius:(CGFloat)radius
+- (UIImage *)lc_imageWithCornerRadius:(CGFloat)radius
                        borderWidth:(CGFloat)borderWidth
                        borderColor:(UIColor *)borderColor {
     return [self imageWithCornerRadius:radius
@@ -298,97 +298,4 @@ CGRect LC_CGRectFitWithContentMode(CGRect rect, CGSize size, UIViewContentMode m
     return image;
 }
 
-- (UIImage *)fixOrientation {
-    return [UIImage fixOrientation:self];
-}
-
-+ (UIImage *)fixOrientation:(UIImage *)aImage {
-    
-    // No-op if the orientation is already correct
-    
-    if (aImage.imageOrientation == UIImageOrientationUp)
-        
-        return aImage;
-    
-    // We need to calculate the proper transformation to make the image upright.
-    
-    // We do it in 2 steps: Rotate if Left/Right/Down, and then flip if Mirrored.
-    
-    CGAffineTransform transform = CGAffineTransformIdentity;
-    
-    switch (aImage.imageOrientation) {
-            
-        case UIImageOrientationDown:
-        case UIImageOrientationDownMirrored:
-            transform = CGAffineTransformTranslate(transform, aImage.size.width, aImage.size.height);
-            transform = CGAffineTransformRotate(transform, M_PI);
-            break;
-        case UIImageOrientationLeft:
-        case UIImageOrientationLeftMirrored:
-            transform = CGAffineTransformTranslate(transform, aImage.size.width, 0);
-            transform = CGAffineTransformRotate(transform, M_PI_2);
-            break;
-        case UIImageOrientationRight:
-        case UIImageOrientationRightMirrored:
-            transform = CGAffineTransformTranslate(transform, 0, aImage.size.height);
-            transform = CGAffineTransformRotate(transform, -M_PI_2);
-            break;
-        default:
-            break;
-            
-    }
-    
-    switch (aImage.imageOrientation) {
-            
-        case UIImageOrientationUpMirrored:
-        case UIImageOrientationDownMirrored:
-            transform = CGAffineTransformTranslate(transform, aImage.size.width, 0);
-            transform = CGAffineTransformScale(transform, -1, 1);
-            break;
-        case UIImageOrientationLeftMirrored:
-        case UIImageOrientationRightMirrored:
-            transform = CGAffineTransformTranslate(transform, aImage.size.height, 0);
-            transform = CGAffineTransformScale(transform, -1, 1);
-            break;
-        default:
-            break;
-            
-    }
-    
-    // Now we draw the underlying CGImage into a new context, applying the transform
-    
-    // calculated above.
-    
-    CGContextRef ctx = CGBitmapContextCreate(NULL, aImage.size.width, aImage.size.height,
-                                             
-                                             CGImageGetBitsPerComponent(aImage.CGImage), 0,
-                                             
-                                             CGImageGetColorSpace(aImage.CGImage),
-                                             
-                                             CGImageGetBitmapInfo(aImage.CGImage));
-    
-    CGContextConcatCTM(ctx, transform);
-    
-    switch (aImage.imageOrientation) {
-            
-        case UIImageOrientationLeft:
-        case UIImageOrientationLeftMirrored:
-        case UIImageOrientationRight:
-        case UIImageOrientationRightMirrored:
-            // Grr...
-            CGContextDrawImage(ctx, CGRectMake(0,0,aImage.size.height,aImage.size.width), aImage.CGImage);
-            break;
-        default:
-            CGContextDrawImage(ctx, CGRectMake(0,0,aImage.size.width,aImage.size.height), aImage.CGImage);
-            break;
-    }
-    
-    // And now we just create a new UIImage from the drawing context
-    CGImageRef cgimg = CGBitmapContextCreateImage(ctx);
-    UIImage *img = [UIImage imageWithCGImage:cgimg];
-    CGContextRelease(ctx);
-    CGImageRelease(cgimg);
-    return img;
-    
-}
 @end

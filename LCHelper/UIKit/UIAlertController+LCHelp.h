@@ -16,7 +16,7 @@
  @param title 标题 类型: UIAlertActionStyleDefault
  @param handler 回调事件
  */
-- (void)addActionWithTitle:(NSString *)title handler:(void (^)(UIAlertAction *action))handler;
+- (void)lc_addActionWithTitle:(NSString *)title handler:(void (^)(UIAlertAction *action))handler;
 
 
 /**
@@ -26,7 +26,7 @@
  @param style 类型
  @param handler 回调事件
  */
-- (void)addActionWithTitle:(NSString *)title style:(UIAlertActionStyle)style handler:(void (^)(UIAlertAction *action))handler;
+- (void)lc_addActionWithTitle:(NSString *)title style:(UIAlertActionStyle)style handler:(void (^)(UIAlertAction *action))handler;
 
 /**
  添加点击事件
@@ -35,7 +35,7 @@
  @param titles 标题数组 类型: UIAlertActionStyleDefault
  @param handler 回调下标
  */
-- (void)addActionWithTitles:(NSArray *)titles handler:(void (^)(NSInteger index))handler;
+- (void)lc_addActionWithTitles:(NSArray *)titles handler:(void (^)(NSInteger index))handler;
 
 /**
  设置文本属性（iOS 8.3 以上有效）
@@ -43,7 +43,7 @@
  @param color 颜色
  @param font 字体
  */
-- (void)setTitleColor:(UIColor *)color font:(UIFont *)font;
+- (void)lc_setTitleColor:(UIColor *)color font:(UIFont *)font;
 
 /**
  设置文本属性（iOS 8.3 以上有效）
@@ -51,7 +51,7 @@
  @param color 颜色
  @param font 字体
  */
-- (void)setMessageColor:(UIColor *)color font:(UIFont *)font;
+- (void)lc_setMessageColor:(UIColor *)color font:(UIFont *)font;
 
 @end
 

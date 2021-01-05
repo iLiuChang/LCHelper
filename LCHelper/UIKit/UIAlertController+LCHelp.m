@@ -10,11 +10,11 @@
 
 @implementation UIAlertController (LCHelp)
 
-- (void)addActionWithTitle:(NSString *)title handler:(void (^)(UIAlertAction *action))handler {
-    [self addActionWithTitle:title style:(UIAlertActionStyleDefault) handler:handler];
+- (void)lc_addActionWithTitle:(NSString *)title handler:(void (^)(UIAlertAction *action))handler {
+    [self lc_addActionWithTitle:title style:(UIAlertActionStyleDefault) handler:handler];
 }
 
-- (void)addActionWithTitle:(NSString *)title style:(UIAlertActionStyle)style handler:(void (^)(UIAlertAction *action))handler {
+- (void)lc_addActionWithTitle:(NSString *)title style:(UIAlertActionStyle)style handler:(void (^)(UIAlertAction *action))handler {
     if (!title) {
         NSLog(@"title can not be emety!");
         return;
@@ -23,13 +23,13 @@
     [self addAction:action];
 }
 
-- (void)addActionWithTitles:(NSArray *)titles handler:(void (^)(NSInteger index))handler {
+- (void)lc_addActionWithTitles:(NSArray *)titles handler:(void (^)(NSInteger index))handler {
     if (titles.count == 0) {
         return;
     }
     
     for (int i = 0; i < titles.count; i++) {
-        [self addActionWithTitle:titles[i] style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
+        [self lc_addActionWithTitle:titles[i] style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
             if (handler) {
                 handler(i);
             }
@@ -37,7 +37,7 @@
     }
 }
 
-- (void)setTitleColor:(UIColor *)color font:(UIFont *)font {
+- (void)lc_setTitleColor:(UIColor *)color font:(UIFont *)font {
     NSMutableDictionary *att = [NSMutableDictionary dictionary];
     if (color) {
         [att setObject:color forKey:NSForegroundColorAttributeName];
@@ -48,7 +48,7 @@
     [self setTitleAttribute:att];
 }
 
-- (void)setMessageColor:(UIColor *)color font:(UIFont *)font {
+- (void)lc_setMessageColor:(UIColor *)color font:(UIFont *)font {
     NSMutableDictionary *att = [NSMutableDictionary dictionary];
     if (color) {
         [att setObject:color forKey:NSForegroundColorAttributeName];

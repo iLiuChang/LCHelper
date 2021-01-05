@@ -19,7 +19,7 @@
 @end
 
 @implementation NSNumber (LCHelp)
-+ (NSNumber *)numberWithString:(NSString *)string {
++ (NSNumber *)lc_numberWithString:(NSString *)string {
     NSString *str = [[string stringByTrim] lowercaseString];
     if (!str || !str.length) {
         return nil;

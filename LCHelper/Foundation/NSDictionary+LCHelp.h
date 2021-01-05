@@ -10,30 +10,30 @@
 
 @interface NSDictionary (LCHelp)
 
-- (NSString*)jsonString;
+- (NSString*)lc_jsonString;
 
-- (NSString *)jsonPrettyString;
+- (NSString *)lc_jsonPrettyString;
 
-+ (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonStr;
++ (NSDictionary *)lc_dictionaryWithJsonString:(NSString *)jsonStr;
 
 @end
 
 @interface NSDictionary(LCSafe)
 
-- (id)safeObjectForKey:(id)key;
+- (id)lc_objectForKey:(id)key;
 
-- (int)intValueForKey:(id)key;
+- (int)lc_intValueForKey:(id)key;
 
-- (NSInteger)integerValueForKey:(id)key;
+- (NSInteger)lc_integerValueForKey:(id)key;
 
-- (double)doubleValueForKey:(id)key;
+- (double)lc_doubleValueForKey:(id)key;
 
-- (NSString*)stringValueForKey:(id)key;
+- (NSString*)lc_stringValueForKey:(id)key;
 
 @end
 
 @interface NSMutableDictionary(LCSafe)
 
-- (void)safeSetObject:(id)anObject forKey:(id)aKey;
+- (void)lc_setObject:(id)anObject forKey:(id)aKey;
 
 @end

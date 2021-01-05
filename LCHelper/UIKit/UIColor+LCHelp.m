@@ -51,7 +51,7 @@ static BOOL hexStrToRGBA(NSString *str,
     return YES;
 }
 
-+ (UIColor *)colorWithHexString:(NSString *)hexStr {
++ (UIColor *)lc_colorWithHexString:(NSString *)hexStr {
     CGFloat r, g, b, a;
     if (hexStrToRGBA(hexStr, &r, &g, &b, &a)) {
         return [UIColor colorWithRed:r green:g blue:b alpha:a];
@@ -59,21 +59,21 @@ static BOOL hexStrToRGBA(NSString *str,
     return nil;
 }
 
-+ (UIColor *)colorWithRGB:(uint32_t)rgbValue {
++ (UIColor *)lc_colorWithRGB:(uint32_t)rgbValue {
     return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16) / 255.0f
                            green:((rgbValue & 0xFF00) >> 8) / 255.0f
                             blue:(rgbValue & 0xFF) / 255.0f
                            alpha:1];
 }
 
-+ (UIColor *)colorWithRGBA:(uint32_t)rgbaValue {
++ (UIColor *)lc_colorWithRGBA:(uint32_t)rgbaValue {
     return [UIColor colorWithRed:((rgbaValue & 0xFF000000) >> 24) / 255.0f
                            green:((rgbaValue & 0xFF0000) >> 16) / 255.0f
                             blue:((rgbaValue & 0xFF00) >> 8) / 255.0f
                            alpha:(rgbaValue & 0xFF) / 255.0f];
 }
 
-+ (UIColor *)colorWithRGB:(uint32_t)rgbValue alpha:(CGFloat)alpha {
++ (UIColor *)lc_colorWithRGB:(uint32_t)rgbValue alpha:(CGFloat)alpha {
     return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16) / 255.0f
                            green:((rgbValue & 0xFF00) >> 8) / 255.0f
                             blue:(rgbValue & 0xFF) / 255.0f

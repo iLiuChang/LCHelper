@@ -19,7 +19,7 @@
  *
  *  @return 创建完的item
  */
-+ (UIBarButtonItem *)itemWithTarget:(id)target
++ (UIBarButtonItem *)lc_itemWithTarget:(id)target
                              action:(SEL)action
                               image:(UIImage *)image
                           highImage:(UIImage *)highImage;
@@ -35,7 +35,7 @@
  *
  *  @return 创建完的item
  */
-+ (UIBarButtonItem *)itemWithTarget:(id)target
++ (UIBarButtonItem *)lc_itemWithTarget:(id)target
                              action:(SEL)action
                                size:(CGSize)size
                               image:(UIImage *)image

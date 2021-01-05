@@ -30,10 +30,13 @@
     [tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"cell"];
     [self.view addSubview:tableView];
     self.tableView = tableView;
+    
     __weak __typeof(self) weakSelf = self;
-    [tableView addFooterRefreshing:^{
+    [tableView lc_addFooterRefreshing:^{
         [weakSelf reload];
     }];
+    
+    tableView.lc_refreshActivityIndicatorStyle = UIActivityIndicatorViewStyleGray;
     
 }
 
@@ -42,7 +45,7 @@
         count+=10;
         [self.tableView reloadData];
         
-        [self.tableView endRefreshing];
+        [self.tableView lc_endRefreshing];
         
     });
 

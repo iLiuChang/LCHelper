@@ -107,21 +107,21 @@
 
 @implementation UIView (LCKeyboardObserver)
 
-- (void)addKeyboardObserver {
-    [self addKeyboardObserverWithTransformView:nil];
+- (void)lc_addKeyboardObserver {
+    [self lc_addKeyboardObserverWithTransformView:nil];
 }
 
-- (void)addKeyboardObserverWithTransformView:(UIView *)view {
-    [self addKeyboardObserverWithTransformView:view keyboardSpacing:20];
+- (void)lc_addKeyboardObserverWithTransformView:(UIView *)view {
+    [self lc_addKeyboardObserverWithTransformView:view keyboardSpacing:20];
 }
 
-- (void)addKeyboardObserverWithTransformView:(UIView *)view keyboardSpacing:(CGFloat)keyboardSpacing {
+- (void)lc_addKeyboardObserverWithTransformView:(UIView *)view keyboardSpacing:(CGFloat)keyboardSpacing {
     LCKeyboardObserver *observer = [[LCKeyboardObserver alloc] initWithObserveView:self transformView:view];
     observer.keyboardSpacing = keyboardSpacing;
     [self lc_setKeyboardObserver:observer];
 }
 
-- (void)removeKeyboardObserver {
+- (void)lc_removeKeyboardObserver {
     [[self lc_keyboardObserver] removeObserver];
 }
 
@@ -142,7 +142,7 @@ static const char LCKeyboardObserverKey = '\0';
 - (void)willMoveToSuperview:(UIView *)newSuperview {
     [super willMoveToSuperview:newSuperview];
     if (!newSuperview) {
-        [self removeKeyboardObserver];
+        [self lc_removeKeyboardObserver];
         [self lc_setKeyboardObserver:nil];
     }
 }
@@ -152,7 +152,7 @@ static const char LCKeyboardObserverKey = '\0';
 - (void)willMoveToSuperview:(UIView *)newSuperview {
     [super willMoveToSuperview:newSuperview];
     if (!newSuperview) {
-        [self removeKeyboardObserver];
+        [self lc_removeKeyboardObserver];
         [self lc_setKeyboardObserver:nil];
     }
 }

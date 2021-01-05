@@ -26,19 +26,20 @@
 //        [sv reloadData];
 //    });
     
-    [self.view addTapGestureRecognizer:^{
+    [self.view lc_addTapGestureRecognizer:^{
         NSLog(@"single tap");
     }];
     
-    [self.view addDoubleTapGestureRecognizer:^{
+    [self.view lc_addDoubleTapGestureRecognizer:^{
         NSLog(@"double tap");
     }];
+
 }
 
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-//    KeyboardViewController *vc = [[KeyboardViewController alloc] init];
-//    [self.navigationController pushViewController:vc animated:YES];
+    FirstViewController *vc = [[FirstViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 //    [[UIActionSheet actionSheetWithTitle:@"232" buttonIndex:^(NSInteger index) {
 //                NSLog(@"%ld", index);
 //

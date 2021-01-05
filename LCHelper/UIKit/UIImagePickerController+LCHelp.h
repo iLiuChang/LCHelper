@@ -10,7 +10,7 @@
 
 @interface UIImagePickerController (LCHelp)<UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
-+ (UIImagePickerController *)imagePickerWithFinishHandler:(void (^)(NSDictionary *info))finishHandler;
++ (UIImagePickerController *)lc_imagePickerWithFinishHandler:(void (^)(NSDictionary *info))finishHandler;
 
-+ (UIImagePickerController *)imagePickerWithFinishHandler:(void (^)(NSDictionary *))finishHandler cancelHandler:(void (^)())cancelHandler;
++ (UIImagePickerController *)lc_imagePickerWithFinishHandler:(void (^)(NSDictionary *))finishHandler cancelHandler:(void (^)())cancelHandler;
 @end

@@ -44,21 +44,21 @@ static const NSString *_lc_block_key = @"_lc_block_key";
 @implementation UIControl (LCHelp)
 
 
-- (void)removeAllTargets {
+- (void)lc_removeAllTargets {
     [[self allTargets] enumerateObjectsUsingBlock: ^(id object, BOOL *stop) {
         [self removeTarget:object action:NULL forControlEvents:UIControlEventAllEvents];
     }];
     [[self allUIControlBlockTargets] removeAllObjects];
 }
 
-- (void)addEventTouchUpInsideBlock:(void (^)(id sender))block {
+- (void)lc_addEventTouchUpInsideBlock:(void (^)(id sender))block {
     LCUIControlBlockTarget *target = [[LCUIControlBlockTarget alloc]
                                       initWithBlock:block events:UIControlEventTouchUpInside];
     [self addTarget:target action:@selector(invoke:) forControlEvents:UIControlEventTouchUpInside];
     NSMutableArray *targets = [self allUIControlBlockTargets];
     [targets addObject:target];
 }
-- (void)addEvents:(UIControlEvents)controlEvents
+- (void)lc_addEvents:(UIControlEvents)controlEvents
                            invoke:(void (^)(id sender))block {
     if (!controlEvents)  return;
     
@@ -69,7 +69,7 @@ static const NSString *_lc_block_key = @"_lc_block_key";
     [targets addObject:target];
 }
 
-- (void)setTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents {
+- (void)lc_setTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents {
     if (!target || !action || !controlEvents) return;
     NSSet *targets = [self allTargets];
     for (id currentTarget in targets) {
@@ -82,13 +82,13 @@ static const NSString *_lc_block_key = @"_lc_block_key";
     [self addTarget:target action:action forControlEvents:controlEvents];
 }
 
-- (void)setEvents:(UIControlEvents)controlEvents
+- (void)lc_setEvents:(UIControlEvents)controlEvents
                            invoke:(void (^)(id sender))block {
-    [self removeAllBlocksForControlEvents:UIControlEventAllEvents];
-    [self addEvents:controlEvents invoke:block];
+    [self lc_removeAllBlocksForControlEvents:UIControlEventAllEvents];
+    [self lc_addEvents:controlEvents invoke:block];
 }
 
-- (void)removeAllBlocksForControlEvents:(UIControlEvents)controlEvents {
+- (void)lc_removeAllBlocksForControlEvents:(UIControlEvents)controlEvents {
     if (!controlEvents) return;
     
     NSMutableArray *targets = [self allUIControlBlockTargets];

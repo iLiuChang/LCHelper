@@ -10,24 +10,24 @@
 
 @interface NSArray (LCHelp)
 
-- (NSString *)jsonString;
+- (NSString *)lc_jsonString;
 
-- (NSString *)jsonPrettyString;
+- (NSString *)lc_jsonPrettyString;
 
-+ (NSArray *)arrayWithJsonString:(NSString *)jsonStr;
++ (NSArray *)lc_arrayWithJsonString:(NSString *)jsonStr;
 
 @end
 
 @interface NSArray (LCSafe)
 
-- (id)safeObjectAtIndex:(NSUInteger)index;
+- (id)lc_objectAtIndex:(NSUInteger)index;
 
 @end
 
 @interface NSMutableArray (LCHelp)
 
-- (void)removeFirstObject;
+- (void)lc_removeFirstObject;
 
-- (void)reverse;
+- (void)lc_reverse;
 
 @end

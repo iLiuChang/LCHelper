@@ -19,55 +19,55 @@ typedef enum : NSUInteger {
 /**
  *  刷新类型
  */
-@property(nonatomic, assign) LCRefreshStyle refreshStyle;
+@property(nonatomic, assign) LCRefreshStyle lc_refreshStyle;
 
 
 /**
  *  刷新控件类型 default is UIActivityIndicatorViewStyleWhite
  */
-@property(nonatomic, assign) UIActivityIndicatorViewStyle refreshActivityIndicatorViewStyle;
+@property(nonatomic, assign) UIActivityIndicatorViewStyle lc_refreshActivityIndicatorStyle;
 
 /**
  *  是否需要头部刷新
  */
-@property(nonatomic, assign) BOOL headerRefreshHidden;
+@property(nonatomic, assign) BOOL lc_headerRefreshHidden;
 
 /**
  *  是否需要底部刷新
  */
-@property(nonatomic, assign) BOOL footerRefreshHidden;
+@property(nonatomic, assign) BOOL lc_footerRefreshHidden;
 
 /**
  *  是否正在刷新
  */
-@property(nonatomic, readonly, getter=isRefreshing) BOOL refreshing;
+@property(nonatomic, readonly) BOOL lc_refreshing;
 
 /**
  *  开始头部刷新
  */
--(void)startHeaderRefreshing;
+-(void)lc_startHeaderRefreshing;
 
 /**
  *  开始底部刷新
  */
--(void)startFooterRefreshing;
+-(void)lc_startFooterRefreshing;
 
 /**
  *  取消所有刷新
  */
--(void)endRefreshing;
+-(void)lc_endRefreshing;
 
 /**
  *  添加头部刷新
  *  completionHander: 完成回调
  */
--(void)addHeaderRefreshing: (void (^)())completionHander;
+-(void)lc_addHeaderRefreshing: (void (^)())completionHander;
 
 /**
  *  添加底部刷新
  *  completionHander: 完成回调
  */
--(void)addFooterRefreshing: (void (^)())completionHander;
+-(void)lc_addFooterRefreshing: (void (^)())completionHander;
 
 @end
 

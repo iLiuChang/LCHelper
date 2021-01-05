@@ -11,7 +11,7 @@
 
 @implementation NSObject (LCHelp)
 
-+ (BOOL)swizzleInstanceMethod:(SEL)originalSel newMethod:(SEL)newSel {
++ (BOOL)lc_swizzleInstanceMethod:(SEL)originalSel newMethod:(SEL)newSel {
     Method originalMethod = class_getInstanceMethod(self, originalSel);
     Method newMethod = class_getInstanceMethod(self, newSel);
     if (!originalMethod || !newMethod) return NO;
@@ -30,7 +30,7 @@
     return YES;
 }
 
-+ (BOOL)swizzleClassMethod:(SEL)originalSel newMethod:(SEL)newSel {
++ (BOOL)lc_swizzleClassMethod:(SEL)originalSel newMethod:(SEL)newSel {
     Class class = object_getClass(self);
     Method originalMethod = class_getInstanceMethod(class, originalSel);
     Method newMethod = class_getInstanceMethod(class, newSel);

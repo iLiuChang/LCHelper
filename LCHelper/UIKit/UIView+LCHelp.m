@@ -10,107 +10,107 @@
 #import <objc/runtime.h>
 
 @implementation UIView (LCHelp)
-- (CGFloat)left {
+- (CGFloat)lc_left {
     return self.frame.origin.x;
 }
 
-- (void)setLeft:(CGFloat)left {
+- (void)setLc_left:(CGFloat)left {
     CGRect frame = self.frame;
     frame.origin.x = left;
     self.frame = frame;
 }
 
-- (CGFloat)top {
+- (CGFloat)lc_top {
     return self.frame.origin.y;
 }
-- (void)setTop:(CGFloat)top {
+- (void)setLc_top:(CGFloat)top {
     CGRect frame = self.frame;
     frame.origin.y = top;
     self.frame = frame;
 }
 
-- (CGFloat)right {
+- (CGFloat)lc_right {
     return self.frame.origin.x + self.frame.size.width;
 }
 
-- (void)setRight:(CGFloat)right {
+- (void)setLc_right:(CGFloat)right {
     CGRect frame = self.frame;
     frame.origin.x = right - frame.size.width;
     self.frame = frame;
 }
 
-- (CGFloat)bottom {
+- (CGFloat)lc_bottom {
     return self.frame.origin.y + self.frame.size.height;
 }
 
-- (void)setBottom:(CGFloat)bottom {
+- (void)setLc_bottom:(CGFloat)bottom {
     CGRect frame = self.frame;
     frame.origin.y = bottom - frame.size.height;
     self.frame = frame;
 }
 
-- (CGFloat)centerX {
+- (CGFloat)lc_centerX {
     return self.center.x;
 }
 
-- (void)setCenterX:(CGFloat)centerX {
+- (void)setLc_centerX:(CGFloat)centerX {
     self.center = CGPointMake(centerX, self.center.y);
 }
 
-- (CGFloat)centerY {
+- (CGFloat)lc_centerY {
     return self.center.y;
 }
 
-- (void)setCenterY:(CGFloat)centerY {
+- (void)setLc_centerY:(CGFloat)centerY {
     self.center = CGPointMake(self.center.x, centerY);
 }
 
-- (CGFloat)width {
+- (CGFloat)lc_width {
     return self.frame.size.width;
 }
 
-- (void)setWidth:(CGFloat)width {
+- (void)setLc_width:(CGFloat)width {
     CGRect frame = self.frame;
     frame.size.width = width;
     self.frame = frame;
 }
 
-- (CGFloat)height {
+- (CGFloat)lc_height {
     return self.frame.size.height;
 }
 
-- (void)setHeight:(CGFloat)height {
+- (void)setLc_height:(CGFloat)height {
     CGRect frame = self.frame;
     frame.size.height = height;
     self.frame = frame;
 }
-- (CGPoint)origin {
+- (CGPoint)lc_origin {
     return self.frame.origin;
 }
 
-- (void)setOrigin:(CGPoint)origin {
+- (void)setLc_origin:(CGPoint)origin {
     CGRect frame = self.frame;
     frame.origin = origin;
     self.frame = frame;
 }
 
-- (CGSize)size
+- (CGSize)lc_size
 {
     return self.frame.size;
 }
 
-- (void)setSize:(CGSize)size {
+- (void)setLc_size:(CGSize)size {
     CGRect frame = self.frame;
     frame.size = size;
     self.frame = frame;
 }
 
-- (UIView *)descendantOrSelfWithClass:(Class)cls {
+- (UIView *)lc_descendantOrSelfWithClass:(Class)cls {
     if ([self isKindOfClass:cls])
         return self;
     
     for (UIView* child in self.subviews) {
-        UIView* it = [child descendantOrSelfWithClass:cls];
+        UIView* it = [child lc_descendantOrSelfWithClass:cls];
         if (it)
             return it;
     }
@@ -118,17 +118,17 @@
     return nil;
 }
 
-- (UIView *)ancestorOrSelfWithClass:(Class)cls {
+- (UIView *)lc_ancestorOrSelfWithClass:(Class)cls {
     if ([self isKindOfClass:cls]) {
         return self;
     } else if (self.superview) {
-        return [self.superview ancestorOrSelfWithClass:cls];
+        return [self.superview lc_ancestorOrSelfWithClass:cls];
     } else {
         return nil;
     }
 }
 
-- (UIViewController*)viewController {
+- (UIViewController*)lc_viewController {
     for (UIView* next = [self superview]; next; next = next.superview) {
         UIResponder* nextResponder = [next nextResponder];
         if ([nextResponder isKindOfClass:[UIViewController class]]) {
@@ -138,7 +138,7 @@
     return nil;
 }
 
--(void)removeAllSubviews{
+-(void)lc_removeAllSubviews{
     for( UIView *v in [self subviews]){
         [v removeFromSuperview];
     }
@@ -168,13 +168,13 @@ static const char LCDoubleTapGestureRecognizerKey = '\0';
     return objc_getAssociatedObject(self, &LCDoubleTapGestureRecognizerKey);
 }
 
-- (void)addTapGestureRecognizer:(void (^)())handler {
+- (void)lc_addTapGestureRecognizer:(void (^)())handler {
     UITapGestureRecognizer* gesture = [self addTapGestureRecognizerWithTaps:1 touches:1 selector:@selector(lc_singleTap)];
     [self addRequiredToDoubleTapsRecognizer:gesture];
     [self setSingleTapBlock:handler];
 }
 
-- (void)addDoubleTapGestureRecognizer:(void (^)())handler {
+- (void)lc_addDoubleTapGestureRecognizer:(void (^)())handler {
     UITapGestureRecognizer* gesture = [self addTapGestureRecognizerWithTaps:2 touches:1 selector:@selector(lc_doubleTap)];
     [self addRequirementToSingleTapsRecognizer:gesture];
     [self setDoubleTapBlock:handler];

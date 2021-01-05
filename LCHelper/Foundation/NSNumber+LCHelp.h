@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface NSNumber (LCHelp)
-+ (NSNumber *)numberWithString:(NSString *)string;
++ (NSNumber *)lc_numberWithString:(NSString *)string;
 @end

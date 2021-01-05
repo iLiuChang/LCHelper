@@ -12,10 +12,10 @@
 /**
  *  交换类方法
  */
-+ (BOOL)swizzleClassMethod:(SEL)originalSel newMethod:(SEL)newSel;
++ (BOOL)lc_swizzleClassMethod:(SEL)originalSel newMethod:(SEL)newSel;
 
 /**
  *  交换对象方法
  */
-+ (BOOL)swizzleInstanceMethod:(SEL)originalSel newMethod:(SEL)newSel;
++ (BOOL)lc_swizzleInstanceMethod:(SEL)originalSel newMethod:(SEL)newSel;
 @end

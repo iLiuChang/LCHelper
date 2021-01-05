@@ -14,30 +14,36 @@
  *  添加TouchUpInside事件
  *
  */
-- (void)addEventTouchUpInsideBlock:(void (^)(id sender))block;
+- (void)lc_addEventTouchUpInsideBlock:(void (^)(id sender))block;
 
 /**
  *  添加事件
  *
  */
-- (void)addEvents:(UIControlEvents)controlEvents
+- (void)lc_addEvents:(UIControlEvents)controlEvents
             invoke:(void (^)(id sender))block;
 
 /**
  *  添加事件（会删除之前添加的所有事件）
  *
  */
-- (void)setEvents:(UIControlEvents)controlEvents
+- (void)lc_setEvents:(UIControlEvents)controlEvents
                            invoke:(void (^)(id sender))block;
+
+/**
+ *  添加事件
+ *
+ */
+- (void)lc_setTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents;
 
 /**
  *  删除指定的事件
  *
  */
-- (void)removeAllBlocksForControlEvents:(UIControlEvents)controlEvents;
+- (void)lc_removeAllBlocksForControlEvents:(UIControlEvents)controlEvents;
 
 /**
  *  移除所有事件
  */
-- (void)removeAllTargets;
+- (void)lc_removeAllTargets;
 @end

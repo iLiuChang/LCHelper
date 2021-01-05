@@ -36,6 +36,7 @@
 		58E38A4D1D51FB91007DB1D0 /* UIControl+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E38A381D51FB91007DB1D0 /* UIControl+LCHelp.m */; };
 		58E38A4E1D51FB91007DB1D0 /* UIImage+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E38A3A1D51FB91007DB1D0 /* UIImage+LCHelp.m */; };
 		58E38A501D51FB91007DB1D0 /* UIView+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E38A3E1D51FB91007DB1D0 /* UIView+LCHelp.m */; };
+		DA280F0F25A3261D0017DF0C /* LCCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = DA280F0E25A3261D0017DF0C /* LCCrypto.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +116,8 @@
 		58E38A3D1D51FB91007DB1D0 /* UIView+LCHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LCHelp.h"; sourceTree = "<group>"; };
 		58E38A3E1D51FB91007DB1D0 /* UIView+LCHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LCHelp.m"; sourceTree = "<group>"; };
 		58E38A3F1D51FB91007DB1D0 /* LCHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHelper.h; sourceTree = "<group>"; };
+		DA280F0D25A3261D0017DF0C /* LCCrypto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCCrypto.h; sourceTree = "<group>"; };
+		DA280F0E25A3261D0017DF0C /* LCCrypto.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCCrypto.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +164,8 @@
 				5863F357226F1C7C008D1C53 /* NSDictionary+LCHelp.m */,
 				58C73C2F22858E2E008F3CB8 /* NSArray+LCHelp.h */,
 				58C73C3022858E2E008F3CB8 /* NSArray+LCHelp.m */,
+				DA280F0D25A3261D0017DF0C /* LCCrypto.h */,
+				DA280F0E25A3261D0017DF0C /* LCCrypto.m */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -411,6 +416,7 @@
 				58E389F61D51FB34007DB1D0 /* main.m in Sources */,
 				5863F358226F1C7C008D1C53 /* NSDictionary+LCHelp.m in Sources */,
 				58E38A491D51FB91007DB1D0 /* NSObject+LCHelp.m in Sources */,
+				DA280F0F25A3261D0017DF0C /* LCCrypto.m in Sources */,
 				589EC52422802EC20036E3D6 /* UIAlertView+LCHelp.m in Sources */,
 				5803454D224CC84500E341C6 /* NSString+LCHelp.m in Sources */,
 				58E38A4D1D51FB91007DB1D0 /* UIControl+LCHelp.m in Sources */,

@@ -10,56 +10,55 @@
 
 @interface NSString (LCHelp)
 
-@property (readonly) char charValue;
-@property (readonly) unsigned char unsignedCharValue;
-@property (readonly) short shortValue;
-@property (readonly) unsigned short unsignedShortValue;
-@property (readonly) unsigned int unsignedIntValue;
-@property (readonly) long longValue;
-@property (readonly) unsigned long unsignedLongValue;
-@property (readonly) unsigned long long unsignedLongLongValue;
-@property (readonly) NSUInteger unsignedIntegerValue;
+@property (readonly) char lc_charValue;
+@property (readonly) unsigned char lc_unsignedCharValue;
+@property (readonly) short lc_shortValue;
+@property (readonly) unsigned short lc_unsignedShortValue;
+@property (readonly) unsigned int lc_unsignedIntValue;
+@property (readonly) long lc_longValue;
+@property (readonly) unsigned long lc_unsignedLongValue;
+@property (readonly) unsigned long long lc_unsignedLongLongValue;
+@property (readonly) NSUInteger lc_unsignedIntegerValue;
 
-- (BOOL)isEmpty;
++ (NSString *)lc_stringWithUUID;
 
-- (BOOL)containsString:(NSString *)string;
++ (BOOL)lc_emptyString:(NSString *)string;
 
-- (NSString *)base64EncodedString;
+- (BOOL)lc_containsString:(NSString *)string;
 
-- (NSString *)base64DecodingString;
+- (BOOL)lc_hasPrefix:(NSString *)str;
 
-- (NSData *)dataValue;
+- (BOOL)lc_hasSuffix:(NSString *)str;
 
-- (id)jsonValue;
+- (BOOL)lc_equalsString:(NSString *)str;
 
-- (NSNumber *)numberValue;
+/// 去除字符串前后的空白,不包含换行符
+- (NSString *)lc_trim;
 
-- (CGSize)sizeForFont:(UIFont *)font size:(CGSize)size mode:(NSLineBreakMode)lineBreakMode;
+- (NSString *)lc_removeWhiteSpace;
 
-- (CGFloat)widthForFont:(UIFont *)font;
+- (NSString *)lc_removeNewLine;
 
-- (CGFloat)heightForFont:(UIFont *)font width:(CGFloat)width;
+- (NSString *)lc_substringWithRange:(NSRange)range;
 
-+ (NSString *)stringWithUUID;
+- (NSString *)lc_base64EncodedString;
+
+- (NSString *)lc_base64DecodingString;
+
+- (NSData *)lc_dataValue;
+
+- (id)lc_jsonValue;
+
+- (NSNumber *)lc_numberValue;
+
+- (BOOL)lc_containsEmoji;
+
+- (CGSize)lc_sizeForFont:(UIFont *)font size:(CGSize)size mode:(NSLineBreakMode)lineBreakMode;
+
+- (CGFloat)lc_widthForFont:(UIFont *)font;
+
+- (CGFloat)lc_heightForFont:(UIFont *)font width:(CGFloat)width;
 
 @end
 
 
-@interface NSString (LCMD5)
-- (NSString *)md5String;
-
-- (NSString *)hmacMD5StringWithKey:(NSString *)key;
-@end
-
-
-@interface NSString (LCSHA)
-- (NSString *)hmacSHA1StringWithKey:(NSString *)key;
-
-- (NSString *)hmacSHA224StringWithKey:(NSString *)key;
-
-- (NSString *)hmacSHA256StringWithKey:(NSString *)key;
-
-- (NSString *)hmacSHA384StringWithKey:(NSString *)key;
-
-- (NSString *)hmacSHA512StringWithKey:(NSString *)key;
-@end

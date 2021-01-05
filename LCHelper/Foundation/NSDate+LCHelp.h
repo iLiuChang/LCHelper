@@ -11,46 +11,43 @@
 @interface NSDate (LCHelp)
 NS_ASSUME_NONNULL_BEGIN
 
-@property (nonatomic, readonly) NSInteger year;
-@property (nonatomic, readonly) NSInteger month; //(1~12)
-@property (nonatomic, readonly) NSInteger day; //(1~31)
-@property (nonatomic, readonly) NSInteger hour; //(0~23)
-@property (nonatomic, readonly) NSInteger minute; //(0~59)
-@property (nonatomic, readonly) NSInteger second; //(0~59)
-@property (nonatomic, readonly) NSInteger nanosecond;
-@property (nonatomic, readonly) NSInteger weekday; //(1~7)
-@property (nonatomic, readonly) NSInteger weekdayOrdinal;
-@property (nonatomic, readonly) NSInteger weekOfMonth; //(1~5)
-@property (nonatomic, readonly) NSInteger weekOfYear; //(1~53)
-@property (nonatomic, readonly) NSInteger yearForWeekOfYear;
-@property (nonatomic, readonly) NSInteger quarter;
-@property (nonatomic, readonly) BOOL isLeapMonth; 
-@property (nonatomic, readonly) BOOL isLeapYear;
-@property (nonatomic, readonly) BOOL isToday;
-@property (nonatomic, readonly) BOOL isYesterday;
+@property (nonatomic, readonly) NSInteger lc_year;
+@property (nonatomic, readonly) NSInteger lc_month; //(1~12)
+@property (nonatomic, readonly) NSInteger lc_day; //(1~31)
+@property (nonatomic, readonly) NSInteger lc_hour; //(0~23)
+@property (nonatomic, readonly) NSInteger lc_minute; //(0~59)
+@property (nonatomic, readonly) NSInteger lc_second; //(0~59)
+@property (nonatomic, readonly) NSInteger lc_nanosecond;
+@property (nonatomic, readonly) NSInteger lc_weekday; //(1~7)
+@property (nonatomic, readonly) NSInteger lc_weekdayOrdinal;
+@property (nonatomic, readonly) NSInteger lc_weekOfMonth; //(1~5)
+@property (nonatomic, readonly) NSInteger lc_weekOfYear; //(1~53)
+@property (nonatomic, readonly) NSInteger lc_yearForWeekOfYear;
+@property (nonatomic, readonly) NSInteger lc_quarter;
+@property (nonatomic, readonly) BOOL lc_isLeapMonth;
+@property (nonatomic, readonly) BOOL lc_isLeapYear;
+@property (nonatomic, readonly) BOOL lc_isToday;
+@property (nonatomic, readonly) BOOL lc_isYesterday;
 
-//---------------------------------------------------------
-// 增加xx后的日期
-- (nullable NSDate *)dateByAddingYears:(NSInteger)years;
-- (nullable NSDate *)dateByAddingMonths:(NSInteger)months;
-- (nullable NSDate *)dateByAddingWeeks:(NSInteger)weeks;
-- (nullable NSDate *)dateByAddingDays:(NSInteger)days;
-- (nullable NSDate *)dateByAddingHours:(NSInteger)hours;
-- (nullable NSDate *)dateByAddingMinutes:(NSInteger)minutes;
-- (nullable NSDate *)dateByAddingSeconds:(NSInteger)seconds;
-//----------------------------------------------------------
+- (nullable NSDate *)lc_addYears:(NSInteger)years;
+- (nullable NSDate *)lc_addMonths:(NSInteger)months;
+- (nullable NSDate *)lc_addWeeks:(NSInteger)weeks;
+- (nullable NSDate *)lc_addDays:(NSInteger)days;
+- (nullable NSDate *)lc_addHours:(NSInteger)hours;
+- (nullable NSDate *)lc_addMinutes:(NSInteger)minutes;
+- (nullable NSDate *)lc_addSeconds:(NSInteger)seconds;
 
 /**
  
  @example: "yyyy-MM-dd HH:mm:ss"
  */
-- (nullable NSString *)stringWithFormat:(NSString *)format;
+- (nullable NSString *)lc_stringWithFormat:(NSString *)format;
 
 /**
  
  根据时区和地点
  */
-- (nullable NSString *)stringWithFormat:(NSString *)format
+- (nullable NSString *)lc_stringWithFormat:(NSString *)format
                                timeZone:(nullable NSTimeZone *)timeZone
                                  locale:(nullable NSLocale *)locale;
 
@@ -58,19 +55,19 @@ NS_ASSUME_NONNULL_BEGIN
  国际标准时间
  @example: "2010-07-09T16:13:30+12:00"
  */
-- (nullable NSString *)stringWithISOFormat;
+- (nullable NSString *)lc_stringWithISOFormat;
 
 /**
  
  时间间隔
  */
-+ (nullable NSDate *)dateWithString:(NSString *)dateString format:(NSString *)format;
++ (nullable NSDate *)lc_dateWithString:(NSString *)dateString format:(NSString *)format;
 
 /**
  
  时间间隔
  */
-+ (nullable NSDate *)dateWithString:(NSString *)dateString
++ (nullable NSDate *)lc_dateWithString:(NSString *)dateString
                              format:(NSString *)format
                            timeZone:(nullable NSTimeZone *)timeZone
                              locale:(nullable NSLocale *)locale;
@@ -79,7 +76,7 @@ NS_ASSUME_NONNULL_BEGIN
  时间间隔
  @param dateString The date string in ISO8601 format. e.g. "2010-07-09T16:13:30+12:00"
  */
-+ (nullable NSDate *)dateWithISOFormatString:(NSString *)dateString;
++ (nullable NSDate *)lc_dateWithISOFormatString:(NSString *)dateString;
 
 NS_ASSUME_NONNULL_END
 @end

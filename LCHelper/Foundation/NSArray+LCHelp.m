@@ -11,15 +11,15 @@
 
 @implementation NSArray (LCHelp)
 
-- (NSString *)jsonString {
-    return [self jsonStringWithOptions:0];
+- (NSString *)lc_jsonString {
+    return [self lc_jsonStringWithOptions:0];
 }
 
-- (NSString *)jsonPrettyString {
-    return [self jsonStringWithOptions:NSJSONWritingPrettyPrinted];
+- (NSString *)lc_jsonPrettyString {
+    return [self lc_jsonStringWithOptions:NSJSONWritingPrettyPrinted];
 }
 
-- (NSString *)jsonStringWithOptions:(NSJSONWritingOptions)opt {
+- (NSString *)lc_jsonStringWithOptions:(NSJSONWritingOptions)opt {
     if ([NSJSONSerialization isValidJSONObject:self]) {
         NSError *error = nil;
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self options:opt error:&error];
@@ -29,8 +29,8 @@
     return nil;
 }
 
-+ (NSArray *)arrayWithJsonString:(NSString *)jsonStr {
-    id value = [jsonStr jsonValue];
++ (NSArray *)lc_arrayWithJsonString:(NSString *)jsonStr {
+    id value = [jsonStr lc_jsonValue];
     if (value && [value isKindOfClass:[NSArray class]]) {
         return value;
     }
@@ -41,7 +41,7 @@
 
 @implementation NSArray (LCSafe)
 
-- (id)safeObjectAtIndex:(NSUInteger)index {
+- (id)lc_objectAtIndex:(NSUInteger)index {
     if (index >= self.count) return nil;
     id obj = self[index];
     if ([obj isKindOfClass:[NSNull class]]) {
@@ -54,13 +54,13 @@
 
 @implementation NSMutableArray (LCHelp)
 
-- (void)removeFirstObject {
+- (void)lc_removeFirstObject {
     if (self.count) {
         [self removeObjectAtIndex:0];
     }
 }
 
-- (void)reverse {
+- (void)lc_reverse {
     NSUInteger count = self.count;
     int mid = floor(count / 2.0);
     for (NSUInteger i = 0; i < mid; i++) {

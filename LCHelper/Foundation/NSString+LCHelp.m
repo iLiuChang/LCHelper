@@ -12,74 +12,188 @@
 
 @implementation NSString (LCHelp)
 
-- (char)charValue {
-    return self.numberValue.charValue;
+- (char)lc_charValue {
+    return self.lc_numberValue.charValue;
 }
 
-- (unsigned char)unsignedCharValue {
-    return self.numberValue.unsignedCharValue;
+- (unsigned char)lc_unsignedCharValue {
+    return self.lc_numberValue.unsignedCharValue;
 }
 
-- (short)shortValue {
-    return self.numberValue.shortValue;
+- (short)lc_shortValue {
+    return self.lc_numberValue.shortValue;
 }
 
-- (unsigned short)unsignedShortValue {
-    return self.numberValue.unsignedShortValue;
+- (unsigned short)lc_unsignedShortValue {
+    return self.lc_numberValue.unsignedShortValue;
 }
 
-- (unsigned int)unsignedIntValue {
-    return self.numberValue.unsignedIntValue;
+- (unsigned int)lc_unsignedIntValue {
+    return self.lc_numberValue.unsignedIntValue;
 }
 
-- (long)longValue {
-    return self.numberValue.longValue;
+- (long)lc_longValue {
+    return self.lc_numberValue.longValue;
 }
 
-- (unsigned long)unsignedLongValue {
-    return self.numberValue.unsignedLongValue;
+- (unsigned long)lc_unsignedLongValue {
+    return self.lc_numberValue.unsignedLongValue;
 }
 
-- (unsigned long long)unsignedLongLongValue {
-    return self.numberValue.unsignedLongLongValue;
+- (unsigned long long)lc_unsignedLongLongValue {
+    return self.lc_numberValue.unsignedLongLongValue;
 }
 
-- (NSUInteger)unsignedIntegerValue {
-    return self.numberValue.unsignedIntegerValue;
+- (NSUInteger)lc_unsignedIntegerValue {
+    return self.lc_numberValue.unsignedIntegerValue;
 }
 
-- (BOOL)isEmpty {
-    return (self == nil || [self isEqual:[NSNull null]] || self.length <= 0 || [self isEqualToString:@"(null)"] || [self isEqualToString:@"<null>"]);
++ (NSString *)lc_stringWithUUID {
+    CFUUIDRef uuid = CFUUIDCreate(NULL);
+    CFStringRef string = CFUUIDCreateString(NULL, uuid);
+    CFRelease(uuid);
+    return (__bridge_transfer NSString *)string;
 }
 
-- (BOOL)containsString:(NSString *)string {
-    if (string == nil) return NO;
-    return [self rangeOfString:string].location != NSNotFound;
++ (BOOL)lc_emptyString:(NSString *)string {
+    if ([string isKindOfClass:NSString.class]) {
+        return string.length == 0;
+    }
+    return YES;
 }
 
-- (NSString *)base64EncodedString {
-    return [[self dataUsingEncoding:NSUTF8StringEncoding] base64EncodedString];
+- (BOOL)lc_containsString:(NSString *)string {
+    return [self lc_containsString:string options:NSCaseInsensitiveSearch];
 }
 
-- (NSString *)base64DecodingString {
+- (BOOL)lc_containsString:(NSString *)str options:(NSStringCompareOptions)compareOptions {
+    return (str != nil) && ([str length] > 0) && ([self length] >= [str length]) && ([self rangeOfString:str options:compareOptions].location != NSNotFound);
+}
+
+- (BOOL)lc_hasPrefix:(NSString *)str {
+    return [self lc_hasPrefix:str options:NSCaseInsensitiveSearch];
+}
+
+- (BOOL)lc_hasPrefix:(NSString *)str options:(NSStringCompareOptions)compareOptions {
+    return (str != nil) && ([str length] > 0) && ([self length] >= [str length])
+    && ([self rangeOfString:str options:compareOptions].location == 0);
+}
+
+- (BOOL)lc_hasSuffix:(NSString *)str {
+    return [self lc_hasSuffix:str Options:NSCaseInsensitiveSearch];
+}
+
+- (BOOL)lc_hasSuffix:(NSString *)str Options:(NSStringCompareOptions)compareOptions {
+    return (str != nil) && ([str length] > 0) && ([self length] >= [str length])
+    && ([self rangeOfString:str options:(compareOptions | NSBackwardsSearch)].location == ([self length] - [str length]));
+}
+
+- (BOOL)lc_equalsString:(NSString *)str {
+    return (str != nil) && ([self length] == [str length]) && ([self rangeOfString:str options:NSCaseInsensitiveSearch].location == 0);
+}
+
+/// 去除字符串前后的空白,不包含换行符
+- (NSString *)lc_trim {
+    return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
+- (NSString *)lc_removeWhiteSpace {
+    return [[self componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] componentsJoinedByString:@""];
+}
+
+- (NSString *)lc_removeNewLine {
+    return [[self componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@""];
+}
+
+- (NSString *)lc_substringWithRange:(NSRange)range {
+    if ([NSString lc_emptyString:self]) {
+        return nil;
+    }
+    if (range.location > self.length) {
+        return nil;
+    }
+    if (range.location + range.length > self.length) {
+        return nil;
+    }
+    return [self substringWithRange:range];
+}
+
+- (NSString *)lc_base64EncodedString {
+    return [[self dataUsingEncoding:NSUTF8StringEncoding] lc_base64EncodedString];
+}
+
+- (NSString *)lc_base64DecodingString {
     NSData *data = [[NSData alloc] initWithBase64EncodedString:self options:0];
     NSString *domainBase64 =[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     return domainBase64;
 }
 
-- (NSData *)dataValue {
+- (NSData *)lc_dataValue {
     return [self dataUsingEncoding:NSUTF8StringEncoding];
 }
 
-- (id)jsonValue {
-    return [[self dataValue] jsonValue];
+- (id)lc_jsonValue {
+    return [[self lc_dataValue] lc_jsonValue];
 }
 
-- (NSNumber *)numberValue {
-    return [NSNumber numberWithString:self];
+- (NSNumber *)lc_numberValue {
+    return [NSNumber lc_numberWithString:self];
 }
 
-- (CGSize)sizeForFont:(UIFont *)font size:(CGSize)size mode:(NSLineBreakMode)lineBreakMode {
+- (BOOL)lc_containsEmoji {
+    __block BOOL returnValue = NO;
+    [self enumerateSubstringsInRange:NSMakeRange(0, [self length]) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
+        const unichar hs = [substring characterAtIndex:0];
+        if (0xd800 <= hs && hs <= 0xdbff)
+        {
+            if (substring.length > 1)
+            {
+                const unichar ls = [substring characterAtIndex:1];
+                const int uc = ((hs - 0xd800) * 0x400) + (ls - 0xdc00) + 0x10000;
+                if (0x1d000 <= uc && uc <= 0x1f77f)
+                {
+                    returnValue = YES;
+                }
+            }
+        }
+        else if (substring.length > 1)
+        {
+            const unichar ls = [substring characterAtIndex:1];
+            if (ls == 0x20e3)
+            {
+                returnValue = YES;
+            }
+        }
+        else
+        {
+            if (0x2100 <= hs && hs <= 0x27ff)
+            {
+                returnValue = YES;
+            }
+            else if (0x2B05 <= hs && hs <= 0x2b07)
+            {
+                returnValue = YES;
+            }
+            else if (0x2934 <= hs && hs <= 0x2935)
+            {
+                returnValue = YES;
+            }
+            else if (0x3297 <= hs && hs <= 0x3299)
+            {
+                returnValue = YES;
+            }
+            else if (hs == 0xa9 || hs == 0xae || hs == 0x303d || hs == 0x3030 || hs == 0x2b55 || hs == 0x2b1c || hs == 0x2b1b || hs == 0x2b50)
+            {
+                returnValue = YES;
+            }
+        }
+
+        *stop = returnValue;
+    }];
+    return returnValue;
+}
+
+- (CGSize)lc_sizeForFont:(UIFont *)font size:(CGSize)size mode:(NSLineBreakMode)lineBreakMode {
     CGSize result;
     if (!font) font = [UIFont systemFontOfSize:12];
     if ([self respondsToSelector:@selector(boundingRectWithSize:options:attributes:context:)]) {
@@ -103,61 +217,16 @@
     return result;
 }
 
-- (CGFloat)widthForFont:(UIFont *)font {
-    CGSize size = [self sizeForFont:font size:CGSizeMake(HUGE, HUGE) mode:NSLineBreakByWordWrapping];
+- (CGFloat)lc_widthForFont:(UIFont *)font {
+    CGSize size = [self lc_sizeForFont:font size:CGSizeMake(HUGE, HUGE) mode:NSLineBreakByWordWrapping];
     return size.width;
 }
 
-- (CGFloat)heightForFont:(UIFont *)font width:(CGFloat)width {
-    CGSize size = [self sizeForFont:font size:CGSizeMake(width, HUGE) mode:NSLineBreakByWordWrapping];
+- (CGFloat)lc_heightForFont:(UIFont *)font width:(CGFloat)width {
+    CGSize size = [self lc_sizeForFont:font size:CGSizeMake(width, HUGE) mode:NSLineBreakByWordWrapping];
     return size.height;
 }
 
-+ (NSString *)stringWithUUID {
-    CFUUIDRef uuid = CFUUIDCreate(NULL);
-    CFStringRef string = CFUUIDCreateString(NULL, uuid);
-    CFRelease(uuid);
-    return (__bridge_transfer NSString *)string;
-}
-
 @end
 
 
-@implementation NSString (LCMD5)
-- (NSString *)md5String {
-    return [[self dataUsingEncoding:NSUTF8StringEncoding] md5String];
-}
-
-- (NSString *)hmacMD5StringWithKey:(NSString *)key {
-    return [[self dataUsingEncoding:NSUTF8StringEncoding]
-            hmacMD5StringWithKey:key];
-}
-@end
-
-
-@implementation NSString (LCSHA)
-- (NSString *)hmacSHA1StringWithKey:(NSString *)key {
-    return [[self dataUsingEncoding:NSUTF8StringEncoding]
-            hmacSHA1StringWithKey:key];
-}
-
-- (NSString *)hmacSHA224StringWithKey:(NSString *)key {
-    return [[self dataUsingEncoding:NSUTF8StringEncoding]
-            hmacSHA224StringWithKey:key];
-}
-
-- (NSString *)hmacSHA256StringWithKey:(NSString *)key {
-    return [[self dataUsingEncoding:NSUTF8StringEncoding]
-            hmacSHA256StringWithKey:key];
-}
-
-- (NSString *)hmacSHA384StringWithKey:(NSString *)key {
-    return [[self dataUsingEncoding:NSUTF8StringEncoding]
-            hmacSHA384StringWithKey:key];
-}
-
-- (NSString *)hmacSHA512StringWithKey:(NSString *)key {
-    return [[self dataUsingEncoding:NSUTF8StringEncoding]
-            hmacSHA512StringWithKey:key];
-}
-@end

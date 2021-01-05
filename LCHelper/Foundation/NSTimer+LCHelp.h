@@ -19,7 +19,7 @@
  *  @param repeats  是否重复
  *  @param aAction  回调闭包
  */
-+ (void)scheduledGCDTimerWithKey:(NSString *)aKey
++ (void)lc_scheduledGCDTimerWithKey:(NSString *)aKey
                     TimeInterval:(double)interval
                            queue:(dispatch_queue_t)queue
                          repeats:(BOOL)repeats
@@ -30,10 +30,10 @@
  *
  *  @param aKey 唯一的key
  */
-+ (void)cancelWithKey:(NSString *)aKey;
++ (void)lc_cancelWithKey:(NSString *)aKey;
 
 /**
  *  取消所有通过CGD创建的定时器
  */
-+ (void)cancelAll ;
++ (void)lc_cancelAll ;
 @end

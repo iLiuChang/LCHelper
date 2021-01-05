@@ -65,12 +65,12 @@ typedef void (^LCSrartRefreshingBlock)();
     if (!_indView) {
         UIActivityIndicatorView *indView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:(UIActivityIndicatorViewStyleWhite)];
         
-        indView.frame = CGRectMake(0, -IndViewHeight, self.scrollView.width, IndViewHeight);
+        indView.frame = CGRectMake(0, -IndViewHeight, self.scrollView.lc_width, IndViewHeight);
         [self.scrollView addSubview:indView];
         _indView = indView;
     }
-    if (_indView.width == 0) {
-        _indView.width = self.scrollView.width;
+    if (_indView.lc_width == 0) {
+        _indView.lc_width = self.scrollView.lc_width;
     }
     return _indView;
 }
@@ -102,7 +102,7 @@ typedef void (^LCSrartRefreshingBlock)();
         }
     }
     // bottom
-    CGFloat maxFootY = self.scrollView.contentSize.height - self.scrollView.height;
+    CGFloat maxFootY = self.scrollView.contentSize.height - self.scrollView.lc_height;
     if (self.footerBlock && !self.footerRefreshHidden && maxFootY > 0 && offsetY > maxFootY) {
         CGFloat b = offsetY - maxFootY;
         if (b > IndViewHeight && self.indView.isAnimating) {
@@ -137,7 +137,7 @@ typedef void (^LCSrartRefreshingBlock)();
     }
     
     // bottom
-    CGFloat maxFootY = self.scrollView.contentSize.height - self.scrollView.height;
+    CGFloat maxFootY = self.scrollView.contentSize.height - self.scrollView.lc_height;
     if (self.footerBlock && !self.footerRefreshHidden && maxFootY > 0 && offsetY > maxFootY) {
         CGFloat b = offsetY - maxFootY;
         if (b >= 0 && b < IndViewHeight) {
@@ -172,13 +172,13 @@ typedef void (^LCSrartRefreshingBlock)();
 }
 
 -(void)startHeaderRefreshing {
-    self.indView.top = -IndViewHeight;
+    self.indView.lc_top = -IndViewHeight;
     [self.indView startAnimating];
     self.scrollView.contentInset = UIEdgeInsetsMake(IndViewHeight, 0, 0, 0);
 }
 
 -(void)startFooterRefreshing {
-    self.indView.top = self.scrollView.contentSize.height;
+    self.indView.lc_top = self.scrollView.contentSize.height;
     [self.indView startAnimating];
     self.scrollView.contentInset = UIEdgeInsetsMake(0, 0, IndViewHeight, 0);
 }
@@ -230,59 +230,59 @@ static const char LCRefreshScrollViewManagerKey = '\0';
     return manager;
 }
 
-- (void)setRefreshStyle:(LCRefreshStyle)refreshStyle {
+- (void)setLc_refreshStyle:(LCRefreshStyle)refreshStyle {
     [self refreshManager].refreshStyle = refreshStyle;
 }
 
-- (LCRefreshStyle)refreshStyle {
+- (LCRefreshStyle)lc_refreshStyle {
     return [self refreshManager].refreshStyle;
 }
 
-- (void)setRefreshActivityIndicatorViewStyle:(UIActivityIndicatorViewStyle)refreshActivityIndicatorViewStyle {
-    [self refreshManager].indView.activityIndicatorViewStyle = refreshActivityIndicatorViewStyle;
+- (void)setLc_refreshActivityIndicatorStyle:(UIActivityIndicatorViewStyle)refreshActivityIndicatorStyle {
+    [self refreshManager].indView.activityIndicatorViewStyle = refreshActivityIndicatorStyle;
 }
 
-- (UIActivityIndicatorViewStyle)refreshActivityIndicatorViewStyle {
+- (UIActivityIndicatorViewStyle)lc_refreshActivityIndicatorStyle {
     return [self refreshManager].indView.activityIndicatorViewStyle;
 }
 
-- (void)setHeaderRefreshHidden:(BOOL)headerRefreshHidden {
+- (void)setLc_headerRefreshHidden:(BOOL)headerRefreshHidden {
     [self refreshManager].headerRefreshHidden = headerRefreshHidden;
 }
 
-- (BOOL)headerRefreshHidden {
+- (BOOL)lc_headerRefreshHidden {
     return [self refreshManager].headerRefreshHidden;
 }
 
-- (void)setFooterRefreshHidden:(BOOL)footerRefreshHidden {
+- (void)setLc_footerRefreshHidden:(BOOL)footerRefreshHidden {
     [self refreshManager].footerRefreshHidden = footerRefreshHidden;
 }
 
-- (BOOL)footerRefreshHidden {
+- (BOOL)lc_footerRefreshHidden {
     return [self refreshManager].footerRefreshHidden;
 }
 
-- (BOOL)isRefreshing {
+- (BOOL)lc_refreshing {
     return [self refreshManager].isRefreshing;
 }
 
-- (void)startHeaderRefreshing {
+- (void)lc_startHeaderRefreshing {
     [[self refreshManager] startHeaderRefreshing];
 }
 
-- (void)startFooterRefreshing {
+- (void)lc_startFooterRefreshing {
     [[self refreshManager] startFooterRefreshing];
 }
 
-- (void)endRefreshing {
+- (void)lc_endRefreshing {
     [[self refreshManager] endRefreshing];
 }
 
-- (void)addHeaderRefreshing:(void (^)())completionHander {
+- (void)lc_addHeaderRefreshing:(void (^)())completionHander {
     [[self refreshManager] addHeaderRefreshing:completionHander];
 }
 
-- (void)addFooterRefreshing:(void (^)())completionHander {
+- (void)lc_addFooterRefreshing:(void (^)())completionHander {
     [[self refreshManager] addFooterRefreshing:completionHander];
 }
 

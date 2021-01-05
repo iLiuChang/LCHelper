@@ -14,15 +14,15 @@
 
 @implementation NSDictionary (LCHelp)
 
-- (NSString*)jsonString {
-    return [self jsonStringWithOptions:0];
+- (NSString*)lc_jsonString {
+    return [self lc_jsonStringWithOptions:0];
 }
 
-- (NSString *)jsonPrettyString {
-    return [self jsonStringWithOptions:NSJSONWritingPrettyPrinted];
+- (NSString *)lc_jsonPrettyString {
+    return [self lc_jsonStringWithOptions:NSJSONWritingPrettyPrinted];
 }
 
-- (NSString *)jsonStringWithOptions:(NSJSONWritingOptions)opt {
+- (NSString *)lc_jsonStringWithOptions:(NSJSONWritingOptions)opt {
     if ([NSJSONSerialization isValidJSONObject:self]) {
         NSError *error;
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self options:opt error:&error];
@@ -32,8 +32,8 @@
     return nil;
 }
 
-+ (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonStr {
-    id value = [jsonStr jsonValue];
++ (NSDictionary *)lc_dictionaryWithJsonString:(NSString *)jsonStr {
+    id value = [jsonStr lc_jsonValue];
     if (value && [value isKindOfClass:[NSDictionary class]]) {
         return value;
     }
@@ -44,7 +44,7 @@
 
 @implementation NSDictionary (LCSafe)
 
-- (id)safeObjectForKey:(id)key{
+- (id)lc_objectForKey:(id)key{
     if (!isValidKey(key)) {
         return nil;
     }
@@ -54,23 +54,23 @@
     return obj;
 }
 
-- (int)intValueForKey:(id)key{
-    id obj = [self safeObjectForKey:key];
+- (int)lc_intValueForKey:(id)key{
+    id obj = [self lc_objectForKey:key];
     return [obj intValue];
 }
 
-- (NSInteger)integerValueForKey:(id)key{
-    id obj = [self safeObjectForKey:key];
+- (NSInteger)lc_integerValueForKey:(id)key{
+    id obj = [self lc_objectForKey:key];
     return [obj integerValue];
 }
 
-- (double)doubleValueForKey:(id)key{
-    id obj = [self safeObjectForKey:key];
+- (double)lc_doubleValueForKey:(id)key{
+    id obj = [self lc_objectForKey:key];
     return [obj doubleValue];
 }
 
-- (NSString*)stringValueForKey:(id)key{
-    id obj = [self safeObjectForKey:key];
+- (NSString*)lc_stringValueForKey:(id)key{
+    id obj = [self lc_objectForKey:key];
     if ([obj isKindOfClass:NSString.class]) {
         return obj;
     }
@@ -85,7 +85,7 @@
 
 @implementation NSMutableDictionary(LCSafe)
 
-- (void)safeSetObject:(id)anObject forKey:(id)aKey{
+- (void)lc_setObject:(id)anObject forKey:(id)aKey{
     if (!isValidKey(aKey)) {
         return;
     }

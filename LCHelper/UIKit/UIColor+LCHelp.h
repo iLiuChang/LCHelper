@@ -15,12 +15,12 @@
  *
  *  @param hexStr 比如：@"0xF0F", @"66ccff", @"#66CCFF88"
  */
-+ (UIColor *)colorWithHexString:(NSString *)hexStr;
++ (UIColor *)lc_colorWithHexString:(NSString *)hexStr;
 
-+ (UIColor *)colorWithRGB:(uint32_t)rgbValue;
++ (UIColor *)lc_colorWithRGB:(uint32_t)rgbValue;
 
-+ (UIColor *)colorWithRGBA:(uint32_t)rgbaValue;
++ (UIColor *)lc_colorWithRGBA:(uint32_t)rgbaValue;
 
-+ (UIColor *)colorWithRGB:(uint32_t)rgbValue alpha:(CGFloat)alpha;
++ (UIColor *)lc_colorWithRGB:(uint32_t)rgbValue alpha:(CGFloat)alpha;
 
 @end

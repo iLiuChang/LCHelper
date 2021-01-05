@@ -10,40 +10,13 @@
 
 @interface NSData (LCHelp)
 
-- (id)jsonValue;
+- (id)lc_jsonValue;
 
-- (NSString *)base64EncodedString;
+- (NSString *)lc_base64EncodedString;
 
 @end
 
 
-@interface NSData (LCMD5)
-- (NSString *)md5String;
-
-- (NSString *)hmacMD5StringWithKey:(NSString *)key;
-
-- (NSData *)hmacMD5DataWithKey:(NSData *)key;
-@end
 
 
-@interface NSData (LCSHA)
-- (NSString *)hmacSHA1StringWithKey:(NSString *)key;
 
-- (NSData *)hmacSHA1DataWithKey:(NSData *)key;
-
-- (NSString *)hmacSHA224StringWithKey:(NSString *)key;
-
-- (NSData *)hmacSHA224DataWithKey:(NSData *)key;
-
-- (NSString *)hmacSHA256StringWithKey:(NSString *)key;
-
-- (NSData *)hmacSHA256DataWithKey:(NSData *)key;
-
-- (NSString *)hmacSHA384StringWithKey:(NSString *)key;
-
-- (NSData *)hmacSHA384DataWithKey:(NSData *)key;
-
-- (NSString *)hmacSHA512StringWithKey:(NSString *)key;
-
-- (NSData *)hmacSHA512DataWithKey:(NSData *)key;
-@end

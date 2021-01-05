@@ -18,6 +18,7 @@
 #import "NSData+LCHelp.h"
 #import "NSDictionary+LCHelp.h"
 #import "NSArray+LCHelp.h"
+#import "LCCrypto.h"
 
 // UIKit
 #import "UIBarButtonItem+LCHelp.h"

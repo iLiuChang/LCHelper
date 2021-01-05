@@ -22,13 +22,13 @@
     t.frame = CGRectMake(100, self.view.frame.size.height - 300, 100, 50);
     t.backgroundColor = [UIColor redColor];
     [self.view addSubview:t];
-    [t addKeyboardObserver];
+    [t lc_addKeyboardObserver];
     
     UITextField *t2 = [[UITextField alloc] init];
     t2.frame = CGRectMake(100, self.view.frame.size.height - 200, 100, 50);
     t2.backgroundColor = [UIColor grayColor];
     [self.view addSubview:t2];
-    [t2 addKeyboardObserver];
+    [t2 lc_addKeyboardObserver];
     
 }
 
