@@ -10,12 +10,15 @@
 
 @interface UIColor (LCHelp)
 
+/// 废弃 请使用 "lc_colorWithHex:"
++ (UIColor *)colorWithHexString:(NSString *)hexStr;
+
 /**
  *  十六进制转RGB颜色
  *
  *  @param hexStr 比如：@"0xF0F", @"66ccff", @"#66CCFF88"
  */
-+ (UIColor *)lc_colorWithHexString:(NSString *)hexStr;
++ (UIColor *)lc_colorWithHex:(NSString *)hexStr;
 
 + (UIColor *)lc_colorWithRGB:(uint32_t)rgbValue;
 

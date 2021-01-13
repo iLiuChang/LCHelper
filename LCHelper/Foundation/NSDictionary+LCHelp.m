@@ -44,6 +44,10 @@
 
 @implementation NSDictionary (LCSafe)
 
+- (id)safeObjectForKey:(id)key {
+    return [self lc_objectForKey:key];
+}
+
 - (id)lc_objectForKey:(id)key{
     if (!isValidKey(key)) {
         return nil;
