@@ -226,7 +226,7 @@ static const char LCDoubleTapGestureRecognizerKey = '\0';
     objc_setAssociatedObject(self, &LCDoubleTapGestureRecognizerKey, tap, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (void (^)())doubleTapBlock{
+- (void (^)(void))doubleTapBlock{
     return objc_getAssociatedObject(self, &LCDoubleTapGestureRecognizerKey);
 }
 

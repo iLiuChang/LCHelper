@@ -42,7 +42,7 @@
 
 - (void)reload {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        count+=10;
+        self->count+=10;
         [self.tableView reloadData];
         
         [self.tableView lc_endRefreshing];
