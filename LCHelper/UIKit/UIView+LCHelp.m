@@ -213,16 +213,16 @@
 @implementation UIView (LCTapBlock)
 
 static const char LCSingleTapGestureRecognizerKey = '\0';
-- (void)setSingleTapBlock:(void (^)())tap{
+- (void)setSingleTapBlock:(void (^)(void))tap{
     objc_setAssociatedObject(self, &LCSingleTapGestureRecognizerKey, tap, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (void (^)())singleTapBlock{
+- (void (^)(void))singleTapBlock{
     return objc_getAssociatedObject(self, &LCSingleTapGestureRecognizerKey);
 }
 
 static const char LCDoubleTapGestureRecognizerKey = '\0';
-- (void)setDoubleTapBlock:(void (^)())tap{
+- (void)setDoubleTapBlock:(void (^)(void))tap{
     objc_setAssociatedObject(self, &LCDoubleTapGestureRecognizerKey, tap, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
@@ -230,13 +230,13 @@ static const char LCDoubleTapGestureRecognizerKey = '\0';
     return objc_getAssociatedObject(self, &LCDoubleTapGestureRecognizerKey);
 }
 
-- (void)lc_addTapGestureRecognizer:(void (^)())handler {
+- (void)lc_addTapGestureRecognizer:(void (^)(void))handler {
     UITapGestureRecognizer* gesture = [self addTapGestureRecognizerWithTaps:1 touches:1 selector:@selector(lc_singleTap)];
     [self addRequiredToDoubleTapsRecognizer:gesture];
     [self setSingleTapBlock:handler];
 }
 
-- (void)lc_addDoubleTapGestureRecognizer:(void (^)())handler {
+- (void)lc_addDoubleTapGestureRecognizer:(void (^)(void))handler {
     UITapGestureRecognizer* gesture = [self addTapGestureRecognizerWithTaps:2 touches:1 selector:@selector(lc_doubleTap)];
     [self addRequirementToSingleTapsRecognizer:gesture];
     [self setDoubleTapBlock:handler];

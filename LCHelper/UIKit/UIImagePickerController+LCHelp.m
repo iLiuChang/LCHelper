@@ -21,11 +21,11 @@ static const char LCUIImagePickerControllerFinishKey = '\0';
 }
 
 static const char LCUIImagePickerControllerCancelKey = '\0';
-- (void)setCancelBlock:(void (^)())cancel{
+- (void)setCancelBlock:(void (^)(void))cancel{
     objc_setAssociatedObject(self, &LCUIImagePickerControllerCancelKey, cancel, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (void (^)())cancelBlock{
+- (void (^)(void))cancelBlock{
     return objc_getAssociatedObject(self, &LCUIImagePickerControllerCancelKey);
 }
 
@@ -33,7 +33,7 @@ static const char LCUIImagePickerControllerCancelKey = '\0';
     return [self lc_imagePickerWithFinishHandler:finishHandler cancelHandler:nil];
 }
 
-+ (UIImagePickerController *)lc_imagePickerWithFinishHandler:(void (^)(NSDictionary *))finishHandler cancelHandler:(void (^)())cancelHandler {
++ (UIImagePickerController *)lc_imagePickerWithFinishHandler:(void (^)(NSDictionary *))finishHandler cancelHandler:(void (^)(void))cancelHandler {
     UIImagePickerController *vc = [[UIImagePickerController alloc] init];
     vc.delegate = vc;
     if (finishHandler) {

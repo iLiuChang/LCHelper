@@ -62,12 +62,12 @@
  *  添加单击手势
  *
  */
-- (void)lc_addTapGestureRecognizer:(void (^)())handler;
+- (void)lc_addTapGestureRecognizer:(void (^)(void))handler;
 
 /**
  *  添加双击击手势
  *
  */
-- (void)lc_addDoubleTapGestureRecognizer:(void (^)())handler;
+- (void)lc_addDoubleTapGestureRecognizer:(void (^)(void))handler;
 
 @end

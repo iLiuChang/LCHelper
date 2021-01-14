@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void (^LCSrartRefreshingBlock)(void);
+
 typedef enum : NSUInteger {
     LCRefreshStylePulling,       // 松开后才会刷新，默认
     LCRefreshStyleDidChange,     // 只要超出范围就会刷新
@@ -61,13 +63,13 @@ typedef enum : NSUInteger {
  *  添加头部刷新
  *  completionHander: 完成回调
  */
--(void)lc_addHeaderRefreshing: (void (^)())completionHander;
+-(void)lc_addHeaderRefreshing:(LCSrartRefreshingBlock)completionHander;
 
 /**
  *  添加底部刷新
  *  completionHander: 完成回调
  */
--(void)lc_addFooterRefreshing: (void (^)())completionHander;
+-(void)lc_addFooterRefreshing:(LCSrartRefreshingBlock)completionHander;
 
 @end
 

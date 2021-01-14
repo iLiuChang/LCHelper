@@ -14,8 +14,6 @@
 #define LCRefreshKeyPathContentOffset @"contentOffset"
 #define LcRefreshKeyPathPanState @"state"
 
-typedef void (^LCSrartRefreshingBlock)();
-
 @interface LCRefreshScrollViewManager: NSObject
 
 @property (strong, nonatomic) UIScrollView *scrollView;
@@ -278,11 +276,11 @@ static const char LCRefreshScrollViewManagerKey = '\0';
     [[self refreshManager] endRefreshing];
 }
 
-- (void)lc_addHeaderRefreshing:(void (^)())completionHander {
+- (void)lc_addHeaderRefreshing:(LCSrartRefreshingBlock)completionHander {
     [[self refreshManager] addHeaderRefreshing:completionHander];
 }
 
-- (void)lc_addFooterRefreshing:(void (^)())completionHander {
+- (void)lc_addFooterRefreshing:(LCSrartRefreshingBlock)completionHander {
     [[self refreshManager] addFooterRefreshing:completionHander];
 }
 

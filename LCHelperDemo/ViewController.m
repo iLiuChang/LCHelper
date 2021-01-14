@@ -34,12 +34,13 @@
         NSLog(@"double tap");
     }];
 
+    [[UIAlertView lc_alertWithTitle:@"nihao" message:nil buttonIndex:nil buttonTitles:@"12", nil] show];
 }
 
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    FirstViewController *vc = [[FirstViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+//- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+//    FirstViewController *vc = [[FirstViewController alloc] init];
+//    [self.navigationController pushViewController:vc animated:YES];
 //    [[UIActionSheet actionSheetWithTitle:@"232" buttonIndex:^(NSInteger index) {
 //                NSLog(@"%ld", index);
 //
@@ -55,7 +56,7 @@
 //
 //    [self.scrollView reloadData];
     
-}
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
