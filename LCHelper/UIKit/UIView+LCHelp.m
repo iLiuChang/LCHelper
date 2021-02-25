@@ -70,6 +70,43 @@
     frame.size.height = height;
     self.frame = frame;
 }
+
+- (CGFloat)centerX {
+    return self.center.x;
+}
+
+- (void)setCenterX:(CGFloat)centerX {
+    self.center = CGPointMake(centerX, self.center.y);
+}
+
+- (CGFloat)centerY {
+    return self.center.y;
+}
+
+- (void)setCenterY:(CGFloat)centerY {
+    self.center = CGPointMake(self.center.x, centerY);
+}
+
+- (CGPoint)origin {
+    return self.frame.origin;
+}
+
+- (void)setOrigin:(CGPoint)origin {
+    CGRect frame = self.frame;
+    frame.origin = origin;
+    self.frame = frame;
+}
+
+- (CGSize)size
+{
+    return self.frame.size;
+}
+
+- (void)setSize:(CGSize)size {
+    CGRect frame = self.frame;
+    frame.size = size;
+    self.frame = frame;
+}
 //===============================
 
 - (CGFloat)lc_left {

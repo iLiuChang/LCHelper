@@ -55,6 +55,18 @@ static BOOL hexStrToRGBA(NSString *str,
     return [self lc_colorWithHex:hexStr];
 }
 
++ (UIColor *)colorWithRGB:(uint32_t)rgbValue {
+    return [UIColor lc_colorWithRGB:rgbValue];
+}
+
++ (UIColor *)colorWithRGBA:(uint32_t)rgbaValue {
+    return [UIColor lc_colorWithRGBA:rgbaValue];
+}
+
++ (UIColor *)colorWithRGB:(uint32_t)rgbValue alpha:(CGFloat)alpha {
+    return [UIColor lc_colorWithRGB:rgbValue alpha:alpha];
+}
+
 + (UIColor *)lc_colorWithHex:(NSString *)hexStr {
     CGFloat r, g, b, a;
     if (hexStrToRGBA(hexStr, &r, &g, &b, &a)) {
