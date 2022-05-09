@@ -8,36 +8,24 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void (^LCSrartRefreshingBlock)(void);
-
-typedef enum : NSUInteger {
-    LCRefreshStylePulling,       // 松开后才会刷新，默认
-    LCRefreshStyleDidChange,     // 只要超出范围就会刷新
-} LCRefreshStyle;
-
+typedef void (^LCRefreshActionHandler)(void);
 
 @interface UIScrollView (LCRefresh)
 
 /**
- *  刷新类型
- */
-@property(nonatomic, assign) LCRefreshStyle lc_refreshStyle;
-
-
-/**
- *  刷新控件类型 default is UIActivityIndicatorViewStyleWhite
+ *  刷新控件类型 default is UIActivityIndicatorViewStyleGray
  */
 @property(nonatomic, assign) UIActivityIndicatorViewStyle lc_refreshActivityIndicatorStyle;
 
 /**
  *  是否需要头部刷新
  */
-@property(nonatomic, assign) BOOL lc_headerRefreshHidden;
+@property(nonatomic, assign) BOOL lc_headerRefreshEnabled;
 
 /**
  *  是否需要底部刷新
  */
-@property(nonatomic, assign) BOOL lc_footerRefreshHidden;
+@property(nonatomic, assign) BOOL lc_footerRefreshEnabled;
 
 /**
  *  是否正在刷新
@@ -47,12 +35,12 @@ typedef enum : NSUInteger {
 /**
  *  开始头部刷新
  */
--(void)lc_startHeaderRefreshing;
+-(void)lc_beginHeaderRefreshing;
 
 /**
  *  开始底部刷新
  */
--(void)lc_startFooterRefreshing;
+-(void)lc_beginFooterRefreshing;
 
 /**
  *  取消所有刷新
@@ -61,15 +49,15 @@ typedef enum : NSUInteger {
 
 /**
  *  添加头部刷新
- *  completionHander: 完成回调
+ *  actionHandler: 完成回调
  */
--(void)lc_addHeaderRefreshing:(LCSrartRefreshingBlock)completionHander;
+-(void)lc_addHeaderRefreshingWithActionHandler:(LCRefreshActionHandler)actionHandler;
 
 /**
  *  添加底部刷新
- *  completionHander: 完成回调
+ *  actionHandler: 完成回调
  */
--(void)lc_addFooterRefreshing:(LCSrartRefreshingBlock)completionHander;
+-(void)lc_addFooterRefreshingWithActionHandler:(LCRefreshActionHandler)actionHandler;
 
 @end
 

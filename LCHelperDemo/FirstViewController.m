@@ -20,7 +20,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    count = 10;
 
     UITableView *tableView = [[UITableView alloc] init];
     tableView.frame = self.view.bounds;
@@ -31,18 +30,28 @@
     [self.view addSubview:tableView];
     self.tableView = tableView;
     
+    tableView.lc_refreshActivityIndicatorStyle = UIActivityIndicatorViewStyleLarge;
+ 
     __weak __typeof(self) weakSelf = self;
-    [tableView lc_addFooterRefreshing:^{
-        [weakSelf reload];
+    [tableView lc_addHeaderRefreshingWithActionHandler:^{
+        [weakSelf reload:YES];
+
     }];
-    
-    tableView.lc_refreshActivityIndicatorStyle = UIActivityIndicatorViewStyleGray;
+    [tableView lc_beginHeaderRefreshing];
+    [tableView lc_addFooterRefreshingWithActionHandler:^{
+        [weakSelf reload:NO];
+    }];
     
 }
 
-- (void)reload {
+- (void)reload:(BOOL)header {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        self->count+=10;
+        if (header) {
+            self->count=10;
+        } else {
+            self->count+=10;
+
+        }
         [self.tableView reloadData];
         
         [self.tableView lc_endRefreshing];

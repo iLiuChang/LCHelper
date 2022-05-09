@@ -34,29 +34,28 @@
         NSLog(@"double tap");
     }];
 
-    [[UIAlertView lc_alertWithTitle:@"nihao" message:nil buttonIndex:nil buttonTitles:@"12", nil] show];
 }
 
 
-//- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-//    FirstViewController *vc = [[FirstViewController alloc] init];
-//    [self.navigationController pushViewController:vc animated:YES];
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    FirstViewController *vc = [[FirstViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 //    [[UIActionSheet actionSheetWithTitle:@"232" buttonIndex:^(NSInteger index) {
 //                NSLog(@"%ld", index);
 //
 //    } cancelButtonTitle:@"取消" otherButtonTitles:@"1",@"2", nil] showInView:self.view] ;
- 
+//
 //    [[UIAlertView alertWithTitle:@"提示" message:@"好的" buttonIndex:^(NSInteger index) {
 //        NSLog(@"%ld", index);
 //    } cancelButtonTitle:@"取消" otherButtonTitles:@"其他", @"开始", nil] show] ;
-    
+//
 //    self.images = @[[UIImage imageWithColor:[UIColor redColor] size:CGSizeMake(20, 20)],
 //                    [UIImage imageWithColor:[UIColor yellowColor] size:CGSizeMake(20, 20)],
 //                    [UIImage imageWithColor:[UIColor magentaColor] size:CGSizeMake(20, 20)]];
 //
 //    [self.scrollView reloadData];
     
-//}
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

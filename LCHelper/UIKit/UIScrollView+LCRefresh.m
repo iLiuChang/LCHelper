@@ -7,104 +7,116 @@
 //
 
 #import "UIScrollView+LCRefresh.h"
-#import "UIView+LCHelp.h"
 #import <objc/runtime.h>
+#import "UIView+LCHelp.h"
 
-#define IndViewHeight 30
 #define LCRefreshKeyPathContentOffset @"contentOffset"
-#define LcRefreshKeyPathPanState @"state"
+#define LCRefreshKeyPathPanState @"state"
+#define LCRefreshKeyPathContentSize @"contentSize"
 
-@interface LCRefreshScrollViewManager: NSObject
+static CGFloat LCRefreshActivityIndicatorHeight = 30;
+@interface LCPullToRefreshManager: NSObject
 
 @property (strong, nonatomic) UIScrollView *scrollView;
 
 @property(nonatomic, strong) UIActivityIndicatorView *indView;
 
-@property(nonatomic, copy) LCSrartRefreshingBlock headerBlock;
+@property(nonatomic, copy) LCRefreshActionHandler headerBlock;
 
-@property(nonatomic, copy) LCSrartRefreshingBlock footerBlock;
+@property(nonatomic, copy) LCRefreshActionHandler footerBlock;
 
 @property(nonatomic, assign) BOOL isAddObserver;
 
-@property(nonatomic, assign) UIGestureRecognizerState cuttentState;
+@property(nonatomic, assign) BOOL headerRefreshEnabled;
 
-@property(nonatomic, assign) LCRefreshStyle refreshStyle;
+@property(nonatomic, assign) BOOL footerRefreshEnabled;
 
-@property(nonatomic, assign) BOOL headerRefreshHidden;
+@property(nonatomic, assign) UIEdgeInsets scrollViewSafeInset;
 
-@property(nonatomic, assign) BOOL footerRefreshHidden;
+@property(nonatomic, assign) UIEdgeInsets scrollViewStartInset;
 
--(void)startHeaderRefreshing;
+@property(nonatomic, assign) BOOL isRefreshing;
 
--(void)startFooterRefreshing;
+@property(nonatomic, assign) BOOL isHavePanAction;
+
+-(void)beginHeaderRefreshing;
+
+-(void)beginFooterRefreshing;
 
 -(void)endRefreshing;
 
--(void)addHeaderRefreshing: (LCSrartRefreshingBlock)completionHander;
+-(void)addHeaderRefreshing: (LCRefreshActionHandler)completionHander;
 
--(void)addFooterRefreshing: (LCSrartRefreshingBlock)completionHander;
+-(void)addFooterRefreshing: (LCRefreshActionHandler)completionHander;
 
 - (instancetype)initWithScrollView:(UIScrollView *)scrollView;
 
 @end
 
-@implementation LCRefreshScrollViewManager
+@implementation LCPullToRefreshManager
 
 - (instancetype)initWithScrollView:(UIScrollView *)scrollView
 {
     self = [super init];
     if (self) {
-        self.scrollView = scrollView;
+        _headerRefreshEnabled = YES;
+        _footerRefreshEnabled = YES;
+        _scrollView = scrollView;
+        _scrollViewStartInset = scrollView.contentInset;
     }
     return self;
 }
 
 - (UIActivityIndicatorView *)indView {
     if (!_indView) {
-        UIActivityIndicatorView *indView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:(UIActivityIndicatorViewStyleWhite)];
-        
-        indView.frame = CGRectMake(0, -IndViewHeight, self.scrollView.lc_width, IndViewHeight);
+        UIActivityIndicatorView *indView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:(UIActivityIndicatorViewStyleGray)];
+        indView.frame = CGRectMake(0, -LCRefreshActivityIndicatorHeight, self.scrollView.lc_width, LCRefreshActivityIndicatorHeight);
         [self.scrollView addSubview:indView];
         _indView = indView;
-    }
-    if (_indView.lc_width == 0) {
-        _indView.lc_width = self.scrollView.lc_width;
     }
     return _indView;
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-    if ([keyPath isEqualToString:LcRefreshKeyPathPanState]) {
+    if ([keyPath isEqualToString:LCRefreshKeyPathPanState]) {
         [self scrollViewPanStateDidChange:change];
-    } else if ([keyPath isEqual: LCRefreshKeyPathContentOffset]) {
+    } else if ([keyPath isEqualToString:LCRefreshKeyPathContentOffset]) {
         [self scrollViewContentOffsetDidChange:change];
+    } else if ([keyPath isEqualToString:LCRefreshKeyPathContentSize]) {
+        [self scrollViewLayout:change];
     }
 }
 
+- (void)scrollViewLayout:(NSDictionary *)change {
+    self.indView.lc_width = self.scrollView.contentSize.width;
+}
+
 - (void)scrollViewPanStateDidChange:(NSDictionary *)change{
+    _isHavePanAction = YES;
     
-    self.cuttentState = self.scrollView.panGestureRecognizer.state;
     if (self.scrollView.panGestureRecognizer.state != UIGestureRecognizerStateEnded) {
         return;
     }
-    if (self.refreshStyle == LCRefreshStyleDidChange) {
-        return;
-    }
-    CGFloat offsetY = self.scrollView.contentOffset.y;
-    // top
-    if (self.headerBlock && !self.headerRefreshHidden && offsetY < 0) {
-        if (offsetY < -IndViewHeight && self.indView.isAnimating) {
-            self.headerBlock();
-        } else {
-            [self endRefreshing];
-        }
-    }
-    // bottom
-    CGFloat maxFootY = self.scrollView.contentSize.height - self.scrollView.lc_height;
-    if (self.footerBlock && !self.footerRefreshHidden && maxFootY > 0 && offsetY > maxFootY) {
-        CGFloat b = offsetY - maxFootY;
-        if (b > IndViewHeight && self.indView.isAnimating) {
-            self.footerBlock();
+ 
+    if (self.indView.isAnimating && !_isRefreshing) {
+        if ([self isHeaderRefreshingActionWithOffset:LCRefreshActivityIndicatorHeight]) {
+            [UIView animateWithDuration:0.25 animations:^{
+                UIEdgeInsets contentInset = self.scrollViewStartInset;
+                contentInset.top += LCRefreshActivityIndicatorHeight;
+                self.scrollView.contentInset = contentInset;
+            } completion:^(BOOL finished) {
+                self.isRefreshing = YES;
+                self.headerBlock();
+            }];
+        } else if ([self isFooterRefreshingActionWithOffset:LCRefreshActivityIndicatorHeight]) {
+            [UIView animateWithDuration:0.25 animations:^{
+                UIEdgeInsets contentInset = self.scrollViewStartInset;
+                contentInset.bottom += LCRefreshActivityIndicatorHeight;
+                self.scrollView.contentInset = contentInset;
+            } completion:^(BOOL finished) {
+                self.isRefreshing = YES;
+                self.footerBlock();
+            }];
         } else {
             [self endRefreshing];
         }
@@ -112,80 +124,98 @@
 }
 
 - (void)scrollViewContentOffsetDidChange:(NSDictionary *)change{
-    //    if (self.isZooming || self.zoomScale != self.minimumZoomScale) {
-    //        return;
-    //    }
+    if (!_isHavePanAction) {
+        if (@available(iOS 11.0, *)) {
+            _scrollViewSafeInset = self.scrollView.adjustedContentInset;
+        } else {
+            _scrollViewSafeInset = self.scrollView.contentInset;
+        }
+    }
     
+    if (self.isRefreshing || !self.scrollView.isTracking || self.indView.isAnimating) {
+        return;
+    }
+ 
+    if ([self isHeaderRefreshingActionWithOffset:10]) {
+        [self.indView startAnimating];
+        self.indView.lc_top = -LCRefreshActivityIndicatorHeight;
+    } else if ([self isFooterRefreshingActionWithOffset:10]) {
+        [self.indView startAnimating];
+        self.indView.lc_top = self.scrollView.contentSize.height;
+    }
+}
+
+- (BOOL)isHeaderRefreshingActionWithOffset:(CGFloat)offset {
     CGFloat offsetY = self.scrollView.contentOffset.y;
-    // top
-    if (self.headerBlock && !self.headerRefreshHidden && offsetY < 0) {
-        if (offsetY > -IndViewHeight) {
-            self.scrollView.contentInset = UIEdgeInsetsMake(-offsetY, 0, 0, 0);
-        }
-        if (offsetY < -IndViewHeight && !self.indView.isAnimating) {
-            if (self.refreshStyle == LCRefreshStyleDidChange) {
-                [self startHeaderRefreshing];
-                self.headerBlock();
-            } else {
-                if (self.scrollView.isTracking) {
-                    [self startHeaderRefreshing];
-                }
-            }
-        }
-    }
-    
-    // bottom
+    CGFloat happenOffsetTop = - _scrollViewSafeInset.top;
+    return self.headerBlock && self.headerRefreshEnabled && offsetY < happenOffsetTop && offsetY < (-offset+happenOffsetTop);
+}
+
+- (BOOL)isFooterRefreshingActionWithOffset:(CGFloat)offset {
     CGFloat maxFootY = self.scrollView.contentSize.height - self.scrollView.lc_height;
-    if (self.footerBlock && !self.footerRefreshHidden && maxFootY > 0 && offsetY > maxFootY) {
-        CGFloat b = offsetY - maxFootY;
-        if (b >= 0 && b < IndViewHeight) {
-            self.scrollView.contentInset = UIEdgeInsetsMake(0, 0, b, 0);
-        }
-        if (b > IndViewHeight && !self.indView.isAnimating) {
-            if (self.refreshStyle == LCRefreshStyleDidChange) {
-                [self startFooterRefreshing];
-                self.footerBlock();
-            } else {
-                if (self.scrollView.isTracking) {
-                    [self startFooterRefreshing];
-                }
-            }
-        }
-    }
-    
+    CGFloat offsetY = self.scrollView.contentOffset.y;
+    return self.footerBlock && self.footerRefreshEnabled && maxFootY > 0 && offsetY > maxFootY && (offsetY - maxFootY) > offset;
 }
 
--(BOOL)isRefreshing {
-    return self.indView.isAnimating;
-}
-
--(void)addHeaderRefreshing: (LCSrartRefreshingBlock)completionHander {
+-(void)addHeaderRefreshing: (LCRefreshActionHandler)completionHander {
     self.headerBlock = completionHander;
     [self addObservers];
 }
 
--(void)addFooterRefreshing: (LCSrartRefreshingBlock)completionHander {
+-(void)addFooterRefreshing: (LCRefreshActionHandler)completionHander {
     self.footerBlock = completionHander;
     [self addObservers];
 }
 
--(void)startHeaderRefreshing {
-    self.indView.lc_top = -IndViewHeight;
-    [self.indView startAnimating];
-    self.scrollView.contentInset = UIEdgeInsetsMake(IndViewHeight, 0, 0, 0);
+-(void)beginHeaderRefreshing {
+    if (self.headerBlock && !self.indView.isAnimating && !_isRefreshing && self.headerRefreshEnabled) {
+        [self.indView startAnimating];
+        self.indView.lc_top = -LCRefreshActivityIndicatorHeight;
+        [UIView animateWithDuration:0.25 animations:^{
+            UIEdgeInsets contentInset = self.scrollViewStartInset;
+            contentInset.top += LCRefreshActivityIndicatorHeight;
+            self.scrollView.contentInset = contentInset;
+            CGPoint conentOffset = self.scrollView.contentOffset;
+            conentOffset.y -= LCRefreshActivityIndicatorHeight;
+            self.scrollView.contentOffset = conentOffset;
+        } completion:^(BOOL finished) {
+            self.isRefreshing = YES;
+            self.headerBlock();
+        }];
+    }
 }
 
--(void)startFooterRefreshing {
-    self.indView.lc_top = self.scrollView.contentSize.height;
-    [self.indView startAnimating];
-    self.scrollView.contentInset = UIEdgeInsetsMake(0, 0, IndViewHeight, 0);
+-(void)beginFooterRefreshing {
+    if (self.footerBlock && !self.indView.isAnimating && !_isRefreshing && self.footerRefreshEnabled) {
+        [self.indView startAnimating];
+        self.indView.lc_top = self.scrollView.contentSize.height;
+        [UIView animateWithDuration:0.25 animations:^{
+            UIEdgeInsets contentInset = self.scrollViewStartInset;
+            contentInset.bottom += LCRefreshActivityIndicatorHeight;
+            self.scrollView.contentInset = contentInset;
+            CGPoint conentOffset = self.scrollView.contentOffset;
+            conentOffset.y += LCRefreshActivityIndicatorHeight;
+            self.scrollView.contentOffset = conentOffset;
+        } completion:^(BOOL finished) {
+            self.isRefreshing = YES;
+            self.footerBlock();
+        }];
+    }
 }
 
 -(void)endRefreshing {
-    dispatch_async(dispatch_get_main_queue(), ^{
+    if (self.indView.lc_top < 0) {
+        [UIView animateWithDuration:0.25 animations:^{
+            self.scrollView.contentInset = self.scrollViewStartInset;
+        } completion:^(BOOL finished) {
+            [self.indView stopAnimating];
+            self.isRefreshing = NO;
+        }];
+    } else {
+        self.scrollView.contentInset = self.scrollViewStartInset;
         [self.indView stopAnimating];
-        self.scrollView.contentInset = UIEdgeInsetsZero;
-    });
+        self.isRefreshing = NO;
+    }
 }
 
 - (void)addObservers {
@@ -194,7 +224,9 @@
     }
     NSKeyValueObservingOptions options = NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld;
     [self.scrollView addObserver:self forKeyPath:LCRefreshKeyPathContentOffset options:options context:nil];
-    [self.scrollView.panGestureRecognizer addObserver:self forKeyPath:LcRefreshKeyPathPanState options:options context:nil];
+    [self.scrollView.panGestureRecognizer addObserver:self forKeyPath:LCRefreshKeyPathPanState options:options context:nil];
+    [self.scrollView addObserver:self forKeyPath:LCRefreshKeyPathContentSize options:options context:nil];
+
     self.isAddObserver = YES;
 }
 
@@ -203,7 +235,9 @@
         return;
     }
     [self.scrollView removeObserver:self forKeyPath:LCRefreshKeyPathContentOffset context:nil];
-    [self.scrollView.panGestureRecognizer removeObserver:self forKeyPath:LcRefreshKeyPathPanState context:nil];
+    [self.scrollView.panGestureRecognizer removeObserver:self forKeyPath:LCRefreshKeyPathPanState context:nil];
+    [self.scrollView removeObserver:self forKeyPath:LCRefreshKeyPathContentSize context:nil];
+
     self.isAddObserver = NO;
 }
 
@@ -216,81 +250,82 @@
 
 @implementation UIScrollView (LCRefresh)
 
-static const char LCRefreshScrollViewManagerKey = '\0';
-- (LCRefreshScrollViewManager *)refreshManager
+static const char LCPullToRefreshManagerKey = '\0';
+- (LCPullToRefreshManager *)pullToRefreshManager
 {
-    LCRefreshScrollViewManager *manager = objc_getAssociatedObject(self, &LCRefreshScrollViewManagerKey);
+    LCPullToRefreshManager *manager = objc_getAssociatedObject(self, &LCPullToRefreshManagerKey);
     if (!manager) {
-        manager = [[LCRefreshScrollViewManager alloc] initWithScrollView:self];
-        objc_setAssociatedObject(self, &LCRefreshScrollViewManagerKey,
+        manager = [[LCPullToRefreshManager alloc] initWithScrollView:self];
+        objc_setAssociatedObject(self, &LCPullToRefreshManagerKey,
                                  manager, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
     return manager;
 }
 
-- (void)setLc_refreshStyle:(LCRefreshStyle)refreshStyle {
-    [self refreshManager].refreshStyle = refreshStyle;
-}
-
-- (LCRefreshStyle)lc_refreshStyle {
-    return [self refreshManager].refreshStyle;
-}
-
 - (void)setLc_refreshActivityIndicatorStyle:(UIActivityIndicatorViewStyle)refreshActivityIndicatorStyle {
-    [self refreshManager].indView.activityIndicatorViewStyle = refreshActivityIndicatorStyle;
+    UIActivityIndicatorView *indView = [self pullToRefreshManager].indView;
+    if (indView.activityIndicatorViewStyle != refreshActivityIndicatorStyle) {
+        CGRect frame = indView.frame;
+        indView.activityIndicatorViewStyle = refreshActivityIndicatorStyle;
+        [indView sizeToFit];
+        LCRefreshActivityIndicatorHeight = indView.lc_height+10;
+        frame.size.height = LCRefreshActivityIndicatorHeight;
+        indView.frame = frame;
+    }
 }
 
 - (UIActivityIndicatorViewStyle)lc_refreshActivityIndicatorStyle {
-    return [self refreshManager].indView.activityIndicatorViewStyle;
+    return [self pullToRefreshManager].indView.activityIndicatorViewStyle;
 }
 
-- (void)setLc_headerRefreshHidden:(BOOL)headerRefreshHidden {
-    [self refreshManager].headerRefreshHidden = headerRefreshHidden;
+- (void)setLc_headerRefreshEnabled:(BOOL)lc_headerRefreshEnabled {
+    [self pullToRefreshManager].headerRefreshEnabled = lc_headerRefreshEnabled;
 }
 
-- (BOOL)lc_headerRefreshHidden {
-    return [self refreshManager].headerRefreshHidden;
+- (BOOL)lc_headerRefreshEnabled {
+    return [self pullToRefreshManager].headerRefreshEnabled;
 }
 
-- (void)setLc_footerRefreshHidden:(BOOL)footerRefreshHidden {
-    [self refreshManager].footerRefreshHidden = footerRefreshHidden;
+- (void)setLc_footerRefreshEnabled:(BOOL)lc_footerRefreshEnabled {
+    [self pullToRefreshManager].footerRefreshEnabled = lc_footerRefreshEnabled;
 }
 
-- (BOOL)lc_footerRefreshHidden {
-    return [self refreshManager].footerRefreshHidden;
+- (BOOL)lc_footerRefreshEnabled {
+    return [self pullToRefreshManager].footerRefreshEnabled;
 }
 
 - (BOOL)lc_refreshing {
-    return [self refreshManager].isRefreshing;
+    return [self pullToRefreshManager].isRefreshing;
 }
 
-- (void)lc_startHeaderRefreshing {
-    [[self refreshManager] startHeaderRefreshing];
+- (void)lc_beginHeaderRefreshing {
+    [[self pullToRefreshManager] beginHeaderRefreshing];
 }
 
-- (void)lc_startFooterRefreshing {
-    [[self refreshManager] startFooterRefreshing];
+- (void)lc_beginFooterRefreshing {
+    [[self pullToRefreshManager] beginFooterRefreshing];
 }
 
 - (void)lc_endRefreshing {
-    [[self refreshManager] endRefreshing];
+    [[self pullToRefreshManager] endRefreshing];
 }
 
-- (void)lc_addHeaderRefreshing:(LCSrartRefreshingBlock)completionHander {
-    [[self refreshManager] addHeaderRefreshing:completionHander];
+-(void)lc_addHeaderRefreshingWithActionHandler:(LCRefreshActionHandler)actionHandler {
+    [[self pullToRefreshManager] addHeaderRefreshing:actionHandler];
 }
 
-- (void)lc_addFooterRefreshing:(LCSrartRefreshingBlock)completionHander {
-    [[self refreshManager] addFooterRefreshing:completionHander];
+-(void)lc_addFooterRefreshingWithActionHandler:(LCRefreshActionHandler)actionHandler {
+    [[self pullToRefreshManager] addFooterRefreshing:actionHandler];
 }
 
 - (void)willMoveToSuperview:(UIView *)newSuperview {
     [super willMoveToSuperview:newSuperview];
     if (!newSuperview) {
         // 一旦被父视图移除将清空所有数据
-        objc_setAssociatedObject(self, &LCRefreshScrollViewManagerKey,
+        objc_setAssociatedObject(self, &LCPullToRefreshManagerKey,
                                  nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
 }
 @end
+
 
