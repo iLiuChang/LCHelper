@@ -20,9 +20,6 @@
 
 @interface NSDictionary(LCSafe)
 
-/// 废弃 请使用 "lc_objectForKey:"
-- (id)safeObjectForKey:(id)key;
-
 - (id)lc_objectForKey:(id)key;
 
 - (int)lc_intValueForKey:(id)key;

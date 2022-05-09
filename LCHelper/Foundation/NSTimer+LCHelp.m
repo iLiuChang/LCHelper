@@ -13,7 +13,7 @@ static const NSString *_lc_timer_cache_key = @"_lc_timer_cache_key";
 
 @implementation NSTimer (LCHelp)
 + (void)lc_scheduledGCDTimerWithKey:(NSString *)aKey
-                    TimeInterval:(double)interval
+                    timeInterval:(double)interval
                            queue:(dispatch_queue_t)queue
                          repeats:(BOOL)repeats
                           action:(dispatch_block_t)aAction {

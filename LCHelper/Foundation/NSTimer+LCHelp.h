@@ -20,7 +20,7 @@
  *  @param aAction  回调闭包
  */
 + (void)lc_scheduledGCDTimerWithKey:(NSString *)aKey
-                    TimeInterval:(double)interval
+                    timeInterval:(double)interval
                            queue:(dispatch_queue_t)queue
                          repeats:(BOOL)repeats
                           action:(dispatch_block_t)aAction;
