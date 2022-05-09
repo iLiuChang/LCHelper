@@ -10,12 +10,22 @@
 
 typedef void (^LCRefreshActionHandler)(void);
 
+typedef NS_ENUM(NSInteger, LCRefreshScrollDirection) {
+    LCRefreshScrollDirectionVertical,
+    LCRefreshScrollDirectionHorizontal
+};
+
 @interface UIScrollView (LCRefresh)
 
 /**
  *  刷新控件类型 default is UIActivityIndicatorViewStyleGray
  */
 @property(nonatomic, assign) UIActivityIndicatorViewStyle lc_refreshActivityIndicatorStyle;
+
+/**
+ *  滑动方向 default is LCRefreshScrollDirectionVertical
+ */
+@property(nonatomic, assign) LCRefreshScrollDirection lc_refreshScrollDirection;
 
 /**
  *  是否需要头部刷新
@@ -46,6 +56,11 @@ typedef void (^LCRefreshActionHandler)(void);
  *  取消所有刷新
  */
 -(void)lc_endRefreshing;
+
+/**
+ *  取消所有刷新
+ */
+- (void)lc_endRefreshingAnimated:(BOOL)animation;
 
 /**
  *  添加头部刷新

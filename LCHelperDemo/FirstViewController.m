@@ -7,13 +7,13 @@
 //
 
 #import "FirstViewController.h"
-#import "UIScrollView+LCRefresh.h"
+#import "LCHelper.h"
 
-@interface FirstViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface FirstViewController ()<UICollectionViewDataSource>
 {
     NSInteger count;
 }
-@property (nonatomic, weak) UITableView *tableView;
+@property (nonatomic, weak) UICollectionView *tableView;
 @end
 
 @implementation FirstViewController
@@ -21,26 +21,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    UITableView *tableView = [[UITableView alloc] init];
-    tableView.frame = self.view.bounds;
-    tableView.delegate = self;
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+//    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    layout.itemSize = CGSizeMake(200, 200);
+    layout.minimumInteritemSpacing = 20;
+    layout.minimumLineSpacing = 20;
+    UICollectionView *tableView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:layout];
     tableView.dataSource = self;
-    tableView.rowHeight = 100;
-    [tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"cell"];
+    [tableView registerClass:UICollectionViewCell.class forCellWithReuseIdentifier:NSStringFromClass(UICollectionViewCell.class)];
+    tableView.backgroundColor = UIColor.whiteColor;
     [self.view addSubview:tableView];
     self.tableView = tableView;
     
     tableView.lc_refreshActivityIndicatorStyle = UIActivityIndicatorViewStyleLarge;
  
+//    tableView.lc_refreshScrollDirection = LCRefreshScrollDirectionHorizontal;
     __weak __typeof(self) weakSelf = self;
     [tableView lc_addHeaderRefreshingWithActionHandler:^{
         [weakSelf reload:YES];
 
     }];
-    [tableView lc_beginHeaderRefreshing];
     [tableView lc_addFooterRefreshingWithActionHandler:^{
         [weakSelf reload:NO];
     }];
+    [tableView lc_beginHeaderRefreshing];
+
     
 }
 
@@ -52,22 +57,27 @@
             self->count+=10;
 
         }
+        [self.tableView lc_endRefreshing];
+
         [self.tableView reloadData];
         
-        [self.tableView lc_endRefreshing];
         
     });
 
+
 }
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    cell.textLabel.text = [NSString stringWithFormat:@"%ld", indexPath.row];
+
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(UICollectionViewCell.class) forIndexPath:indexPath];
+    cell.backgroundColor = UIColor.redColor;
     return cell;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return count;
+
 }
+
 
 - (void)dealloc {
     NSLog(@"FirstViewController dealloc");
