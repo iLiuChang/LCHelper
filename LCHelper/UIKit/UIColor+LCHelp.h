@@ -10,13 +10,6 @@
 
 @interface UIColor (LCHelp)
 
-// 废弃 ==============
-+ (UIColor *)colorWithHexString:(NSString *)hexStr;
-+ (UIColor *)colorWithRGB:(uint32_t)rgbValue;
-+ (UIColor *)colorWithRGBA:(uint32_t)rgbaValue;
-+ (UIColor *)colorWithRGB:(uint32_t)rgbValue alpha:(CGFloat)alpha;
-// ===========
-
 /**
  *  十六进制转RGB颜色
  *

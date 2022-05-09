@@ -9,105 +9,10 @@
 #import "UIView+LCHelp.h"
 #import <objc/runtime.h>
 
+#define lc_weakify(object) autoreleasepool   {} __weak  typeof(object) weak##object = object;
+#define lc_strongify(object) autoreleasepool {} __strong  typeof(weak##object) object = weak##object;
+
 @implementation UIView (LCHelp)
-
-// =============================
-- (CGFloat)left {
-    return self.frame.origin.x;
-}
-
-- (void)setLeft:(CGFloat)left {
-    CGRect frame = self.frame;
-    frame.origin.x = left;
-    self.frame = frame;
-}
-
-- (CGFloat)top {
-    return self.frame.origin.y;
-}
-- (void)setTop:(CGFloat)top {
-    CGRect frame = self.frame;
-    frame.origin.y = top;
-    self.frame = frame;
-}
-
-- (CGFloat)right {
-    return self.frame.origin.x + self.frame.size.width;
-}
-
-- (void)setRight:(CGFloat)right {
-    CGRect frame = self.frame;
-    frame.origin.x = right - frame.size.width;
-    self.frame = frame;
-}
-
-- (CGFloat)bottom {
-    return self.frame.origin.y + self.frame.size.height;
-}
-
-- (void)setBottom:(CGFloat)bottom {
-    CGRect frame = self.frame;
-    frame.origin.y = bottom - frame.size.height;
-    self.frame = frame;
-}
-
-- (CGFloat)width {
-    return self.frame.size.width;
-}
-
-- (void)setWidth:(CGFloat)width {
-    CGRect frame = self.frame;
-    frame.size.width = width;
-    self.frame = frame;
-}
-
-- (CGFloat)height {
-    return self.frame.size.height;
-}
-
-- (void)setHeight:(CGFloat)height {
-    CGRect frame = self.frame;
-    frame.size.height = height;
-    self.frame = frame;
-}
-
-- (CGFloat)centerX {
-    return self.center.x;
-}
-
-- (void)setCenterX:(CGFloat)centerX {
-    self.center = CGPointMake(centerX, self.center.y);
-}
-
-- (CGFloat)centerY {
-    return self.center.y;
-}
-
-- (void)setCenterY:(CGFloat)centerY {
-    self.center = CGPointMake(self.center.x, centerY);
-}
-
-- (CGPoint)origin {
-    return self.frame.origin;
-}
-
-- (void)setOrigin:(CGPoint)origin {
-    CGRect frame = self.frame;
-    frame.origin = origin;
-    self.frame = frame;
-}
-
-- (CGSize)size
-{
-    return self.frame.size;
-}
-
-- (void)setSize:(CGSize)size {
-    CGRect frame = self.frame;
-    frame.size = size;
-    self.frame = frame;
-}
-//===============================
 
 - (CGFloat)lc_left {
     return self.frame.origin.x;
@@ -202,6 +107,156 @@
     CGRect frame = self.frame;
     frame.size = size;
     self.frame = frame;
+}
+
+-(UIView *(^)(CGFloat))lc__top {
+    @lc_weakify(self);
+    return ^(CGFloat top){
+        @lc_strongify(self);
+        self.lc_top = top;
+        return self;
+    };
+}
+
+-(UIView *(^)(CGFloat))lc__bottom {
+    @lc_weakify(self);
+    return ^(CGFloat bottom){
+        @lc_strongify(self);
+        self.lc_bottom = bottom;
+        return self;
+    };
+}
+
+-(UIView *(^)(CGFloat))lc__bottomOffset {
+    @lc_weakify(self);
+    return ^(CGFloat offset){
+        @lc_strongify(self);
+        self.lc_bottom = self.superview.lc_height + offset;
+        return self;
+    };
+}
+
+-(UIView *(^)(CGFloat))lc__left {
+    @lc_weakify(self);
+    return ^(CGFloat left){
+        @lc_strongify(self);
+        self.lc_left = left;
+        return self;
+    };
+}
+
+-(UIView *(^)(CGFloat))lc__right {
+    @lc_weakify(self);
+    return ^(CGFloat right){
+        @lc_strongify(self);
+        self.lc_right = right;
+        return self;
+    };
+}
+
+-(UIView *(^)(CGFloat))lc__rightOffset {
+    @lc_weakify(self);
+    return ^(CGFloat offset){
+        @lc_strongify(self);
+        self.lc_right = self.superview.lc_width + offset;
+        return self;
+    };
+}
+
+-(UIView *(^)(CGFloat))lc__width {
+    @lc_weakify(self);
+    return ^(CGFloat width){
+        @lc_strongify(self);
+        self.lc_width = width;
+        return self;
+    };
+}
+
+-(UIView *(^)(CGFloat))lc__flexToRightOffset {
+    @lc_weakify(self);
+    return ^(CGFloat offset){
+        @lc_strongify(self);
+        self.lc_width = self.superview.lc_width - self.lc_left + offset;
+        return self;
+    };
+}
+
+-(UIView *(^)(CGFloat))lc__height {
+    @lc_weakify(self);
+    return ^(CGFloat height){
+        @lc_strongify(self);
+        self.lc_height = height;
+        return self;
+    };
+}
+
+-(UIView *(^)(CGFloat))lc__flexToBottomOffset {
+    @lc_weakify(self);
+    return ^(CGFloat offset){
+        @lc_strongify(self);
+        self.lc_height = self.superview.lc_height - self.lc_top + offset;
+        return self;
+    };
+}
+
+- (UIView *(^)(CGFloat))lc__centerX {
+    @lc_weakify(self);
+    return ^(CGFloat x){
+        @lc_strongify(self);
+        self.lc_centerX = x;
+        return self;
+    };
+}
+
+- (UIView *(^)(CGFloat))lc__centerY {
+    @lc_weakify(self);
+    return ^(CGFloat y){
+        @lc_strongify(self);
+        self.lc_centerY = y;
+        return self;
+    };
+}
+
+-(UIView *(^)(void))lc__center {
+    @lc_weakify(self);
+    return ^{
+        @lc_strongify(self);
+        if (self.superview) {
+            self.lc_centerX = self.superview.lc_width / 2;
+            self.lc_centerY = self.superview.lc_height / 2;
+        }
+        return self;
+    };
+}
+- (UIView *(^)(CGSize size))lc__size {
+    @lc_weakify(self);
+    return ^(CGSize size){
+        @lc_strongify(self);
+        self.lc_size = size;
+        return self;
+    };
+}
+
+- (UIView *(^)(CGPoint origin))lc__origin {
+    @lc_weakify(self);
+    return ^(CGPoint origin){
+        @lc_strongify(self);
+        self.lc_origin = origin;
+        return self;
+    };
+}
+
+- (UIView *(^)(CGFloat w, CGFloat h))lc__sizeToFitLessThan {
+    @lc_weakify(self);
+    return ^(CGFloat w, CGFloat h){
+        @lc_strongify(self);
+        [self sizeToFit];
+        if (self.lc_width < w)
+            self.lc_width = w;
+        if (self.lc_height < h)
+            self.lc_height = h;
+        return self;
+    };
 }
 
 - (UIView *)lc_descendantOrSelfWithClass:(Class)cls {

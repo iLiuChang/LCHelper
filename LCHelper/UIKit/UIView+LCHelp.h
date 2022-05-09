@@ -10,19 +10,6 @@
 
 @interface UIView (LCHelp)
 
-// ================废弃==================
-@property(nonatomic, assign) CGFloat left;
-@property(nonatomic, assign) CGFloat top;
-@property(nonatomic, assign) CGFloat right;
-@property(nonatomic, assign) CGFloat bottom;
-@property(nonatomic, assign) CGFloat width;
-@property(nonatomic, assign) CGFloat height;
-@property(nonatomic, assign) CGFloat centerX;
-@property(nonatomic, assign) CGFloat centerY;
-@property(nonatomic, assign) CGPoint origin;
-@property(nonatomic, assign) CGSize size;
-// ==================================
-
 @property(nonatomic, assign) CGFloat lc_left;
 @property(nonatomic, assign) CGFloat lc_top;
 @property(nonatomic, assign) CGFloat lc_right;
@@ -33,6 +20,24 @@
 @property(nonatomic, assign) CGFloat lc_centerY;
 @property(nonatomic, assign) CGPoint lc_origin;
 @property(nonatomic, assign) CGSize lc_size;
+
+- (UIView *(^)(CGFloat top))lc__top;
+- (UIView *(^)(CGFloat bottom))lc__bottom;
+- (UIView *(^)(CGFloat offset))lc__bottomOffset;
+- (UIView *(^)(CGFloat left))lc__left;
+- (UIView *(^)(CGFloat right))lc__right;
+- (UIView *(^)(CGFloat offset))lc__rightOffset;
+- (UIView *(^)(CGFloat width))lc__width;
+- (UIView *(^)(CGFloat offset))lc__flexToRightOffset;
+- (UIView *(^)(CGFloat height))lc__height;
+- (UIView *(^)(CGFloat offset))lc__flexToBottomOffset;
+- (UIView *(^)(CGFloat x))lc__centerX;
+- (UIView *(^)(CGFloat y))lc__centerY;
+- (UIView *(^)(void))lc__center;
+- (UIView *(^)(CGSize size))lc__size;
+- (UIView *(^)(CGPoint origin))lc__origin;
+- (UIView *(^)(CGFloat w, CGFloat h))lc__sizeToFitLessThan;
+
 
 /**
  *  获取子视图

@@ -26,15 +26,15 @@ t.frame = CGRectMake(100, self.view.frame.size.height - 300, 100, 50);
 
 ### UIScrollView+LCRefresh
 
-根据`UIActivityIndicatorView`实现的简易刷新控件
+简易刷新控件(支持水平和垂直滚动刷新)
 
 ```objective-c
 UITableView *tableView = [[UITableView alloc] init];
 // 添加上拉刷新
-[tableView lc_addFooterRefreshing:^{
+[tableView lc_addFooterRefreshingWithActionHandler:^{
 }];
 // 开始刷新(显示菊花)
-[tableView lc_startFooterRefreshing];
+[tableView lc_beginFooterRefreshing];
 ```
 
 结束刷新
