@@ -22,14 +22,15 @@
     t.frame = CGRectMake(100, self.view.frame.size.height - 300, 100, 50);
     t.backgroundColor = [UIColor redColor];
     [self.view addSubview:t];
-    [t lc_addKeyboardObserver];
-    
+
+    UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 200, self.view.frame.size.width, 50)];
+    contentView.backgroundColor = UIColor.yellowColor;
+    [self.view addSubview:contentView];
     UITextField *t2 = [[UITextField alloc] init];
-    t2.frame = CGRectMake(100, self.view.frame.size.height - 200, 100, 50);
+    t2.frame = CGRectMake(100, 0, 100, 50);
     t2.backgroundColor = [UIColor grayColor];
-    [self.view addSubview:t2];
-    [t2 lc_addKeyboardObserver];
-    
+    [contentView addSubview:t2];
+    [self.view lc_addKeyboardObserver];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
