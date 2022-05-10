@@ -22,11 +22,11 @@
     [super viewDidLoad];
 
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-//    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    layout.itemSize = CGSizeMake(200, 200);
+    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    layout.itemSize = CGSizeMake(100, 100);
     layout.minimumInteritemSpacing = 20;
     layout.minimumLineSpacing = 20;
-    UICollectionView *tableView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:layout];
+    UICollectionView *tableView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 200, self.view.lc_width, 150) collectionViewLayout:layout];
     tableView.dataSource = self;
     [tableView registerClass:UICollectionViewCell.class forCellWithReuseIdentifier:NSStringFromClass(UICollectionViewCell.class)];
     tableView.backgroundColor = UIColor.whiteColor;
@@ -35,7 +35,7 @@
     
     tableView.lc_refreshActivityIndicatorStyle = UIActivityIndicatorViewStyleLarge;
  
-//    tableView.lc_refreshScrollDirection = LCRefreshScrollDirectionHorizontal;
+    tableView.lc_refreshScrollDirection = LCRefreshScrollDirectionHorizontal;
     __weak __typeof(self) weakSelf = self;
     [tableView lc_addHeaderRefreshingWithActionHandler:^{
         [weakSelf reload:YES];
@@ -44,7 +44,7 @@
     [tableView lc_addFooterRefreshingWithActionHandler:^{
         [weakSelf reload:NO];
     }];
-    [tableView lc_beginHeaderRefreshing];
+    [tableView lc_beginFooterRefreshing];
 
     
 }

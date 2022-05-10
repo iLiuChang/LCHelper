@@ -39,9 +39,9 @@ static CGFloat LCRefreshActivityIndicatorHeight = 30;
 
 @property(nonatomic, assign) UIEdgeInsets scrollViewStartInset;
 
-@property(nonatomic, assign) BOOL isRefreshing;
-
 @property(nonatomic, assign) BOOL isHavePanAction;
+
+@property(nonatomic, readonly) BOOL isRefreshing;
 
 -(void)beginHeaderRefreshing;
 
@@ -75,6 +75,8 @@ static CGFloat LCRefreshActivityIndicatorHeight = 30;
 - (UIActivityIndicatorView *)indView {
     if (!_indView) {
         UIActivityIndicatorView *indView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:(_activityIndicatorViewStyle)];
+        indView.hidesWhenStopped = NO;
+        indView.hidden = YES;
         LCRefreshActivityIndicatorHeight = indView.lc_height+10;
         if (_refreshScrollDirection == LCRefreshScrollDirectionHorizontal) {
             indView.frame = CGRectMake(-LCRefreshActivityIndicatorHeight,0 ,LCRefreshActivityIndicatorHeight, self.scrollView.lc_height);
@@ -85,6 +87,10 @@ static CGFloat LCRefreshActivityIndicatorHeight = 30;
         _indView = indView;
     }
     return _indView;
+}
+
+- (BOOL)isRefreshing {
+    return _indView.isAnimating;
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
@@ -108,42 +114,43 @@ static CGFloat LCRefreshActivityIndicatorHeight = 30;
 - (void)scrollViewPanStateDidChange:(NSDictionary *)change{
     _isHavePanAction = YES;
     
-    if (self.scrollView.panGestureRecognizer.state != UIGestureRecognizerStateEnded) {
+    if (self.scrollView.panGestureRecognizer.state != UIGestureRecognizerStateEnded ||
+        self.indView.isAnimating ||
+        self.indView.hidden) {
         return;
     }
  
-    if (self.indView.isAnimating && !_isRefreshing) {
-        if ([self isHeaderRefreshingActionWithOffset:LCRefreshActivityIndicatorHeight]) {
-            [UIView animateWithDuration:0.25 animations:^{
-                UIEdgeInsets contentInset = self.scrollViewStartInset;
-                if (self.refreshScrollDirection == LCRefreshScrollDirectionHorizontal) {
-                    contentInset.left += LCRefreshActivityIndicatorHeight;
-                } else {
-                    contentInset.top += LCRefreshActivityIndicatorHeight;
-                }
-                self.scrollView.contentInset = contentInset;
-            } completion:^(BOOL finished) {
-                self.isRefreshing = YES;
-                self.headerBlock();
-            }];
-           
-        } else if ([self isFooterRefreshingActionWithOffset:LCRefreshActivityIndicatorHeight]) {
-            [UIView animateWithDuration:0.25 animations:^{
-                UIEdgeInsets contentInset = self.scrollViewStartInset;
-                if (self.refreshScrollDirection == LCRefreshScrollDirectionHorizontal) {
-                    contentInset.right += LCRefreshActivityIndicatorHeight;
-                } else {
-                    contentInset.bottom += LCRefreshActivityIndicatorHeight;
-                }
-                self.scrollView.contentInset = contentInset;
-            } completion:^(BOOL finished) {
-                self.isRefreshing = YES;
-                self.footerBlock();
-            }];
-        } else {
-            [self endRefreshing];
-        }
+    if ([self isHeaderRefreshingActionWithOffset:LCRefreshActivityIndicatorHeight]) {
+        [UIView animateWithDuration:0.25 animations:^{
+            UIEdgeInsets contentInset = self.scrollViewStartInset;
+            if (self.refreshScrollDirection == LCRefreshScrollDirectionHorizontal) {
+                contentInset.left += LCRefreshActivityIndicatorHeight;
+            } else {
+                contentInset.top += LCRefreshActivityIndicatorHeight;
+            }
+            self.scrollView.contentInset = contentInset;
+        } completion:^(BOOL finished) {
+            [self.indView startAnimating];
+            self.headerBlock();
+        }];
+       
+    } else if ([self isFooterRefreshingActionWithOffset:LCRefreshActivityIndicatorHeight]) {
+        [UIView animateWithDuration:0.25 animations:^{
+            UIEdgeInsets contentInset = self.scrollViewStartInset;
+            if (self.refreshScrollDirection == LCRefreshScrollDirectionHorizontal) {
+                contentInset.right += LCRefreshActivityIndicatorHeight;
+            } else {
+                contentInset.bottom += LCRefreshActivityIndicatorHeight;
+            }
+            self.scrollView.contentInset = contentInset;
+        } completion:^(BOOL finished) {
+            [self.indView startAnimating];
+            self.footerBlock();
+        }];
+    } else {
+        [self endRefreshing];
     }
+       
 }
 
 - (void)scrollViewContentOffsetDidChange:(NSDictionary *)change{
@@ -155,19 +162,19 @@ static CGFloat LCRefreshActivityIndicatorHeight = 30;
         }
     }
     
-    if (self.isRefreshing || !self.scrollView.isTracking || self.indView.isAnimating) {
+    if (!self.indView.hidden || !self.scrollView.isTracking || self.indView.isAnimating) {
         return;
     }
  
     if ([self isHeaderRefreshingActionWithOffset:10]) {
-        [self.indView startAnimating];
+        self.indView.hidden = NO;
         if (_refreshScrollDirection == LCRefreshScrollDirectionHorizontal) {
             self.indView.lc_left = -LCRefreshActivityIndicatorHeight;
         } else {
             self.indView.lc_top = -LCRefreshActivityIndicatorHeight;
         }
     } else if ([self isFooterRefreshingActionWithOffset:10]) {
-        [self.indView startAnimating];
+        self.indView.hidden = NO;
         if (_refreshScrollDirection == LCRefreshScrollDirectionHorizontal) {
             self.indView.lc_left = self.scrollView.contentSize.width;
         } else {
@@ -209,8 +216,8 @@ static CGFloat LCRefreshActivityIndicatorHeight = 30;
 }
 
 -(void)beginHeaderRefreshing {
-    if (self.headerBlock && !self.indView.isAnimating && !_isRefreshing && self.headerRefreshEnabled) {
-        [self.indView startAnimating];
+    if (self.headerBlock && !self.indView.isAnimating && self.indView.hidden && self.headerRefreshEnabled) {
+        self.indView.hidden = NO;
         if (_refreshScrollDirection == LCRefreshScrollDirectionHorizontal) {
             self.indView.lc_left = -LCRefreshActivityIndicatorHeight;
             [UIView animateWithDuration:0.25 animations:^{
@@ -221,7 +228,7 @@ static CGFloat LCRefreshActivityIndicatorHeight = 30;
                 conentOffset.x -= LCRefreshActivityIndicatorHeight;
                 self.scrollView.contentOffset = conentOffset;
             } completion:^(BOOL finished) {
-                self.isRefreshing = YES;
+                [self.indView startAnimating];
                 self.headerBlock();
             }];
         } else {
@@ -234,7 +241,7 @@ static CGFloat LCRefreshActivityIndicatorHeight = 30;
                 conentOffset.y -= LCRefreshActivityIndicatorHeight;
                 self.scrollView.contentOffset = conentOffset;
             } completion:^(BOOL finished) {
-                self.isRefreshing = YES;
+                [self.indView startAnimating];
                 self.headerBlock();
             }];
         }
@@ -242,8 +249,8 @@ static CGFloat LCRefreshActivityIndicatorHeight = 30;
 }
 
 -(void)beginFooterRefreshing {
-    if (self.footerBlock && !self.indView.isAnimating && !_isRefreshing && self.footerRefreshEnabled) {
-        [self.indView startAnimating];
+    if (self.footerBlock && !self.indView.isAnimating && self.indView.hidden && self.footerRefreshEnabled) {
+        self.indView.hidden = NO;
         if (_refreshScrollDirection == LCRefreshScrollDirectionHorizontal) {
             self.indView.lc_left = self.scrollView.contentSize.width;
             [UIView animateWithDuration:0.25 animations:^{
@@ -254,7 +261,7 @@ static CGFloat LCRefreshActivityIndicatorHeight = 30;
                 conentOffset.x += LCRefreshActivityIndicatorHeight;
                 self.scrollView.contentOffset = conentOffset;
             } completion:^(BOOL finished) {
-                self.isRefreshing = YES;
+                [self.indView startAnimating];
                 self.footerBlock();
             }];
         } else {
@@ -267,11 +274,10 @@ static CGFloat LCRefreshActivityIndicatorHeight = 30;
                 conentOffset.y += LCRefreshActivityIndicatorHeight;
                 self.scrollView.contentOffset = conentOffset;
             } completion:^(BOOL finished) {
-                self.isRefreshing = YES;
+                [self.indView startAnimating];
                 self.footerBlock();
             }];
         }
-       
     }
 }
 
@@ -286,12 +292,12 @@ static CGFloat LCRefreshActivityIndicatorHeight = 30;
                 self.scrollView.contentInset = self.scrollViewStartInset;
             } completion:^(BOOL finished) {
                 [self.indView stopAnimating];
-                self.isRefreshing = NO;
+                self.indView.hidden = YES;
             }];
         } else {
             self.scrollView.contentInset = self.scrollViewStartInset;
             [self.indView stopAnimating];
-            self.isRefreshing = NO;
+            self.indView.hidden = YES;
         }
     });
 }
