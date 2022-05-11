@@ -61,7 +61,7 @@ UITableView *tableView = [[UITableView alloc] init];
 
 - NSObject+LCHelp (runtime交换方法)
 
-- NSTimer+LCHelp (CGD定时器)
+- NSTimer+LCHelp (GCD定时器)
 - NSString+LCHelp (字符串截取/获取大小等)
 
 - NSData+LCHelp (json和base64数据处理)
