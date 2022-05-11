@@ -62,6 +62,12 @@
  *
  */
 - (UIViewController *)lc_viewController;
+
+/**
+ *  圆角
+ */
+- (void)lc_roundedRect:(UIRectCorner)corner cornerRadius:(CGFloat)cornerRadius;
+
 @end
 
 

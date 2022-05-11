@@ -8,6 +8,7 @@
 
 #import "KeyboardViewController.h"
 #import "UIView+LCKeyboardObserver.h"
+#import "LCHelper.h"
 
 @interface KeyboardViewController ()
 @property(nonatomic, weak) UITextField *textField;
@@ -31,6 +32,8 @@
     t2.backgroundColor = [UIColor grayColor];
     [contentView addSubview:t2];
     [self.view lc_addKeyboardObserver];
+    
+    
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

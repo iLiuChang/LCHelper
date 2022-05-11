@@ -56,17 +56,26 @@
 
 - (int)lc_intValueForKey:(id)key{
     id obj = [self lc_objectForKey:key];
-    return [obj intValue];
+    if ([obj respondsToSelector:@selector(intValue)]) {
+        return [obj intValue];
+    }
+    return 0;
 }
 
 - (NSInteger)lc_integerValueForKey:(id)key{
     id obj = [self lc_objectForKey:key];
-    return [obj integerValue];
+    if ([obj respondsToSelector:@selector(integerValue)]) {
+        return [obj integerValue];
+    }
+    return 0;
 }
 
 - (double)lc_doubleValueForKey:(id)key{
     id obj = [self lc_objectForKey:key];
-    return [obj doubleValue];
+    if ([obj respondsToSelector:@selector(doubleValue)]) {
+        return [obj doubleValue];
+    }
+    return 0;
 }
 
 - (NSString*)lc_stringValueForKey:(id)key{
@@ -78,6 +87,22 @@
         return [obj stringValue];
     }
     return nil;
+}
+
+- (id)lc_objectForKey:(id)key asProtocol:(Protocol *)pro {
+    id value = [self lc_objectForKey:key];
+    if (value && ![value conformsToProtocol:pro]) {
+        return nil;
+    }
+    return value;
+}
+
+- (id)lc_objectForKey:(id)key asClass:(Class)cls {
+    id value = [self lc_objectForKey:key];
+    if (value && ![value isKindOfClass:cls]) {
+        return nil;
+    }
+    return value;
 }
 
 @end

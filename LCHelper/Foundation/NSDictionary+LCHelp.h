@@ -30,6 +30,10 @@
 
 - (NSString*)lc_stringValueForKey:(id)key;
 
+- (id)lc_objectForKey:(id)key asProtocol:(Protocol *)pro;
+
+- (id)lc_objectForKey:(id)key asClass:(Class)cls;
+
 @end
 
 @interface NSMutableDictionary(LCSafe)

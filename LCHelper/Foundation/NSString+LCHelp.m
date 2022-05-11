@@ -9,6 +9,7 @@
 #import "NSString+LCHelp.h"
 #import "NSData+LCHelp.h"
 #import "NSNumber+LCHelp.h"
+#import "NSArray+LCHelp.h"
 
 @implementation NSString (LCHelp)
 
@@ -60,6 +61,22 @@
         return string.length == 0;
     }
     return YES;
+}
+
++ (BOOL)lc_compareVersion:(NSString *)version sourceVersion:(NSString *)sourceVersion {
+    NSArray *versionArray = [version componentsSeparatedByString:@"."];
+    NSArray *sourceVersionArray = [sourceVersion componentsSeparatedByString:@"."];
+    NSUInteger count = MAX(versionArray.count, sourceVersionArray.count);
+    for (NSUInteger i = 0; i<count; i++) {
+        NSInteger newNum = [[versionArray lc_objectAtIndex:i] integerValue];
+        NSInteger sourceNum = [[sourceVersionArray lc_objectAtIndex:i] integerValue];
+        if (newNum > sourceNum) {
+            return YES;
+        } else if (newNum < sourceNum) {
+            return NO;
+        }
+    }
+    return NO;
 }
 
 - (BOOL)lc_containsString:(NSString *)string {

@@ -24,6 +24,8 @@
 
 + (BOOL)lc_emptyString:(NSString *)string;
 
++ (BOOL)lc_compareVersion:(NSString *)version sourceVersion:(NSString *)sourceVersion;
+
 - (BOOL)lc_containsString:(NSString *)string;
 
 - (BOOL)lc_hasPrefix:(NSString *)str;

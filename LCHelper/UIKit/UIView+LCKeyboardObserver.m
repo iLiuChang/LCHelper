@@ -17,8 +17,6 @@
 
 @property(nonatomic, weak) UIView *currentTextInput;
 
-@property(nonatomic, assign) BOOL isRemoveObserver;
-
 @end
 
 @implementation LCKeyboardObserver
