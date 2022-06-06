@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
   s.name         = "LCHelper"
   s.version      = "2.3.0"
-  s.summary      = "常用分类"
+  s.summary      = "Extensions to UIKit and Foundation."
   s.homepage     = "https://github.com/iLiuChang/LCHelper"
   s.license      = "MIT"
   s.author       = "LiuChang"
