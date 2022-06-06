@@ -8,11 +8,6 @@ Extensions to UIKit and Foundation.
 
 - **iOS 8.0+**
 
-## CocoaPods
-
-```objective-c
-pod 'LCHelper' 
-```
 ## Usage
 
 ### UIKit
