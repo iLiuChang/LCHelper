@@ -25,8 +25,6 @@ FOUNDATION_EXPORT const unsigned char LCHelperVersionString[];
 #import <LCHelper/UIControl+LCHelp.h>
 #import <LCHelper/UIImage+LCHelp.h>
 #import <LCHelper/UIView+LCHelp.h>
-#import <LCHelper/UIView+LCKeyboardObserver.h>
-#import <LCHelper/UIScrollView+LCRefresh.h>
 #import <LCHelper/UIActionSheet+LCHelp.h>
 #import <LCHelper/UIAlertView+LCHelp.h>
 #import <LCHelper/UIAlertController+LCHelp.h>
@@ -50,8 +48,6 @@ FOUNDATION_EXPORT const unsigned char LCHelperVersionString[];
 #import "UIControl+LCHelp.h"
 #import "UIImage+LCHelp.h"
 #import "UIView+LCHelp.h"
-#import "UIView+LCKeyboardObserver.h"
-#import "UIScrollView+LCRefresh.h"
 #import "UIActionSheet+LCHelp.h"
 #import "UIAlertView+LCHelp.h"
 #import "UIAlertController+LCHelp.h"

@@ -1,6 +1,6 @@
 //
 //  UIButton+LCHelp.m
-//  LCHelperDemo
+//  LCHelper (https://github.com/iLiuChang/LCHelper)
 //
 //  Created by 刘畅 on 2022/5/10.
 //  Copyright © 2022 LiuChang. All rights reserved.

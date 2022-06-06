@@ -1,6 +1,6 @@
 //
-//  NSObject+Extension.h
-//  LCOCExtension
+//  NSObject+LCHelp.h
+//  LCHelper (https://github.com/iLiuChang/LCHelper)
 //
 //  Created by 刘畅 on 16/6/30.
 //  Copyright © 2016年 LiuChang. All rights reserved.
@@ -18,4 +18,10 @@
  *  交换对象方法
  */
 + (BOOL)lc_swizzleInstanceMethod:(SEL)originalSel newMethod:(SEL)newSel;
+@end
+
+@interface NSObject (LCSafe)
+
++ (id)lc_objectByRemovingKeysWithNullValues:(id)JSONObject;
+
 @end

@@ -1,6 +1,6 @@
 //
-//  UIColor+Extension.h
-//  LCOCExtension
+//  UIColor+LCHelp.h
+//  LCHelper (https://github.com/iLiuChang/LCHelper)
 //
 //  Created by 刘畅 on 16/7/6.
 //  Copyright © 2016年 LiuChang. All rights reserved.
@@ -8,13 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIColor (LCHelp)
+NS_ASSUME_NONNULL_BEGIN
 
-/**
- *  十六进制转RGB颜色
- *
- *  @param hexStr 比如：@"0xF0F", @"66ccff", @"#66CCFF88"
- */
+@interface UIColor (LCHelp)
+/// 十六进制转RGB颜色
+/// @param hexStr @"0xF0F", @"66ccff", @"#66CCFF88"
 + (UIColor *)lc_colorWithHex:(NSString *)hexStr;
 
 + (UIColor *)lc_colorWithRGB:(uint32_t)rgbValue;
@@ -24,3 +22,5 @@
 + (UIColor *)lc_colorWithRGB:(uint32_t)rgbValue alpha:(CGFloat)alpha;
 
 @end
+
+NS_ASSUME_NONNULL_END

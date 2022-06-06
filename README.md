@@ -1,98 +1,142 @@
+
+
 # LCHelper
-常用分类
 
-## 环境
+Extensions to UIKit and Foundation.
 
-- iOS 8.0+
+## Requirements
+
+- **iOS 8.0+**
 
 ## CocoaPods
 
 ```objective-c
 pod 'LCHelper' 
 ```
-## 使用
+## Usage
 
-### UIView+LCHelp
+### UIKit
 
-链式调用
+- **UIView+LCHelp**
 
 ```objective-c
 view.lc__left(10).lc__height(20).lc__bottomOffset(-20).lc__flexToRightOffset(-10);
 ```
 
-### UIView+LCKeyboardObserver
-
-监听输入框是否被键盘遮挡
+- **UIColor+LCHelp**
 
 ```objective-c
-UITextField *t = [[UITextField alloc] init];
-t.frame = CGRectMake(100, self.view.frame.size.height - 300, 100, 50);
-[self.view addSubview:t];
-// 添加键盘观察者
-[self.view lc_addKeyboardObserver];
+self.view.backgroundColor = [UIColor lc_colorWithHex:@"#FFFFFF"];
 ```
 
-### UIScrollView+LCRefresh
-
-简易刷新控件(支持水平和垂直滚动刷新)
+- **UIControl+LCHelp**
 
 ```objective-c
-UITableView *tableView = [[UITableView alloc] init];
-// 添加上拉刷新
-[tableView lc_addFooterRefreshingWithActionHandler:^{
+UIButton *button = [UIButton new];
+[button lc_addEventTouchUpInsideBlock:^(id  _Nonnull sender) {
+    // to do
 }];
-// 开始刷新
-[tableView lc_beginFooterRefreshing];
 ```
 
-结束刷新
+- **UIImage+LCHelp**
 
 ```objective-c
-[self.tableView lc_endRefreshing];
+UIImage *newImage = [[UIImage imageNamed:@"xxx"] lc_resizableImageWithSize:CGSizeMake(100, 100)];
+
+UIImage *cornerImage = [[UIImage imageNamed:@"xxx"] lc_imageWithCornerRadius:10];
 ```
 
-## 全部分类目录
+- **UIBarButtonItem+LCHelp**
 
-#### Foundation
+```objective-c
+UIBarButtonItem *item = [UIBarButtonItem lc_itemWithTarget:self action:@selector(tap) size:CGSizeMake(10, 10) image:[UIImage imageNamed:@"xxx"] highImage:nil];
+```
 
-- NSDate+LCHelp (日期转换)
+- **UIButton+LCHelp**
 
-- NSNumber+LCHelp (NSString转NSNumber)
+  Change Image and Label position.
 
-- NSObject+LCHelp (runtime交换方法)
+```objective-c
+UIButton *button = [UIButton new];
+[button lc_setEdgeInsetsStyle:(LCButtonEdgeInsetsStyleBottom) imageTitleSpace:0];
+```
 
-- NSTimer+LCHelp (GCD定时器)
-- NSString+LCHelp (字符串截取/获取大小等)
+- **UIAlertController+LCHelp**
 
-- NSData+LCHelp (json和base64数据处理)
+```objective-c
+UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"alert" message:nil preferredStyle:(UIAlertControllerStyleAlert)];
+[alert lc_addActionWithTitle:@"sure" handler:^(UIAlertAction *action) {
 
-- NSDictionary+LCHelp (数据安全处理)
+}];
+[self presentViewController:alert animated:YES completion:nil];
+```
 
-- NSArray+LCHelp (数据安全处理)
+- **UIAlertView+LCHelp**
 
-- LCCrypto (md5和hmac加密)
+```objective-c
+[[UIAlertView lc_alertWithTitle:@"alert" message:nil buttonIndex:nil buttonTitles:nil, nil] show];
+```
 
-#### UIKit
+- **UIActionSheet+LCHelp**
 
-- UIBarButtonItem+LCHelp
+```objective-c
+[[UIActionSheet lc_actionSheetWithTitle:@"alert" buttonIndex:nil cancelButtonTitle:nil otherButtonTitles:nil, nil] showInView:self.view];
+```
 
-- UIColor+LCHelp (hex色值)
+### Foundation
 
-- UIControl+LCHelp (支持闭包事件)
+- **NSDate+LCHelp** 
 
-- UIImage+LCHelp (图片剪切)
+  Date conversion.
 
-- UIView+LCHelp (支持链式调用)
+- **NSNumber+LCHelp**
 
-- UIView+LCKeyboardObserver (输入框位置检测)
+  NSString to NSNumber.
 
-- UIScrollView+LCRefresh (上拉和下拉刷新)
+- **NSObject+LCHelp**
 
-- UIActionSheet+LCHelp
+  Runtime exchange method.
 
-- UIAlertView+LCHelp
+- **NSTimer+LCHelp**
 
-- UIAlertController+LCHelp
+  GCD timer.
 
-- UIButton+LCHelp (改变Image和Label位置)
+- **NSString+LCHelp**
 
+  String interception/get size, etc.
+
+- **NSData+LCHelp**
+
+  Json and base64 data processing.
+
+- **NSDictionary+LCHelp**
+
+  Data Security Handling.
+
+- **NSArray+LCHelp**
+
+  Data Safe Handling.
+
+- **LCCrypto**
+
+  MD5 and hmac encryption.
+
+## Installation
+
+### CocoaPods
+
+To integrate LCHelper into your Xcode project using CocoaPods, specify it in your `Podfile`:
+
+```ruby
+pod 'LCHelper'
+```
+
+### Manual
+
+1. Download everything in the LCHelper folder;
+2. Add (drag and drop) the source files in LCHelper to your project;
+3. Import `LCHelper.h`.
+
+## License
+
+LCHelper is provided under the MIT license. See LICENSE file for details.

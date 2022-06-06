@@ -1,12 +1,15 @@
 //
-//  UIImage+Extension.h
-//  LCOCExtension
+//  UIImage+LCHelp.h
+//  LCHelper (https://github.com/iLiuChang/LCHelper)
 //
 //  Created by 刘畅 on 16/6/30.
 //  Copyright © 2016年 LiuChang. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
 @interface UIImage (LCHelp)
 
 /**
@@ -42,7 +45,7 @@
  *  @point: 在图片大小范围内
  *  @atts: 属性配置，比如颜色、字体大小等
  */
-- (UIImage *)lc_markImageWithText:(NSString *)text point:(CGPoint)point atts:(NSDictionary *)atts;
+- (UIImage *)lc_markImageWithText:(NSString *)text point:(CGPoint)point atts:(nullable NSDictionary *)atts;
 
 /**
  *  调整图片大小
@@ -90,6 +93,8 @@
  *
  *  @return 图片
  */
-- (UIImage *)lc_imageWithCornerRadius:(CGFloat)radius borderWidth:(CGFloat)borderWidth borderColor:(UIColor *)borderColor;
+- (UIImage *)lc_imageWithCornerRadius:(CGFloat)radius borderWidth:(CGFloat)borderWidth borderColor:(nullable UIColor *)borderColor;
 
 @end
+
+NS_ASSUME_NONNULL_END

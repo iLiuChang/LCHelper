@@ -1,6 +1,6 @@
 //
 //  LCCrypto.h
-//  LCHelperDemo
+//  LCHelper (https://github.com/iLiuChang/LCHelper)
 //
 //  Created by 刘畅 on 2021/1/4.
 //  Copyright © 2021 LiuChang. All rights reserved.

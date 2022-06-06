@@ -1,6 +1,6 @@
 //
-//  UIColor+Extension.m
-//  LCOCExtension
+//  UIColor+LCHelp.m
+//  LCHelper (https://github.com/iLiuChang/LCHelper)
 //
 //  Created by 刘畅 on 16/7/6.
 //  Copyright © 2016年 LiuChang. All rights reserved.

@@ -1,6 +1,6 @@
 //
-//  UIImage+Extension.m
-//  LCOCExtension
+//  UIImage+LCHelp.m
+//  LCHelper (https://github.com/iLiuChang/LCHelper)
 //
 //  Created by 刘畅 on 16/6/30.
 //  Copyright © 2016年 LiuChang. All rights reserved.

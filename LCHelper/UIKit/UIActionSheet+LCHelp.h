@@ -1,6 +1,6 @@
 //
 //  UIActionSheet+LCHelp.h
-//  LCHelperDemo
+//  LCHelper (https://github.com/iLiuChang/LCHelper)
 //
 //  Created by 刘畅 on 2019/5/6.
 //  Copyright © 2019 LiuChang. All rights reserved.

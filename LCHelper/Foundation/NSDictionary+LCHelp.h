@@ -1,6 +1,6 @@
 //
 //  NSDictionary+LCHelp.h
-//  LCHelperDemo
+//  LCHelper (https://github.com/iLiuChang/LCHelper)
 //
 //  Created by 刘畅 on 2019/4/23.
 //  Copyright © 2019 LiuChang. All rights reserved.

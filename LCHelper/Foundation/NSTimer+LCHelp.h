@@ -1,6 +1,6 @@
 //
-//  NSTimer+Extension.h
-//  LCOCExtension
+//  NSTimer+LCHelp.h
+//  LCHelper (https://github.com/iLiuChang/LCHelper)
 //
 //  Created by 刘畅 on 16/7/25.
 //  Copyright © 2016年 LiuChang. All rights reserved.

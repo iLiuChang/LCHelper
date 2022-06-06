@@ -1,6 +1,6 @@
 //
-//  NSObject+Extension.m
-//  LCOCExtension
+//  NSObject+LCHelp.m
+//  LCHelper (https://github.com/iLiuChang/LCHelper)
 //
 //  Created by 刘畅 on 16/6/30.
 //  Copyright © 2016年 LiuChang. All rights reserved.
@@ -38,4 +38,33 @@
     method_exchangeImplementations(originalMethod, newMethod);
     return YES;
 }
+@end
+
+@implementation NSObject (LCSafe)
+
++ (id)lc_objectByRemovingKeysWithNullValues:(id)JSONObject {
+    if ([JSONObject isKindOfClass:[NSArray class]]) {
+        NSMutableArray *mutableArray = [NSMutableArray arrayWithCapacity:[(NSArray *)JSONObject count]];
+        for (id value in (NSArray *)JSONObject) {
+            if (![value isEqual:[NSNull null]]) {
+                [mutableArray addObject:[self lc_objectByRemovingKeysWithNullValues:value]];
+            }
+        }
+        return mutableArray;
+    } else if ([JSONObject isKindOfClass:[NSDictionary class]]) {
+        NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionaryWithDictionary:JSONObject];
+        for (id <NSCopying> key in [(NSDictionary *)JSONObject allKeys]) {
+            id value = (NSDictionary *)JSONObject[key];
+            if (!value || [value isEqual:[NSNull null]]) {
+                [mutableDictionary removeObjectForKey:key];
+            } else if ([value isKindOfClass:[NSArray class]] || [value isKindOfClass:[NSDictionary class]]) {
+                mutableDictionary[key] = [self lc_objectByRemovingKeysWithNullValues:value];
+            }
+        }
+        return mutableDictionary;
+    }
+    return JSONObject;
+}
+
+
 @end
