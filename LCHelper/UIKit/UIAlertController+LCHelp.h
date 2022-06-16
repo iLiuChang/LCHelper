@@ -43,7 +43,7 @@
  @param color 颜色
  @param font 字体
  */
-- (void)lc_setTitleColor:(UIColor *)color font:(UIFont *)font;
+- (void)lc_setTitleColor:(nullable UIColor *)color font:(nullable UIFont *)font;
 
 /**
  设置文本属性（iOS 8.3 以上有效）
@@ -51,7 +51,7 @@
  @param color 颜色
  @param font 字体
  */
-- (void)lc_setMessageColor:(UIColor *)color font:(UIFont *)font;
+- (void)lc_setMessageColor:(nullable UIColor *)color font:(nullable UIFont *)font;
 
 @end
 
