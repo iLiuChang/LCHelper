@@ -22,6 +22,9 @@
 
 @interface NSObject (LCSafe)
 
+/**
+ *  移除为null的key
+ */
 + (id)lc_objectByRemovingKeysWithNullValues:(id)JSONObject;
 
 @end

@@ -7,20 +7,11 @@
 //
 
 #import "NSNumber+LCHelp.h"
-
-@interface NSString (LCHelp)
-- (NSString *)stringByTrim;
-@end
-@implementation NSString (LCHelp)
-- (NSString *)stringByTrim {
-    NSCharacterSet *set = [NSCharacterSet whitespaceAndNewlineCharacterSet];
-    return [self stringByTrimmingCharactersInSet:set];
-}
-@end
+#import "NSString+LCHelp.h"
 
 @implementation NSNumber (LCHelp)
 + (NSNumber *)lc_numberWithString:(NSString *)string {
-    NSString *str = [[string stringByTrim] lowercaseString];
+    NSString *str = [[string lc_trim] lowercaseString];
     if (!str || !str.length) {
         return nil;
     }

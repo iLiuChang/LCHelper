@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (UIView *(^)(CGFloat width))lc__width;
 - (UIView *(^)(CGFloat offset))lc__flexToRightOffset; // width
 - (UIView *(^)(CGFloat height))lc__height;
-- (UIView *(^)(CGFloat offset))lc__flexToBottomOffset; // width
+- (UIView *(^)(CGFloat offset))lc__flexToBottomOffset; // height
 - (UIView *(^)(CGFloat x))lc__centerX;
 - (UIView *(^)(CGFloat y))lc__centerY;
 - (UIView *(^)(void))lc__center;
@@ -68,7 +68,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  圆角
  */
-- (void)lc_roundedRect:(UIRectCorner)corner cornerRadius:(CGFloat)cornerRadius;
+- (void)lc_roundedCorners:(UIRectCorner)corner cornerRadius:(CGFloat)cornerRadius;
 
 @end
 

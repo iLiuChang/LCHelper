@@ -34,8 +34,7 @@
 
 - (BOOL)lc_equalsString:(NSString *)str;
 
-/// 去除字符串前后的空白,不包含换行符
-- (NSString *)lc_trim;
+- (NSString *)lc_trim; // 去除字符串前后的空白,不包含换行符
 
 - (NSString *)lc_removeWhiteSpace;
 

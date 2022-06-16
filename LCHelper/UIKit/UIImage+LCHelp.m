@@ -25,53 +25,41 @@
     return newImage;
 }
 
-- (UIImage *)lc_circleImage {
-    // 新的图片尺寸
-    CGFloat imageW = self.size.width;
-    CGFloat imageH = self.size.height;
-    // 设置新的图片尺寸
-    CGFloat circleW = imageW > imageH ? imageH : imageW;
-    UIGraphicsBeginImageContextWithOptions(CGSizeMake(circleW, circleW), NO, 0.0);
-    UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(0, 0, circleW, circleW)];
-    [path addClip];
-    [self drawAtPoint:CGPointZero];
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return newImage;
+- (UIImage *)lc_roundedImage {
+    return [self lc_roundedImageWithBorderWidth:0 borderColor:nil];
 }
 
-- (UIImage *)lc_circleImageWithBorder:(CGFloat)border borderColor:(UIColor *)color {
-    // 圆环的宽度
-    CGFloat borderW = border;
-    // 新的图片尺寸
-    CGFloat imageW = self.size.width + 2 * borderW;
-    CGFloat imageH = self.size.height + 2 * borderW;
-    // 设置新的图片尺寸
-    CGFloat circleW = imageW > imageH ? imageH : imageW;
-    // 开启上下文
-    UIGraphicsBeginImageContextWithOptions(CGSizeMake(circleW, circleW), NO, 0.0);
-    // 画大圆
-    UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(0, 0, circleW, circleW)];
-    // 获取当前上下文
-    CGContextRef ctx = UIGraphicsGetCurrentContext();
-    // 添加到上下文
-    CGContextAddPath(ctx, path.CGPath);
-    // 设置颜色
-    [color set];
-    // 渲染
-    CGContextFillPath(ctx);
-    CGRect clipR = CGRectMake(borderW, borderW, circleW - 2 * borderW, circleW - 2 * borderW);
-    // 画圆：正切于旧图片的圆
-    UIBezierPath *clipPath = [UIBezierPath bezierPathWithOvalInRect:clipR];
-    // 设置裁剪区域
-    [clipPath addClip];
-    // 画图片
-    [self drawAtPoint:CGPointMake(borderW, borderW)];
-    // 获取新的图片
+- (UIImage *)lc_roundedImageWithBorderWidth:(CGFloat)borderWidth borderColor:(UIColor *)borderColor {
+    CGFloat imageW = self.size.width;
+    CGFloat imageH = self.size.height;
+    CGFloat minW = MIN(imageW, imageH);
+    CGFloat x = ((imageW-minW)<0?0:(imageW-minW))/2.0;
+    CGFloat y = ((imageH-minW)<0?0:(imageH-minW))/2.0;
+    CGPoint point = CGPointZero;
+    if (borderColor && borderWidth > 0) {
+        CGFloat bgW = self.size.width+borderWidth*2;
+        CGFloat bgH = self.size.height+borderWidth*2;
+        CGFloat bgMinW = MIN(bgW, bgH);
+        CGFloat bgX = ((bgW-bgMinW)<0?0:(bgW-bgMinW))/2.0;
+        CGFloat bgY = ((bgH-bgMinW)<0?0:(bgH-bgMinW))/2.0;
+        UIGraphicsBeginImageContextWithOptions(CGSizeMake(bgW, bgH), NO, self.scale);
+        UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(bgX, bgY, bgMinW, bgMinW)];
+        CGContextRef ctx = UIGraphicsGetCurrentContext();
+        CGContextAddPath(ctx, path.CGPath);
+        [borderColor set];
+        CGContextFillPath(ctx);
+        x += borderWidth;
+        y += borderWidth;
+        point = CGPointMake(borderWidth, borderWidth);
+    } else {
+        UIGraphicsBeginImageContextWithOptions(self.size, NO, self.scale);
+    }
+
+    UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(x, y, minW, minW)];
+    [path addClip];
+    [self drawAtPoint:point];
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    // 关闭上下文
     UIGraphicsEndImageContext();
-    
     return newImage;
 }
 
@@ -84,7 +72,7 @@
     if (p.x < 0) p.x = 0;
     if (p.y > H) p.y = H;
     if (p.y < 0) p.y = 0;
-    UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
+    UIGraphicsBeginImageContextWithOptions(size, NO, self.scale);
     [text drawAtPoint:p withAttributes:atts];
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
@@ -108,24 +96,7 @@
 }
 
 - (UIImage *)lc_resizableImageWithSize:(CGSize)size {
-    if (size.width <= 0 || size.height <= 0) return nil;
-    UIGraphicsBeginImageContextWithOptions(size, NO, self.scale);
-    [self drawInRect:CGRectMake(0, 0, size.width, size.height)];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return image;
-}
-
-- (UIImage *)lc_cropToRect:(CGRect)rect {
-    rect.origin.x *= self.scale;
-    rect.origin.y *= self.scale;
-    rect.size.width *= self.scale;
-    rect.size.height *= self.scale;
-    if (rect.size.width <= 0 || rect.size.height <= 0) return nil;
-    CGImageRef imageRef = CGImageCreateWithImageInRect(self.CGImage, rect);
-    UIImage *image = [UIImage imageWithCGImage:imageRef scale:self.scale orientation:self.imageOrientation];
-    CGImageRelease(imageRef);
-    return image;
+    return [self lc_resizableImageWithSize:size contentMode:(UIViewContentModeCenter)];
 }
 
 - (UIImage *)lc_resizableImageWithSize:(CGSize)size contentMode:(UIViewContentMode)contentMode {

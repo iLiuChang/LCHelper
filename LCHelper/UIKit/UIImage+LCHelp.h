@@ -31,14 +31,12 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  裁剪为圆形的图片
  */
-- (UIImage *)lc_circleImage;
+- (UIImage *)lc_roundedImage;
 
 /**
- *  裁剪为圆形带边框的图片
- *  @border: 圆环的宽度
- *  @color: 圆环的颜色
+ *  裁剪为圆形的图片
  */
-- (UIImage *)lc_circleImageWithBorder:(CGFloat)border borderColor:(UIColor *)color;
+- (UIImage *)lc_roundedImageWithBorderWidth:(CGFloat)borderWidth borderColor:(nullable UIColor *)borderColor;
 
 /**
  *  图片水印
@@ -66,17 +64,9 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (UIImage *)lc_resizableImageWithSize:(CGSize)size contentMode:(UIViewContentMode)contentMode;
 
-/**
- *  剪切图片
- *
- *  @param rect 矩形
- *
- *  @return 图片
- */
-- (UIImage *)lc_cropToRect:(CGRect)rect;
 
 /**
- *  剪切图片
+ *  剪切圆角图片
  *
  *  @param radius 圆角宽度
  *
@@ -85,7 +75,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (UIImage *)lc_imageWithCornerRadius:(CGFloat)radius;
 
 /**
- *  剪切图片
+ *  剪切圆角图片
  *
  *  @param radius 圆角宽度
  *  @param borderWidth 边框宽度

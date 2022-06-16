@@ -25,6 +25,7 @@
 		587E7135284DF53B00A6529F /* NSArray+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 587E7122284DF53B00A6529F /* NSArray+LCHelp.m */; };
 		587E7136284DF53B00A6529F /* NSDate+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 587E7123284DF53B00A6529F /* NSDate+LCHelp.m */; };
 		587E7137284DF53B00A6529F /* NSString+LCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 587E7124284DF53B00A6529F /* NSString+LCHelp.m */; };
+		588AB37D285ACE3000441FD5 /* 1655257461042.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 588AB37C285ACE3000441FD5 /* 1655257461042.jpg */; };
 		58E389F61D51FB34007DB1D0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E389F51D51FB34007DB1D0 /* main.m */; };
 		58E389F91D51FB34007DB1D0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E389F81D51FB34007DB1D0 /* AppDelegate.m */; };
 		58E389FC1D51FB35007DB1D0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E389FB1D51FB35007DB1D0 /* ViewController.m */; };
@@ -90,6 +91,7 @@
 		587E7123284DF53B00A6529F /* NSDate+LCHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+LCHelp.m"; sourceTree = "<group>"; };
 		587E7124284DF53B00A6529F /* NSString+LCHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LCHelp.m"; sourceTree = "<group>"; };
 		587E7125284DF53B00A6529F /* LCHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHelper.h; sourceTree = "<group>"; };
+		588AB37C285ACE3000441FD5 /* 1655257461042.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1655257461042.jpg; sourceTree = "<group>"; };
 		58E389F11D51FB33007DB1D0 /* LCHelperDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LCHelperDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58E389F51D51FB34007DB1D0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		58E389F71D51FB34007DB1D0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				58E389F81D51FB34007DB1D0 /* AppDelegate.m */,
 				58E389FA1D51FB34007DB1D0 /* ViewController.h */,
 				58E389FB1D51FB35007DB1D0 /* ViewController.m */,
+				588AB37C285ACE3000441FD5 /* 1655257461042.jpg */,
 				58E389FD1D51FB35007DB1D0 /* Main.storyboard */,
 				58E38A001D51FB35007DB1D0 /* Assets.xcassets */,
 				58E38A021D51FB35007DB1D0 /* LaunchScreen.storyboard */,
@@ -360,6 +363,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				588AB37D285ACE3000441FD5 /* 1655257461042.jpg in Resources */,
 				58E38A041D51FB35007DB1D0 /* LaunchScreen.storyboard in Resources */,
 				58E38A011D51FB35007DB1D0 /* Assets.xcassets in Resources */,
 				58E389FF1D51FB35007DB1D0 /* Main.storyboard in Resources */,
