@@ -23,41 +23,26 @@
 + (NSString *)lc_stringWithUUID;
 
 + (BOOL)lc_emptyString:(NSString *)string;
-
+- (BOOL)lc_containsString:(NSString *)string;
+- (BOOL)lc_hasPrefix:(NSString *)str;
+- (BOOL)lc_hasSuffix:(NSString *)str;
+- (BOOL)lc_equalsString:(NSString *)str;
+- (BOOL)lc_containsEmoji;
 + (BOOL)lc_compareVersion:(NSString *)version sourceVersion:(NSString *)sourceVersion;
 
-- (BOOL)lc_containsString:(NSString *)string;
-
-- (BOOL)lc_hasPrefix:(NSString *)str;
-
-- (BOOL)lc_hasSuffix:(NSString *)str;
-
-- (BOOL)lc_equalsString:(NSString *)str;
-
 - (NSString *)lc_trim; // Remove whitespace before and after a string, excluding newlines.
-
 - (NSString *)lc_removeWhiteSpace;
-
 - (NSString *)lc_removeNewLine;
-
 - (NSString *)lc_substringWithRange:(NSRange)range;
 
 - (NSString *)lc_base64EncodedString;
-
 - (NSString *)lc_base64DecodingString;
-
 - (NSData *)lc_dataValue;
-
 - (id)lc_jsonValue;
-
 - (NSNumber *)lc_numberValue;
 
-- (BOOL)lc_containsEmoji;
-
 - (CGSize)lc_sizeForFont:(UIFont *)font size:(CGSize)size mode:(NSLineBreakMode)lineBreakMode;
-
 - (CGFloat)lc_widthForFont:(UIFont *)font;
-
 - (CGFloat)lc_heightForFont:(UIFont *)font width:(CGFloat)width;
 
 @end

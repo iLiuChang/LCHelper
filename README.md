@@ -159,39 +159,194 @@ UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"alert" 
 
 - **NSDate+LCHelp** 
 
-  Date conversion.
+```objective-c
+@property (nonatomic, readonly) NSInteger lc_year;
+@property (nonatomic, readonly) NSInteger lc_month; //(1~12)
+@property (nonatomic, readonly) NSInteger lc_day; //(1~31)
+@property (nonatomic, readonly) NSInteger lc_hour; //(0~23)
+@property (nonatomic, readonly) NSInteger lc_minute; //(0~59)
+@property (nonatomic, readonly) NSInteger lc_second; //(0~59)
+@property (nonatomic, readonly) NSInteger lc_nanosecond;
+@property (nonatomic, readonly) NSInteger lc_weekday; //(1~7)
+@property (nonatomic, readonly) NSInteger lc_weekdayOrdinal;
+@property (nonatomic, readonly) NSInteger lc_weekOfMonth; //(1~5)
+@property (nonatomic, readonly) NSInteger lc_weekOfYear; //(1~53)
+@property (nonatomic, readonly) NSInteger lc_yearForWeekOfYear;
+@property (nonatomic, readonly) NSInteger lc_quarter;
+@property (nonatomic, readonly) BOOL lc_isLeapMonth;
+@property (nonatomic, readonly) BOOL lc_isLeapYear;
+@property (nonatomic, readonly) BOOL lc_isToday;
+@property (nonatomic, readonly) BOOL lc_isYesterday;
+
++ (nullable NSDate *)lc_dateWithString:(NSString *)dateString format:(NSString *)format;
++ (nullable NSDate *)lc_dateWithString:(NSString *)dateString
+                                format:(NSString *)format
+                              timeZone:(nullable NSTimeZone *)timeZone
+                                locale:(nullable NSLocale *)locale;
++ (nullable NSDate *)lc_dateWithISOFormatString:(NSString *)dateString;
+
+- (nullable NSString *)lc_stringWithFormat:(NSString *)format; // "yyyy-MM-dd HH:mm:ss"
+- (nullable NSString *)lc_stringWithFormat:(NSString *)format
+                                  timeZone:(nullable NSTimeZone *)timeZone
+                                    locale:(nullable NSLocale *)locale;
+- (nullable NSString *)lc_stringWithISOFormat;
+
+- (nullable NSDate *)lc_addYears:(NSInteger)years;
+- (nullable NSDate *)lc_addMonths:(NSInteger)months;
+- (nullable NSDate *)lc_addWeeks:(NSInteger)weeks;
+- (nullable NSDate *)lc_addDays:(NSInteger)days;
+- (nullable NSDate *)lc_addHours:(NSInteger)hours;
+- (nullable NSDate *)lc_addMinutes:(NSInteger)minutes;
+- (nullable NSDate *)lc_addSeconds:(NSInteger)seconds;
+```
 
 - **NSNumber+LCHelp**
 
-  NSString to NSNumber.
+```objective-c
++ (NSNumber *)lc_numberWithString:(NSString *)string;
+```
 
 - **NSObject+LCHelp**
 
-  Runtime exchange method.
+```objective-c
+@interface NSObject (LCHelp)
+
++ (BOOL)lc_swizzleClassMethod:(SEL)originalSel newMethod:(SEL)newSel;
+
++ (BOOL)lc_swizzleInstanceMethod:(SEL)originalSel newMethod:(SEL)newSel;
+
+@end
+
+@interface NSObject (LCSafe)
+
++ (id)lc_objectByRemovingKeysWithNullValues:(id)JSONObject; // remove null
+
+@end
+```
 
 - **NSTimer+LCHelp**
 
-  GCD timer.
+```objective-c
++ (void)lc_scheduledGCDTimerWithKey:(NSString *)aKey
+                       timeInterval:(double)interval
+                              queue:(dispatch_queue_t)queue
+                            repeats:(BOOL)repeats
+                             action:(dispatch_block_t)aAction;
++ (void)lc_cancelGCDTimerWithKey:(NSString *)aKey;
++ (void)lc_cancelAllGCDTimers;
+```
 
 - **NSString+LCHelp**
 
-  String interception/get size, etc.
+
+```objective-c
+@property (readonly) char lc_charValue;
+@property (readonly) unsigned char lc_unsignedCharValue;
+@property (readonly) short lc_shortValue;
+@property (readonly) unsigned short lc_unsignedShortValue;
+@property (readonly) unsigned int lc_unsignedIntValue;
+@property (readonly) long lc_longValue;
+@property (readonly) unsigned long lc_unsignedLongValue;
+@property (readonly) unsigned long long lc_unsignedLongLongValue;
+@property (readonly) NSUInteger lc_unsignedIntegerValue;
+
++ (NSString *)lc_stringWithUUID;
+
++ (BOOL)lc_emptyString:(NSString *)string;
+- (BOOL)lc_containsString:(NSString *)string;
+- (BOOL)lc_hasPrefix:(NSString *)str;
+- (BOOL)lc_hasSuffix:(NSString *)str;
+- (BOOL)lc_equalsString:(NSString *)str;
+- (BOOL)lc_containsEmoji;
++ (BOOL)lc_compareVersion:(NSString *)version sourceVersion:(NSString *)sourceVersion;
+
+- (NSString *)lc_trim; // Remove whitespace before and after a string, excluding newlines.
+- (NSString *)lc_removeWhiteSpace;
+- (NSString *)lc_removeNewLine;
+- (NSString *)lc_substringWithRange:(NSRange)range;
+
+- (NSString *)lc_base64EncodedString;
+- (NSString *)lc_base64DecodingString;
+- (NSData *)lc_dataValue;
+- (id)lc_jsonValue;
+- (NSNumber *)lc_numberValue;
+
+- (CGSize)lc_sizeForFont:(UIFont *)font size:(CGSize)size mode:(NSLineBreakMode)lineBreakMode;
+- (CGFloat)lc_widthForFont:(UIFont *)font;
+- (CGFloat)lc_heightForFont:(UIFont *)font width:(CGFloat)width;
+```
 
 - **NSData+LCHelp**
 
-  Json and base64 data processing.
+
+```objective-c
+- (id)lc_jsonValue;
+- (NSString *)lc_base64EncodedString;
+```
 
 - **NSDictionary+LCHelp**
 
-  Data Security Handling.
+
+```objective-c
+@interface NSDictionary (LCHelp)
++ (NSDictionary *)lc_dictionaryWithJsonString:(NSString *)jsonStr;
+- (NSString*)lc_jsonString;
+- (NSString *)lc_jsonPrettyString;
+@end
+
+@interface NSDictionary(LCSafe)
+- (id)lc_objectForKey:(id)key;
+- (int)lc_intValueForKey:(id)key;
+- (NSInteger)lc_integerValueForKey:(id)key;
+- (double)lc_doubleValueForKey:(id)key;
+- (NSString*)lc_stringValueForKey:(id)key;
+
+- (id)lc_objectForKey:(id)key asProtocol:(Protocol *)pro;
+- (id)lc_objectForKey:(id)key asClass:(Class)cls;
+@end
+
+@interface NSMutableDictionary(LCSafe)
+- (void)lc_setObject:(id)anObject forKey:(id)aKey;
+@end
+```
 
 - **NSArray+LCHelp**
 
-  Data Safe Handling.
+
+```objective-c
+@interface NSArray (LCHelp)
++ (NSArray *)lc_arrayWithJsonString:(NSString *)jsonStr;
+- (NSString *)lc_jsonString;
+- (NSString *)lc_jsonPrettyString;
+@end
+
+@interface NSArray (LCSafe)
+- (id)lc_objectAtIndex:(NSUInteger)index;
+@end
+
+@interface NSMutableArray (LCHelp)
+- (void)lc_removeFirstObject;
+- (void)lc_reverse;
+@end
+```
 
 - **LCCrypto**
 
-  MD5 and hmac encryption.
+
+```objective-c
+@interface NSString (LCMD5)
+- (NSString *)lc_md5String;
+@end
+
+@interface NSData (LCMD5)
+- (NSString *)lc_md5String;
+@end
+
+@interface NSData (LCHmac)
+- (nullable NSString *)lc_hmacStringUsingAlg:(CCHmacAlgorithm)alg key:(NSString *)key;
+- (nullable NSData *)lc_hmacDataUsingAlg:(CCHmacAlgorithm)alg key:(NSData *)key;
+@end
+```
 
 ## Installation
 

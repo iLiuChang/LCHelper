@@ -12,6 +12,7 @@
 static const NSString *_lc_timer_cache_key = @"_lc_timer_cache_key";
 
 @implementation NSTimer (LCHelp)
+
 + (void)lc_scheduledGCDTimerWithKey:(NSString *)aKey
                     timeInterval:(double)interval
                            queue:(dispatch_queue_t)queue
@@ -43,7 +44,7 @@ static const NSString *_lc_timer_cache_key = @"_lc_timer_cache_key";
     
 }
 
-+ (void)lc_cancelWithKey:(NSString *)aKey {
++ (void)lc_cancelGCDTimerWithKey:(NSString *)aKey {
      NSMutableDictionary *caches = objc_getAssociatedObject(self, &_lc_timer_cache_key);
     if (caches) {
         dispatch_source_t timer = [caches objectForKey:aKey];
@@ -54,7 +55,7 @@ static const NSString *_lc_timer_cache_key = @"_lc_timer_cache_key";
     }
 }
 
-+ (void)lc_cancelAll {
++ (void)lc_cancelAllGCDTimers {
     NSMutableDictionary *caches = objc_getAssociatedObject(self, &_lc_timer_cache_key);
     if (caches) {
         [caches enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {

@@ -10,28 +10,21 @@
 
 @interface NSDictionary (LCHelp)
 
-- (NSString*)lc_jsonString;
-
-- (NSString *)lc_jsonPrettyString;
-
 + (NSDictionary *)lc_dictionaryWithJsonString:(NSString *)jsonStr;
+- (NSString*)lc_jsonString;
+- (NSString *)lc_jsonPrettyString;
 
 @end
 
 @interface NSDictionary(LCSafe)
 
 - (id)lc_objectForKey:(id)key;
-
 - (int)lc_intValueForKey:(id)key;
-
 - (NSInteger)lc_integerValueForKey:(id)key;
-
 - (double)lc_doubleValueForKey:(id)key;
-
 - (NSString*)lc_stringValueForKey:(id)key;
 
 - (id)lc_objectForKey:(id)key asProtocol:(Protocol *)pro;
-
 - (id)lc_objectForKey:(id)key asClass:(Class)cls;
 
 @end

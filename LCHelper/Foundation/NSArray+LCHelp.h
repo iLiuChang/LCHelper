@@ -10,11 +10,9 @@
 
 @interface NSArray (LCHelp)
 
-- (NSString *)lc_jsonString;
-
-- (NSString *)lc_jsonPrettyString;
-
 + (NSArray *)lc_arrayWithJsonString:(NSString *)jsonStr;
+- (NSString *)lc_jsonString;
+- (NSString *)lc_jsonPrettyString;
 
 @end
 
@@ -27,7 +25,6 @@
 @interface NSMutableArray (LCHelp)
 
 - (void)lc_removeFirstObject;
-
 - (void)lc_reverse;
 
 @end
