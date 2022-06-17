@@ -34,7 +34,7 @@
 
 - (BOOL)lc_equalsString:(NSString *)str;
 
-- (NSString *)lc_trim; // 去除字符串前后的空白,不包含换行符
+- (NSString *)lc_trim; // Remove whitespace before and after a string, excluding newlines.
 
 - (NSString *)lc_removeWhiteSpace;
 

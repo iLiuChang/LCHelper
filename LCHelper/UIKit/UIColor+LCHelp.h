@@ -11,9 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UIColor (LCHelp)
-/// 十六进制转RGB颜色
-/// @param hexStr @"0xF0F", @"66ccff", @"#66CCFF88"
-+ (UIColor *)lc_colorWithHex:(NSString *)hexStr;
+
++ (UIColor *)lc_colorWithHex:(NSString *)hexStr; // @"0xF0F", @"66ccff", @"#66CCFF88"
 
 + (UIColor *)lc_colorWithRGB:(uint32_t)rgbValue;
 

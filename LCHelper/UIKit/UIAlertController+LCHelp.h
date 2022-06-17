@@ -8,50 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface UIAlertController (LCHelp)
 
-/**
- 添加点击事件
+- (void)lc_addActionWithTitle:(NSString *)title handler:(void (^ __nullable)(UIAlertAction *action))handler;
 
- @param title 标题 类型: UIAlertActionStyleDefault
- @param handler 回调事件
- */
-- (void)lc_addActionWithTitle:(NSString *)title handler:(void (^)(UIAlertAction *action))handler;
+- (void)lc_addActionWithTitle:(NSString *)title style:(UIAlertActionStyle)style handler:(void (^ __nullable)(UIAlertAction *action))handler;
 
+- (void)lc_addActionWithTitles:(NSArray *)titles handler:(void (^ __nullable)(NSInteger index))handler;
 
-/**
- 添加点击事件
+- (void)lc_setTitleColor:(nullable UIColor *)color font:(nullable UIFont *)font; // 设置文本属性（iOS 8.3 以上有效）
 
- @param title 标题
- @param style 类型
- @param handler 回调事件
- */
-- (void)lc_addActionWithTitle:(NSString *)title style:(UIAlertActionStyle)style handler:(void (^)(UIAlertAction *action))handler;
-
-/**
- 添加点击事件
- 仅添加UIAlertActionStyleDefault类型, 如果添加其他类型可以和"addActionWithTitle:style:handler:"方法配合使用
-
- @param titles 标题数组 类型: UIAlertActionStyleDefault
- @param handler 回调下标
- */
-- (void)lc_addActionWithTitles:(NSArray *)titles handler:(void (^)(NSInteger index))handler;
-
-/**
- 设置文本属性（iOS 8.3 以上有效）
-
- @param color 颜色
- @param font 字体
- */
-- (void)lc_setTitleColor:(nullable UIColor *)color font:(nullable UIFont *)font;
-
-/**
- 设置文本属性（iOS 8.3 以上有效）
- 
- @param color 颜色
- @param font 字体
- */
-- (void)lc_setMessageColor:(nullable UIColor *)color font:(nullable UIFont *)font;
+- (void)lc_setMessageColor:(nullable UIColor *)color font:(nullable UIFont *)font; // 设置文本属性（iOS 8.3 以上有效）
 
 @end
 
+NS_ASSUME_NONNULL_END

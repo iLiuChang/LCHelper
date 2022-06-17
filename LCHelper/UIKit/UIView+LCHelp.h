@@ -41,51 +41,24 @@ NS_ASSUME_NONNULL_BEGIN
 - (UIView *(^)(CGPoint origin))lc__origin;
 - (UIView *(^)(CGFloat w, CGFloat h))lc__sizeToFitLessThan;
 
-/**
- *  获取子视图
- *
- */
-- (UIView *)lc_descendantOrSelfWithClass:(Class)cls;
+- (UIView *)lc_descendantOrSelfWithClass:(Class)cls; // subview
 
-/**
- *  获取父视图
- *
- */
-- (UIView *)lc_ancestorOrSelfWithClass:(Class)cls;
+- (UIView *)lc_ancestorOrSelfWithClass:(Class)cls; // superview
 
-/**
- *  删除所有子视图
- *
- */
 - (void)lc_removeAllSubviews;
 
-/**
- *  获取视图上的控制器
- *
- */
 - (UIViewController *)lc_viewController;
 
-/**
- *  圆角
- */
-- (void)lc_roundedCorners:(UIRectCorner)corner cornerRadius:(CGFloat)cornerRadius;
+- (void)lc_roundedCorners:(UIRectCorner)corners cornerRadius:(CGFloat)cornerRadius; // Rounds a view with a given corner radius and corners.
 
 @end
 
 
 @interface UIView (LCTapBlock)
 
-/**
- *  添加单击手势
- *
- */
-- (void)lc_addTapGestureRecognizer:(void (^)(void))handler;
+- (void)lc_addTapGestureRecognizer:(void (^)(void))handler; // one
 
-/**
- *  添加双击击手势
- *
- */
-- (void)lc_addDoubleTapGestureRecognizer:(void (^)(void))handler;
+- (void)lc_addDoubleTapGestureRecognizer:(void (^)(void))handler; // two
 
 @end
 

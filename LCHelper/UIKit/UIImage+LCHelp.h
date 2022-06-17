@@ -12,78 +12,35 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIImage (LCHelp)
 
-/**
- *  截屏
- *  @view: 要截屏的视图
- */
+/// Captures a new image with a given view.
 + (UIImage *)lc_imageWithCaptureView:(UIView *)view;
 
-/**
- *  根据颜色生成图片
- */
+/// Returns a new image with a given color.
 + (UIImage *)lc_imageWithColor:(UIColor *)color;
 
-/**
- *  根据颜色生成图片
- */
+/// Returns a new image with a given color.
 + (UIImage *)lc_imageWithColor:(UIColor *)color size:(CGSize)size;
 
-/**
- *  裁剪为圆形的图片
- */
+/// Returns a round image.
 - (UIImage *)lc_roundedImage;
 
-/**
- *  裁剪为圆形的图片
- */
+/// Returns a round image with a given `borderWidth` and `borderColor`.
 - (UIImage *)lc_roundedImageWithBorderWidth:(CGFloat)borderWidth borderColor:(nullable UIColor *)borderColor;
 
-/**
- *  图片水印
- *  @point: 在图片大小范围内
- *  @atts: 属性配置，比如颜色、字体大小等
- */
-- (UIImage *)lc_markImageWithText:(NSString *)text point:(CGPoint)point atts:(nullable NSDictionary *)atts;
+/// Returns a new image which is resized from this image. You can specify a larger or smaller size than the image size. The image content will be changed with the scale mode.
+- (UIImage *)lc_resizedImageWithSize:(CGSize)size contentMode:(UIViewContentMode)contentMode;
 
-/**
- *  调整图片大小
- *
- *  @param size 大小
- *
- *  @return 图片
- */
-- (UIImage *)lc_resizableImageWithSize:(CGSize)size;
+/// Returns a new image which is cropped from this image.
+- (UIImage *)lc_croppedImageWithRect:(CGRect)rect;
 
-/**
- *  调整图片大小
- *
- *  @param size        大小
- *  @param contentMode 调整方式
- *
- *  @return 图片
- */
-- (UIImage *)lc_resizableImageWithSize:(CGSize)size contentMode:(UIViewContentMode)contentMode;
+/// Rounds a new image with a given corner radius.
+- (UIImage *)lc_roundedCornerImageWithRadius:(CGFloat)radius;
 
-
-/**
- *  剪切圆角图片
- *
- *  @param radius 圆角宽度
- *
- *  @return 图片
- */
-- (UIImage *)lc_imageWithCornerRadius:(CGFloat)radius;
-
-/**
- *  剪切圆角图片
- *
- *  @param radius 圆角宽度
- *  @param borderWidth 边框宽度
- *  @param borderColor 边框宽度
- *
- *  @return 图片
- */
-- (UIImage *)lc_imageWithCornerRadius:(CGFloat)radius borderWidth:(CGFloat)borderWidth borderColor:(nullable UIColor *)borderColor;
+/// Rounds a new image with a given corner radius and corners.
+- (UIImage *)lc_roundedCornerImageWithRadius:(CGFloat)radius
+                                     corners:(UIRectCorner)corners
+                                 borderWidth:(CGFloat)borderWidth
+                                 borderColor:(nullable UIColor *)borderColor;
 
 @end
 

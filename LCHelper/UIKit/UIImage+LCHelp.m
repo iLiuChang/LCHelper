@@ -25,6 +25,22 @@
     return newImage;
 }
 
++ (UIImage *)lc_imageWithColor:(UIColor *)color {
+    return [UIImage lc_imageWithColor:color size:CGSizeMake(10, 10)];
+}
+
++ (UIImage *)lc_imageWithColor:(UIColor *)color size:(CGSize)size {
+    CGRect rect = CGRectMake(0, 0, size.width, size.height);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context,
+                                   color.CGColor);
+    CGContextFillRect(context, rect);
+    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return img;
+}
+
 - (UIImage *)lc_roundedImage {
     return [self lc_roundedImageWithBorderWidth:0 borderColor:nil];
 }
@@ -63,48 +79,37 @@
     return newImage;
 }
 
-- (UIImage *)lc_markImageWithText:(NSString *)text point:(CGPoint)point atts:(NSDictionary *)atts{
-    CGSize size = self.size;
-    CGFloat H = size.height;
-    CGFloat W = size.width;
-    CGPoint p = point;
-    if (p.x > W) p.x = W;
-    if (p.x < 0) p.x = 0;
-    if (p.y > H) p.y = H;
-    if (p.y < 0) p.y = 0;
-    UIGraphicsBeginImageContextWithOptions(size, NO, self.scale);
-    [text drawAtPoint:p withAttributes:atts];
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return  newImage;
-}
-
-+ (UIImage *)lc_imageWithColor:(UIColor *)color {
-    return [UIImage lc_imageWithColor:color size:CGSizeMake(10, 10)];
-}
-
-+ (UIImage *)lc_imageWithColor:(UIColor *)color size:(CGSize)size {
-    CGRect rect = CGRectMake(0, 0, size.width, size.height);
-    UIGraphicsBeginImageContext(rect.size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetFillColorWithColor(context,
-                                   color.CGColor);
-    CGContextFillRect(context, rect);
-    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return img;
-}
-
-- (UIImage *)lc_resizableImageWithSize:(CGSize)size {
-    return [self lc_resizableImageWithSize:size contentMode:(UIViewContentModeCenter)];
-}
-
-- (UIImage *)lc_resizableImageWithSize:(CGSize)size contentMode:(UIViewContentMode)contentMode {
+- (UIImage *)lc_resizedImageWithSize:(CGSize)size contentMode:(UIViewContentMode)contentMode {
     if (size.width <= 0 || size.height <= 0) return nil;
     UIGraphicsBeginImageContextWithOptions(size, NO, self.scale);
     [self drawInRect:CGRectMake(0, 0, size.width, size.height) withContentMode:contentMode clipsToBounds:NO];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
+    return image;
+}
+
+- (UIImage *)lc_croppedImageWithRect:(CGRect)rect {
+    rect.origin.x *= self.scale;
+    rect.origin.y *= self.scale;
+    rect.size.width *= self.scale;
+    rect.size.height *= self.scale;
+    if (rect.size.width <= 0 || rect.size.height <= 0) return nil;
+    if (self.CIImage) {
+        CGRect croppingRect = CGRectMake(rect.origin.x, self.size.height - CGRectGetMaxY(rect), rect.size.width, rect.size.height);
+        CIImage *ciImage = [self.CIImage imageByCroppingToRect:croppingRect];
+        UIImage *image = [UIImage imageWithCIImage:ciImage scale:self.scale orientation:self.imageOrientation];
+        return image;
+    }
+    CGImageRef imageRef = self.CGImage;
+    if (!imageRef) {
+        return nil;
+    }
+    CGImageRef croppedImageRef = CGImageCreateWithImageInRect(imageRef, rect);
+    if (!croppedImageRef) {
+        return nil;
+    }
+    UIImage *image = [UIImage imageWithCGImage:croppedImageRef scale:self.scale orientation:self.imageOrientation];
+    CGImageRelease(croppedImageRef);
     return image;
 }
 
@@ -205,25 +210,26 @@ CGRect LC_CGRectFitWithContentMode(CGRect rect, CGSize size, UIViewContentMode m
     return rect;
 }
 
-- (UIImage *)lc_imageWithCornerRadius:(CGFloat)radius {
-    return [self lc_imageWithCornerRadius:radius borderWidth:0 borderColor:nil];
+- (UIImage *)lc_roundedCornerImageWithRadius:(CGFloat)radius {
+    return [self lc_roundedCornerImageWithRadius:radius corners:(UIRectCornerAllCorners) borderWidth:0 borderColor:nil];
 }
 
-- (UIImage *)lc_imageWithCornerRadius:(CGFloat)radius
-                       borderWidth:(CGFloat)borderWidth
-                       borderColor:(UIColor *)borderColor {
-    return [self imageWithCornerRadius:radius
-                                  corners:UIRectCornerAllCorners
-                              borderWidth:borderWidth
-                              borderColor:borderColor
-                           borderLineJoin:kCGLineJoinMiter];
+- (UIImage *)lc_roundedCornerImageWithRadius:(CGFloat)radius
+                                     corners:(UIRectCorner)corners
+                                 borderWidth:(CGFloat)borderWidth
+                                 borderColor:(UIColor *)borderColor {
+    return [self roundedCornerImageWithRadius:radius
+                                      corners:corners
+                                  borderWidth:borderWidth
+                                  borderColor:borderColor
+                               borderLineJoin:kCGLineJoinMiter];
 }
 
-- (UIImage *)imageWithCornerRadius:(CGFloat)radius
-                              corners:(UIRectCorner)corners
-                          borderWidth:(CGFloat)borderWidth
-                          borderColor:(UIColor *)borderColor
-                       borderLineJoin:(CGLineJoin)borderLineJoin {
+- (UIImage *)roundedCornerImageWithRadius:(CGFloat)radius
+                                  corners:(UIRectCorner)corners
+                              borderWidth:(CGFloat)borderWidth
+                              borderColor:(UIColor *)borderColor
+                           borderLineJoin:(CGLineJoin)borderLineJoin {
     
     if (corners != UIRectCornerAllCorners) {
         UIRectCorner tmp = 0;

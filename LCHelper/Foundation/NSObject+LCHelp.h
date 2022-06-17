@@ -9,22 +9,15 @@
 #import <Foundation/Foundation.h>
 
 @interface NSObject (LCHelp)
-/**
- *  交换类方法
- */
+
 + (BOOL)lc_swizzleClassMethod:(SEL)originalSel newMethod:(SEL)newSel;
 
-/**
- *  交换对象方法
- */
 + (BOOL)lc_swizzleInstanceMethod:(SEL)originalSel newMethod:(SEL)newSel;
+
 @end
 
 @interface NSObject (LCSafe)
 
-/**
- *  移除为null的key
- */
-+ (id)lc_objectByRemovingKeysWithNullValues:(id)JSONObject;
++ (id)lc_objectByRemovingKeysWithNullValues:(id)JSONObject; // remove null
 
 @end

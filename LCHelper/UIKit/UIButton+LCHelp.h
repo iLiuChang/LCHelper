@@ -11,10 +11,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSUInteger, LCButtonEdgeInsetsStyle) {
-    LCButtonEdgeInsetsStyleTop, // Image上，Label下
-    LCButtonEdgeInsetsStyleLeft, // Image左，Label右
-    LCButtonEdgeInsetsStyleBottom, // Image下，Label上
-    LCButtonEdgeInsetsStyleRight // Image右，Label左
+    LCButtonEdgeInsetsStyleTop, // Image Top，Label Bottom
+    LCButtonEdgeInsetsStyleLeft, // Image Left，Label Right
+    LCButtonEdgeInsetsStyleBottom, // Image Bottom，Label Top
+    LCButtonEdgeInsetsStyleRight // Image Right，Label Left
 };
 
 @interface UIButton (LCHelp)
