@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "LCHelper"
-  s.version      = "2.4.0"
+  s.version      = "2.4.1"
   s.summary      = "Extensions to UIKit and Foundation."
   s.homepage     = "https://github.com/iLiuChang/LCHelper"
   s.license      = "MIT"
