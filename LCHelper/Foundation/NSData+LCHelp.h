@@ -8,14 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NSData (LCHelp)
 
-- (id)lc_jsonValue;
+- (nullable id)lc_jsonValue;
 
-- (NSString *)lc_base64EncodedString;
+- (nullable NSString *)lc_base64EncodedString;
 
 @end
 
+NS_ASSUME_NONNULL_END
 
 
 

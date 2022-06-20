@@ -62,6 +62,9 @@
 
 - (void)lc_reverse {
     NSUInteger count = self.count;
+    if (count < 2) {
+        return;
+    }
     int mid = floor(count / 2.0);
     for (NSUInteger i = 0; i < mid; i++) {
         [self exchangeObjectAtIndex:i withObjectAtIndex:(count - (i + 1))];

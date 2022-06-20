@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NSString (LCHelp)
 
 @property (readonly) char lc_charValue;
@@ -30,16 +32,16 @@
 - (BOOL)lc_containsEmoji;
 + (BOOL)lc_compareVersion:(NSString *)version sourceVersion:(NSString *)sourceVersion;
 
-- (NSString *)lc_trim; // Remove whitespace before and after a string, excluding newlines.
-- (NSString *)lc_removeWhiteSpace;
-- (NSString *)lc_removeNewLine;
-- (NSString *)lc_substringWithRange:(NSRange)range;
+- (nullable NSString *)lc_trim; // Remove whitespace before and after a string, excluding newlines.
+- (nullable NSString *)lc_removeWhiteSpace;
+- (nullable NSString *)lc_removeNewLine;
+- (nullable NSString *)lc_substringWithRange:(NSRange)range;
 
-- (NSString *)lc_base64EncodedString;
-- (NSString *)lc_base64DecodingString;
-- (NSData *)lc_dataValue;
-- (id)lc_jsonValue;
-- (NSNumber *)lc_numberValue;
+- (nullable NSString *)lc_base64EncodedString;
+- (nullable NSString *)lc_base64DecodingString;
+- (nullable NSData *)lc_dataValue;
+- (nullable id)lc_jsonValue;
+- (nullable NSNumber *)lc_numberValue;
 
 - (CGSize)lc_sizeForFont:(UIFont *)font size:(CGSize)size mode:(NSLineBreakMode)lineBreakMode;
 - (CGFloat)lc_widthForFont:(UIFont *)font;
@@ -47,4 +49,5 @@
 
 @end
 
+NS_ASSUME_NONNULL_END
 

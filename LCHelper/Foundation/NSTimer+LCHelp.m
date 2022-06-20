@@ -9,9 +9,53 @@
 #import "NSTimer+LCHelp.h"
 #import <objc/runtime.h>
 
+@implementation NSTimer (LCTimer)
+
++ (void)_timerActionBlock:(NSTimer *)timer {
+    if ([timer userInfo]) {
+        void (^block)(NSTimer *timer) = (void (^)(NSTimer *timer))[timer userInfo];
+        block(timer);
+    }
+}
+
++ (NSTimer *)lc_scheduledTimerWithTimeInterval:(NSTimeInterval)seconds repeats:(BOOL)repeats action:(void (^)(NSTimer *timer))action {
+    return [NSTimer scheduledTimerWithTimeInterval:seconds target:self selector:@selector(_timerActionBlock:) userInfo:[action copy] repeats:repeats];
+}
+
+- (void)lc_pauseTimer {
+    if (!self.isValid) {
+        return;
+    }
+    [self setFireDate:[NSDate distantFuture]];
+}
+
+- (void)lc_resumeTimer {
+    if (!self.isValid) {
+        return;
+    }
+    [self setFireDate:[NSDate date]];
+}
+
+- (void)lc_resumeTimerAfter:(NSTimeInterval)interval {
+    if (!self.isValid) {
+        return;
+    }
+    [self setFireDate:[NSDate dateWithTimeIntervalSinceNow:interval]];
+}
+
+- (void)lc_stopTimer {
+    if (!self.isValid) {
+        return;
+    }
+    [self invalidate];
+}
+
+@end
+
+
 static const NSString *_lc_timer_cache_key = @"_lc_timer_cache_key";
 
-@implementation NSTimer (LCHelp)
+@implementation NSTimer (LCGCDTimer)
 
 + (void)lc_scheduledGCDTimerWithKey:(NSString *)aKey
                     timeInterval:(double)interval
@@ -32,12 +76,14 @@ static const NSString *_lc_timer_cache_key = @"_lc_timer_cache_key";
         timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
         [caches setObject:timer forKey:aKey];
         dispatch_resume(timer);
-        // 精度为0.1秒
-        dispatch_source_set_timer(timer, dispatch_time(DISPATCH_TIME_NOW, interval * NSEC_PER_SEC), interval * NSEC_PER_SEC, 0.1 * NSEC_PER_SEC);
+        dispatch_source_set_timer(timer, dispatch_time(DISPATCH_TIME_NOW, interval * NSEC_PER_SEC), interval * NSEC_PER_SEC, 0.01 * NSEC_PER_SEC);
         dispatch_source_set_event_handler(timer, ^{
-            aAction();
             if (!repeats) {
+                [caches removeObjectForKey:aKey];
                 dispatch_source_cancel(timer);
+            }
+            if (aAction) {
+                aAction();
             }
         });
     }

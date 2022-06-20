@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSDate (LCHelp)
 NS_ASSUME_NONNULL_BEGIN
+
+@interface NSDate (LCHelp)
 
 @property (nonatomic, readonly) NSInteger lc_year;
 @property (nonatomic, readonly) NSInteger lc_month; //(1~12)
@@ -50,5 +51,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable NSDate *)lc_addMinutes:(NSInteger)minutes;
 - (nullable NSDate *)lc_addSeconds:(NSInteger)seconds;
 
-NS_ASSUME_NONNULL_END
 @end
+
+NS_ASSUME_NONNULL_END

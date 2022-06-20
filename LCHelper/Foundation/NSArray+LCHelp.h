@@ -8,17 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NSArray (LCHelp)
 
-+ (NSArray *)lc_arrayWithJsonString:(NSString *)jsonStr;
-- (NSString *)lc_jsonString;
-- (NSString *)lc_jsonPrettyString;
++ (nullable NSArray *)lc_arrayWithJsonString:(NSString *)jsonStr;
+- (nullable NSString *)lc_jsonString;
+- (nullable NSString *)lc_jsonPrettyString;
 
 @end
 
 @interface NSArray (LCSafe)
 
-- (id)lc_objectAtIndex:(NSUInteger)index;
+- (nullable id)lc_objectAtIndex:(NSUInteger)index;
 
 @end
 
@@ -28,3 +30,5 @@
 - (void)lc_reverse;
 
 @end
+
+NS_ASSUME_NONNULL_END

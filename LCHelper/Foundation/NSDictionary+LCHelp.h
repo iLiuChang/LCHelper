@@ -8,11 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NSDictionary (LCHelp)
 
-+ (NSDictionary *)lc_dictionaryWithJsonString:(NSString *)jsonStr;
-- (NSString*)lc_jsonString;
-- (NSString *)lc_jsonPrettyString;
++ (nullable NSDictionary *)lc_dictionaryWithJsonString:(NSString *)jsonStr;
+- (nullable NSString*)lc_jsonString;
+- (nullable NSString *)lc_jsonPrettyString;
 
 @end
 
@@ -22,15 +24,17 @@
 - (int)lc_intValueForKey:(id)key;
 - (NSInteger)lc_integerValueForKey:(id)key;
 - (double)lc_doubleValueForKey:(id)key;
-- (NSString*)lc_stringValueForKey:(id)key;
+- (nullable NSString *)lc_stringValueForKey:(id)key;
 
-- (id)lc_objectForKey:(id)key asProtocol:(Protocol *)pro;
-- (id)lc_objectForKey:(id)key asClass:(Class)cls;
+- (nullable id)lc_objectForKey:(id)key asProtocol:(Protocol *)pro;
+- (nullable id)lc_objectForKey:(id)key asClass:(Class)cls;
 
 @end
 
 @interface NSMutableDictionary(LCSafe)
 
-- (void)lc_setObject:(id)anObject forKey:(id)aKey;
+- (void)lc_setObject:(nullable id)anObject forKey:(id)aKey;
 
 @end
+
+NS_ASSUME_NONNULL_END

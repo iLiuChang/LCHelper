@@ -227,6 +227,12 @@ UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"alert" 
 - **NSTimer+LCHelp**
 
 ```objective-c
++ (NSTimer *)lc_scheduledTimerWithTimeInterval:(NSTimeInterval)seconds repeats:(BOOL)repeats action:(void (^)(NSTimer *timer))action;
+- (void)lc_pauseTimer;
+- (void)lc_resumeTimer;
+- (void)lc_resumeTimerAfter:(NSTimeInterval)interval;
+- (void)lc_stopTimer;
+
 + (void)lc_scheduledGCDTimerWithKey:(NSString *)aKey
                        timeInterval:(double)interval
                               queue:(dispatch_queue_t)queue

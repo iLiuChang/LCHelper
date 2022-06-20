@@ -8,14 +8,29 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSTimer (LCHelp)
+NS_ASSUME_NONNULL_BEGIN
+
+@interface NSTimer (LCTimer)
+
++ (NSTimer *)lc_scheduledTimerWithTimeInterval:(NSTimeInterval)seconds repeats:(BOOL)repeats action:(void (^)(NSTimer *timer))action;
+- (void)lc_pauseTimer;
+- (void)lc_resumeTimer;
+- (void)lc_resumeTimerAfter:(NSTimeInterval)interval;
+- (void)lc_stopTimer;
+
+@end
+
+
+@interface NSTimer (LCGCDTimer)
 
 + (void)lc_scheduledGCDTimerWithKey:(NSString *)aKey
                        timeInterval:(double)interval
-                              queue:(dispatch_queue_t)queue
+                              queue:(nullable dispatch_queue_t)queue
                             repeats:(BOOL)repeats
                              action:(dispatch_block_t)aAction;
 + (void)lc_cancelGCDTimerWithKey:(NSString *)aKey;
 + (void)lc_cancelAllGCDTimers;
 
 @end
+
+NS_ASSUME_NONNULL_END

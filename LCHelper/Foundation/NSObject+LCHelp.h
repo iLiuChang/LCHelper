@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NSObject (LCHelp)
 
 + (BOOL)lc_swizzleClassMethod:(SEL)originalSel newMethod:(SEL)newSel;
@@ -18,6 +20,8 @@
 
 @interface NSObject (LCSafe)
 
-+ (id)lc_objectByRemovingKeysWithNullValues:(id)JSONObject; // remove null
++ (nullable id)lc_objectByRemovingKeysWithNullValues:(nullable id)JSONObject; // remove null
 
 @end
+
+NS_ASSUME_NONNULL_END

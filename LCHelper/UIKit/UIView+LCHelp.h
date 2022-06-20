@@ -41,13 +41,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (UIView *(^)(CGPoint origin))lc__origin;
 - (UIView *(^)(CGFloat w, CGFloat h))lc__sizeToFitLessThan;
 
-- (UIView *)lc_descendantOrSelfWithClass:(Class)cls; // subview
+- (nullable UIView *)lc_descendantOrSelfWithClass:(Class)cls; // subview
 
-- (UIView *)lc_ancestorOrSelfWithClass:(Class)cls; // superview
+- (nullable UIView *)lc_ancestorOrSelfWithClass:(Class)cls; // superview
 
 - (void)lc_removeAllSubviews;
 
-- (UIViewController *)lc_viewController;
+- (nullable UIViewController *)lc_viewController;
 
 - (void)lc_roundedCorners:(UIRectCorner)corners cornerRadius:(CGFloat)cornerRadius; // Rounds a view with a given corner radius and corners.
 
