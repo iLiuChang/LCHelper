@@ -2,7 +2,7 @@
 
 # LCHelper
 
-Extensions to UIKit and Foundation.
+Some categories in Objective-C.
 
 ## Requirements
 
