@@ -364,6 +364,18 @@ To integrate LCHelper into your Xcode project using CocoaPods, specify it in you
 pod 'LCHelper'
 ```
 
+If you only use `LCHelper/Foundation`, you can use:
+
+```ruby
+pod 'LCHelper/Foundation'
+```
+
+If you only use `LCHelper/UIKit`, you can use:
+
+```ruby
+pod 'LCHelper/UIKit'
+```
+
 ### Manual
 
 1. Download everything in the LCHelper folder;
