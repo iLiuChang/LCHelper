@@ -21,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSArray (LCSafe)
 
 - (nullable id)lc_objectAtIndex:(NSUInteger)index;
+- (nullable id)lc_objectAtIndex:(NSUInteger)index asProtocol:(Protocol *)pro;
+- (nullable id)lc_objectAtIndex:(NSUInteger)index asClass:(Class)cls;
 
 @end
 

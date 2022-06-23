@@ -75,7 +75,7 @@
     if ([obj respondsToSelector:@selector(doubleValue)]) {
         return [obj doubleValue];
     }
-    return 0;
+    return 0.0;
 }
 
 - (NSString*)lc_stringValueForKey:(id)key{

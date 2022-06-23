@@ -47,7 +47,23 @@
     if ([obj isKindOfClass:[NSNull class]]) {
         return nil;
     }
-    return self[index];
+    return obj;
+}
+
+- (id)lc_objectAtIndex:(NSUInteger)index asProtocol:(Protocol *)pro {
+    id value = [self lc_objectAtIndex:index];
+    if (value && ![value conformsToProtocol:pro]) {
+        return nil;
+    }
+    return value;
+}
+
+- (id)lc_objectAtIndex:(NSUInteger)index asClass:(Class)cls {
+    id value = [self lc_objectAtIndex:index];
+    if (value && ![value isKindOfClass:cls]) {
+        return nil;
+    }
+    return value;
 }
 
 @end
